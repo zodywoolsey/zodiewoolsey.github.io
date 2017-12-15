@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="page">
 <link rel="stylesheet" href="Style.css">
 <head>
     <input type="range" id="slider" min="-5" max="5" step=".1" value="1">
@@ -12,6 +12,7 @@
     
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
+    var page = document.getElementById("page")
     
     var halaina = 0;
     var hpresstimer = 0;
@@ -54,10 +55,10 @@
     
     function toggleFullScreen() {
         if (!document.mosFullScreen && !document.webkitFullScreen) {
-            if (canvas.mozRequestFullScreen) {
-                canvas.mozRequestFullScreen();
+            if (page.mozRequestFullScreen) {
+                page.mozRequestFullScreen();
             }else{
-                canvas.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                page.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
             }
         } else {
             if (document.mozCancelFullScreen) {
