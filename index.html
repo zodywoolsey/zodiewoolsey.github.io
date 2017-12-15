@@ -14,7 +14,12 @@
     var ctx = canvas.getContext("2d");
     
     but = document.getElementById("fsbut")
-    
+    window.addEventListener('keydown',function(event){
+        console.log(event.keyCode);
+        if (event.keyCode == 72){
+            alert("Halaina is the best ;)");
+        }
+    })
     function toggleFullScreen() {
         if (!document.mosFullScreen && !document.webkitFullScreen) {
             if (canvas.mozRequestFullScreen) {
