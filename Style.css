@@ -10,3 +10,8 @@ input {
     width: 110%;
     height: 110%;
 }
+
+#ad {
+    border: 5px solid #35f9;
+    background: #5559;
+}
