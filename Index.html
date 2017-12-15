@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Style.css">
+<head>
+    <input type="range" id="slider" min="-5" max="5" step=".1" value="1">
+    <button id="fsbut">fullscreen</button>
+    <p id="display"></p>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    
+    but = document.getElementById("fsbut")
+    
+    function toggleFullScreen() {
+        if (!document.mosFullScreen && !document.webkitFullScreen) {
+            if (canvas.mozRequestFullScreen) {
+                canvas.mozRequestFullScreen();
+            }else{
+                canvas.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            }else {
+                document.webkitCancelFullScreen();
+            }
+        }
+    }
+    
+    
+    but.onclick = function(){
+        toggleFullScreen();
+    }
+    
+    
+    
+    canvas.width = "1920";
+    canvas.height = "1080";
+    
+    var slider = document.getElementById("slider");
+    var display = document.getElementById("display").innerHTML;
+    
+    setInterval(function(){
+        try{
+            if (i ==0){
+                
+            }
+        }catch (ReferenceError){
+            i = 0;
+        }
+        if (i > 20 || i < -20){
+            i = 0;
+        }
+        ctx.fillStyle = "#000f";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = "#3335";
+        for (a = 0; a < canvas.width+20; a+=20){
+        ctx.fillRect((i+a),0,10,canvas.height);
+        }
+        for (a = 0; a < canvas.height+20; a+=20){
+        ctx.fillRect(0,(i+a),canvas.width,10);
+        }
+        
+        i += parseFloat(slider.value);
+    },1000/60);
+    
+    
+    
+    currentloc = [0,0];
+    newloc = [0,0];
+    speed = 0;
+    
+    currentloc[0];
+    
+    
+    setInterval(function(){location.reload()},5000)
+    
+    
+</script>
+
+</body>
+</html>
