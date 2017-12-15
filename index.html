@@ -13,13 +13,26 @@
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     
+    var halaina = 0;
+    var hpresstimer = 0;
+    
     but = document.getElementById("fsbut")
     window.addEventListener('keydown',function(event){
         console.log(event.keyCode);
         if (event.keyCode == 72){
-            alert("Love you halaina ;)");
+            halaina += 1;
         }
     })
+    
+    setInterval(function(){
+        if (halaina > 5){
+            alert("I love you so much Halaina");
+        hpresstimer += 1;
+        if (hpresstimer > 20){
+            halaina = 0;
+        }
+    }, 1000/4)
+    
     function toggleFullScreen() {
         if (!document.mosFullScreen && !document.webkitFullScreen) {
             if (canvas.mozRequestFullScreen) {
