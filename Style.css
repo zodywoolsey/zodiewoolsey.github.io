@@ -2,16 +2,18 @@
 input {
     width: 200px;
 }
-#canvas {
+#slideCanvas {
     position: fixed;
     left: -10px;
     top: -10px;
     z-index: -5;
-    width: 110%;
-    height: 110%;
 }
 
 #ad {
     border: 5px solid #35f9;
     background: #5559;
+}
+
+#pageHeader {
+    
 }
