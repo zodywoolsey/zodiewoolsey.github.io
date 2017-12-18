@@ -25,6 +25,8 @@
     var ctx = canvas.getContext("2d");
     var page = document.getElementById("page")
     
+    
+    
     var halaina = 0;
     var presstimer = 0;
     
@@ -42,11 +44,10 @@
             halaina = 0;
             presstimer = 0;
         }
-        hpresstimer += 1;
+        presstimer += 1;
         if (presstimer > 20){
             halaina = 0;
             presstimer = 0;
-        }
         }
     }, 1000/4)
     
@@ -73,13 +74,14 @@
     
     
     
-    canvas.width = "1920";
-    canvas.height = "1080";
+    
     
     var slider = document.getElementById("slider");
     var display = document.getElementById("display").innerHTML;
     
     setInterval(function(){
+        canvas.height = canvas.clientHeight;
+        canvas.width = canvas.clientWidth;
         try{
             if (i ==0){
                 
@@ -100,7 +102,7 @@
         ctx.fillRect(0,(i+a),canvas.width,10);
         }
         
-        i += parseFloat(slider.value);
+        i += parseFloat(1);
     },1000/60);
     
     

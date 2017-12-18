@@ -6,7 +6,10 @@ input {
     position: fixed;
     left: -10px;
     top: -10px;
-    z-index: -5;
+    z-index: -1;
+    width: 105%;
+    height: 105%;
+    filter: blur(3px);
 }
 
 #ad {
@@ -15,5 +18,21 @@ input {
 }
 
 #pageHeader {
+    
+}
+
+.Banner {
+    
+}
+
+#home {
+    
+}
+
+#jslideLink {
+    
+}
+
+#page {
     
 }
