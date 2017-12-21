@@ -41,7 +41,7 @@
                 obj.color = color;
                 obj.mkbox = function(){
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.x,obj.y,1,1);
+                    ctx.fillRect(obj.x,obj.y,2,2);
                 }
                 //task: add repel from mouse
                 obj.live = function(){
@@ -115,7 +115,8 @@
             },false)
             
             setInterval(function(){
-                //ctx.clearRect(0,0,c.width,c.height);
+                ctx.fillStyle = "#000"
+                //ctx.fillRect(0,0,c.width,c.height);
                 for (i = 0; i < 50; i++){
                         x = Math.random()*c.width;
                         y = Math.random()*c.height;
@@ -133,7 +134,7 @@
                     }
                 }
                 
-            },1000/120)
+            },1000/60)
             
         </script>
         
