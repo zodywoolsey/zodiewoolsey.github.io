@@ -4,8 +4,8 @@
     <head>
         
         <div class="pageHeader">
-            <div>Hello!</div>
-            <div id="subHeader">This is my testing page for object oriented javascript!<br>Press left arrow!</div>
+            <div></div>
+            <div id="subHeader"></div>
             
             </div>
         <canvas id="slideCanvas" style="border: 1px solid black"></canvas>
@@ -19,8 +19,7 @@
             var c = document.getElementById("slideCanvas");
             var ctx = c.getContext("2d");
             
-            c.height = 1080;
-            c.width = 1920;
+            c.height = 1080; c.width = 1920; ctx.fillStyle = "#000"; ctx.fillRect(0,0,c.width,c.height);
             
             var boxes = [];
             
@@ -40,20 +39,36 @@
                 obj.x = locx;
                 obj.y = locy;
                 obj.color = color;
-                console.log(color);
                 obj.mkbox = function(){
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.x,obj.y,5,5);
+                    ctx.fillRect(obj.x,obj.y,1,1);
                 }
                 //task: add repel from mouse
                 obj.live = function(){
-                        obj.x += ((Math.sin(obj.x))*100)%6;
-                        obj.y += ((Math.cos(obj.y))*100)%6;
+                        obj.x += 4-(((Math.cos(obj.x/1920))*4.5)%6);
+                        obj.y += 4-(((Math.cos(obj.y/1080))*4.5)%6);
+                }
+                obj.go = function(){
+                    if ( obj.x < c.width && obj.x > 0 && obj.y < c.height && obj.y > 0 ){
+                        return true;
+                    }
+                }
+                obj.right = function(){
+                    obj.x++;
+                }
+                obj.left = function(){
+                    obj.x--;
+                }
+                obj.up = function(){
+                    obj.y++;
+                }
+                obj.down = function(){
+                    obj.y--;
                 }
                 return obj;
             }
             
-            for (i = 0; i < 1000; i++){
+            for (i = 0; i < 1; i++){
                 x = Math.random()*c.width;
                 y = Math.random()*c.height;
                 z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
@@ -63,29 +78,62 @@
                     }
             
             window.addEventListener('keydown',function(event){
-                
-                if (event.keyCode == 37){
-                    
+                if (event.keyCode == 32){
                     for (i = 0; i < 1000; i++){
-                x = Math.random()*c.width;
-                y = Math.random()*c.height;
-                z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
-                var a = new makeBox(x,y,z);
-                    
-                boxes.push(a);
+                        x = Math.random()*c.width;
+                        y = Math.random()*c.height;
+                        z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
+                        var a = new makeBox(x,y,z);
+                        boxes.push(a);
                     }
+                }else if (event.keyCode == 37){
+                    for (q = 0; q < boxes.length; q ++){
+                    if (boxes[q].go){
+                        boxes[q].left();
+                    }
+                }
+                }else if (event.keyCode == 38){
+                    for (w = 0; w < boxes.length; w ++){
+                    if (boxes[w].go){
+                        boxes[w].down();
+                    }
+                }
+                }else if (event.keyCode == 39){
+                    for (e = 0; e < boxes.length; e ++){
+                    if (boxes[e].go){
+                        boxes[e].right();
+                    }
+                }
+                }else if (event.keyCode == 40){
+                    for (r = 0; r < boxes.length; r ++){
+                    if (boxes[r].go){
+                        boxes[r].up();
+                    }
+                }
                 }
                 
             },false)
             
             setInterval(function(){
-                ctx.clearRect(0,0,c.width,c.height);
+                //ctx.clearRect(0,0,c.width,c.height);
+                for (i = 0; i < 50; i++){
+                        x = Math.random()*c.width;
+                        y = Math.random()*c.height;
+                        z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
+                        var a = new makeBox(x,y,z);
+                        boxes.push(a);
+                    }
                 for (z = 0; z < boxes.length; z ++){
+                    if (boxes[z].go()){
                     boxes[z].mkbox();
                     boxes[z].live();
+                    }
+                    if (!boxes[z].go()){
+                        boxes.splice(z,1)
+                    }
                 }
                 
-            },1000/60)
+            },1000/120)
             
         </script>
         
