@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="Style.css">
+    <head>
+        
+        <div class="pageHeader">
+            <div>Hello!</div>
+            <div id="subHeader">This is my testing page for object oriented javascript!</div>
+            
+            </div>
+        <canvas id="canvas" style="border: 1px solid black"></canvas>
+    </head>
+    
+    <body>
+        
+        
+        
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            
+            c.height = 500;
+            c.width = 500;
+            
+            var boxes = [];
+            
+            function makeBox(locx,locy){
+                var obj = {};
+                obj.x = locx;
+                obj.y = locy;
+                obj.mkbox = function(){
+                    
+                    ctx.fillRect(obj.x,obj.y,5,5);
+                }
+                obj.live = function(){
+                    setInterval(function(){
+                        obj.x += .5;
+                    },1000/60)
+                }
+                return obj;
+            }
+            
+            
+            window.addEventListener('keydown',function(event){
+                
+                if (event.keyCode == 37){
+                    
+                    
+                x = Math.random()*500;
+                y = Math.random()*500;
+                
+                var a = new makeBox(x,y);
+                    
+                boxes.push(a);
+
+                a.mkbox();
+                a.live();
+                    
+                }
+                
+            },false)
+            
+            setInterval(function(){
+                
+                for (z = 0; z < boxes.length; z ++){
+                    boxes[z].mkbox();
+                }
+                
+            },1000/60)
+            
+        </script>
+        
+    </body>
+    <footer>
+    <div id="ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7557515487848783",
+    enable_page_level_ads: true
+  });
+</script>
+    </div>
+    </footer>
+</html>

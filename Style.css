@@ -13,12 +13,18 @@ input {
 }
 
 #ad {
-    border: 5px solid #35f9;
-    background: #5559;
+    
 }
 
-#pageHeader {
-    
+.pageHeader {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24pt;
+}
+
+#subHeader {
+    font-size: 18pt;
+    padding-bottom: 10px;
 }
 
 .Banner {
@@ -26,10 +32,6 @@ input {
 }
 
 #home {
-    
-}
-
-#jslideLink {
     
 }
 
