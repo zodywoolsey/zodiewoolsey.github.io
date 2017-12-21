@@ -5,10 +5,10 @@
         
         <div class="pageHeader">
             <div>Hello!</div>
-            <div id="subHeader">This is my testing page for object oriented javascript!</div>
+            <div id="subHeader">This is my testing page for object oriented javascript!<br>Press left arrow!</div>
             
             </div>
-        <canvas id="canvas" style="border: 1px solid black"></canvas>
+        <canvas id="slideCanvas" style="border: 1px solid black"></canvas>
     </head>
     
     <body>
@@ -16,54 +16,73 @@
         
         
         <script>
-            var c = document.getElementById("canvas");
+            var c = document.getElementById("slideCanvas");
             var ctx = c.getContext("2d");
             
-            c.height = 500;
-            c.width = 500;
+            c.height = 1080;
+            c.width = 1920;
             
             var boxes = [];
             
-            function makeBox(locx,locy){
+            var fibb = {};
+            fibb.a = 0;
+            fibb.b = 1;
+            fibb.c = fibb.a+fibb.b;
+            
+            setInterval(function(){//fibb
+                fibb.a = fibb.b;
+                fibb.b = fibb.c;
+                fibb.c = fibb.a+fibb.b;
+            },1000/60)
+            
+            function makeBox(locx,locy,color){
                 var obj = {};
                 obj.x = locx;
                 obj.y = locy;
+                obj.color = color;
+                console.log(color);
                 obj.mkbox = function(){
-                    
+                    ctx.fillStyle = obj.color;
                     ctx.fillRect(obj.x,obj.y,5,5);
                 }
+                //task: add repel from mouse
                 obj.live = function(){
-                    setInterval(function(){
-                        obj.x += .5;
-                    },1000/60)
+                        obj.x += ((Math.sin(obj.x))*100)%6;
+                        obj.y += ((Math.cos(obj.y))*100)%6;
                 }
                 return obj;
             }
             
+            for (i = 0; i < 1000; i++){
+                x = Math.random()*c.width;
+                y = Math.random()*c.height;
+                z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
+                var a = new makeBox(x,y,z);
+                    
+                boxes.push(a);
+                    }
             
             window.addEventListener('keydown',function(event){
                 
                 if (event.keyCode == 37){
                     
-                    
-                x = Math.random()*500;
-                y = Math.random()*500;
-                
-                var a = new makeBox(x,y);
+                    for (i = 0; i < 1000; i++){
+                x = Math.random()*c.width;
+                y = Math.random()*c.height;
+                z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
+                var a = new makeBox(x,y,z);
                     
                 boxes.push(a);
-
-                a.mkbox();
-                a.live();
-                    
+                    }
                 }
                 
             },false)
             
             setInterval(function(){
-                
+                ctx.clearRect(0,0,c.width,c.height);
                 for (z = 0; z < boxes.length; z ++){
                     boxes[z].mkbox();
+                    boxes[z].live();
                 }
                 
             },1000/60)

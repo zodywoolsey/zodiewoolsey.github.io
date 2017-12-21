@@ -9,7 +9,7 @@ input {
     z-index: -1;
     width: 105%;
     height: 105%;
-    filter: blur(3px);
+    filter: blur(2px);
 }
 
 #ad {
