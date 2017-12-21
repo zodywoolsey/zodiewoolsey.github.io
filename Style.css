@@ -9,7 +9,16 @@ input {
     z-index: -1;
     width: 105%;
     height: 105%;
-    filter: blur(1px);
+    filter: blur(2px);
+}
+
+#fpCanvas {
+    position: fixed;
+    left: -10px;
+    top: -10px;
+    z-index: -1;
+    width: 105%;
+    height: 105%;
 }
 
 #ad {
