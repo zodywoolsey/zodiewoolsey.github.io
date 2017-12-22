@@ -26,9 +26,9 @@
             
             toggle.check = function(){
                 ctx.fillStyle = "#000"; ctx.fillRect(0,0,c.width,c.height);
-                if (posvals[0] == 4){
-                    posvals = [0,100,1,0]
-                }else if (posvals[0] == 0){
+                if (posvals[2] == 6){
+                    posvals = [4,4.6,1,0]
+                }else if (posvals[2] == 1){
                     posvals = [4,4.6,6,0]
                 }
             }
@@ -37,25 +37,18 @@
             
             var boxes = [];
             
-            var fibb = {};
-            fibb.a = 0;
-            fibb.b = 1;
-            fibb.c = fibb.a+fibb.b;
             
-            setInterval(function(){//fibb
-                fibb.a = fibb.b;
-                fibb.b = fibb.c;
-                fibb.c = fibb.a+fibb.b;
-            },1000/60)
             
             function makeBox(locx,locy,color){
                 var obj = {};
                 obj.x = locx;
                 obj.y = locy;
                 obj.color = color;
+                obj.life = 0;
                 obj.mkbox = function(){
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.x,obj.y,2,2);
+                    ctx.fillRect(obj.x+Math.random()*10,obj.y+Math.random()*10,1,1);
+                    obj.life++;
                 }
                 //task: add repel from mouse
                 obj.live = function(){
@@ -63,7 +56,7 @@
                         obj.y += posvals[0]-(((Math.cos(obj.y/1080))*posvals[1])%posvals[2])+posvals[3];
                 }
                 obj.go = function(){
-                    if ( obj.x < c.width && obj.x > 0 && obj.y < c.height && obj.y > 0 ){
+                    if ( obj.x < c.width && obj.x > 0 && obj.y < c.height && obj.y > 0 && obj.life < 200){
                         return true;
                     }
                 }
@@ -137,6 +130,7 @@
                         z = "#" + parseInt(Math.random()*10) + parseInt(Math.random()*10) + parseInt(Math.random()*10);
                         var a = new makeBox(x,y,z);
                         boxes.push(a);
+                        //boxes.push(new makeBox(x-20,y-20,"#000"));
                     }
                 for (z = 0; z < boxes.length; z ++){
                     if (boxes[z].go()){

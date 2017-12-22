@@ -19,7 +19,7 @@ input {
     z-index: -1;
     width: 105%;
     height: 105%;
-    filter: blur(2px);
+    filter: contrast(2) brightness(1.5) blur(.5px);
 }
 
 #ad {
