@@ -12,7 +12,7 @@ input {
     filter: blur(2px);
 }
 
-#fpCanvas {
+#oopCanvas {
     position: fixed;
     left: -10px;
     top: -10px;
@@ -20,6 +20,15 @@ input {
     width: 105%;
     height: 105%;
     filter: contrast(2) brightness(1.5) blur(.5px);
+}
+
+#fpCanvas {
+    position: fixed;
+    left: -10px;
+    top: -10px;
+    z-index: -1;
+    width: 105%;
+    height: 105%;
 }
 
 #ad {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="Style.css">
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/jquery.hotkeys.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/key_status.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/util.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/sprite.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/sound.js" type="text/javascript"></script>
+    <head></head>
+    <body>
+        <canvas id="fpCanvas"></canvas>
+        
+        <script>
+            var c = document.getElementById("fpCanvas");
+            var ctx = c.getContext("2d");
+            
+            c.width = 1920;
+            c.height = 1080;
+            
+            
+            var player = {};
+            player.x = c.width/2;
+            player.y = c.height/2;
+            player.move = function(){
+                if (keydown.up){
+                    player.y -= 5;
+                }if (keydown.down){
+                    player.y += 5;
+                }if (keydown.left){
+                    player.x -= 5;
+                }if (keydown.right){
+                    player.x += 5;
+                }
+            };
+            player.draw = function(){
+                ctx.fillRect(player.x,player.y,5,5)
+            };
+            
+            setInterval(function(){
+                ctx.clearRect(0,0,c.width,c.height);
+                player.draw();
+                player.move();
+            },1000/60)
+            
+        </script>
+    </body>
+</html>
