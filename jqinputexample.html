@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<p id='freq'></p>
+<p id='type'></p>
+<p id='base'></p>
+<p id='test' ></p>
+<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+<script language="javascript" src="jqinput/jquery.hotkeys.js" type="text/javascript"></script>
+<script language="javascript" src="jqinput/key_status.js" type="text/javascript"></script>
+<script language="javascript" src="jqinput/util.js" type="text/javascript"></script>
+<script language="javascript" src="jqinput/sprite.js" type="text/javascript"></script>
+<script language="javascript" src="jqinput/sound.js" type="text/javascript"></script>
+<canvas id='canvas' height="500" width="500" style="border:2px solid #000000"  ></canvas>
+<script>
+setInterval(function(){
+if(keydown.a){
+    o.frequency.value = f+50
+}if(keydown.s){
+    o.frequency.value = f+100
+}if(keydown.d){
+    o.frequency.vlue=0
+    o.frequency.value = f+150
+}if(keydown.f){
+    o.frequency.value = f+200
+}if(keydown.g){
+    o.frequency.value = f+250
+}if(keydown.h){
+    o.frequency.value = f+300
+}if(keydown.j){
+    o.frequency.value = f+350
+}if(keydown.k){
+    o.frequency.value = f+400
+}if(keydown.equals){
+    f += 100
+}if(keydown.space){
+    o.frequency.value = 0
+}
+</script>

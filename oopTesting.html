@@ -4,7 +4,7 @@
     <head>
         
         <div class="pageHeader">
-            <div></div>
+            <div><input type="checkbox" id="check" onclick="toggle.check()"></div>
             <div id="subHeader"></div>
             
             </div>
@@ -18,6 +18,20 @@
         <script>
             var c = document.getElementById("fpCanvas");
             var ctx = c.getContext("2d");
+            var check = document.getElementById("check");
+            
+            var toggle = {};
+            
+            var posvals = [4,4.6,6,0];
+            
+            toggle.check = function(){
+                ctx.fillStyle = "#000"; ctx.fillRect(0,0,c.width,c.height);
+                if (posvals[0] == 4){
+                    posvals = [0,100,1,0]
+                }else if (posvals[0] == 0){
+                    posvals = [4,4.6,6,0]
+                }
+            }
             
             c.height = 1080; c.width = 1920; ctx.fillStyle = "#000"; ctx.fillRect(0,0,c.width,c.height);
             
@@ -45,8 +59,8 @@
                 }
                 //task: add repel from mouse
                 obj.live = function(){
-                        obj.x += 4-(((Math.cos(obj.x/1920))*4.5)%6);
-                        obj.y += 4-(((Math.cos(obj.y/1080))*4.5)%6);
+                        obj.x += posvals[0]-(((Math.cos(obj.x/1920))*posvals[1])%posvals[2])+posvals[3];
+                        obj.y += posvals[0]-(((Math.cos(obj.y/1080))*posvals[1])%posvals[2])+posvals[3];
                 }
                 obj.go = function(){
                     if ( obj.x < c.width && obj.x > 0 && obj.y < c.height && obj.y > 0 ){
