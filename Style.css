@@ -58,9 +58,10 @@ input {
     
 }
 #centerCanvas {
+    position: fixed;
     border: 1px solid black;
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%;
-    max-height: 90%;
+    margin-left: 32%;
+    margin-right: 32%;
+    margin-bottom: 32%;
+    width: 35%;
 }

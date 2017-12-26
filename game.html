@@ -11,23 +11,43 @@
         Game
         </div></head>
     <body>
-        <canvas id="centerCanvas" ></canvas>
+        <canvas id="fpCanvas" style="border: 1px solid;"></canvas>
         <script>
-            var c = document.getElementById("centerCanvas");
+            var c = document.getElementById("fpCanvas");
             var ctx = c.getContext("2d");
             
-            c.width = 500;
-            c.height = 500;
+            var oldTime = Date.now();
             
+            c.width = 1920;
+            c.height = 1080;
             
+            var turn = 0;
+            
+            enemies = [];
+            
+            function createEnemy(){
+                var enemy = {};
+                enemy.x = Math.random()*c.width;
+                enemy.y = 0-(10+Math.random()*50);
+                enemy.live = function(){
+                    ctx.fillRect(enemy.x,enemy.y,5,5);
+                    enemy.x += 2.5-Math.random()*5;
+                    enemy.y += 1*(1+Math.random()*2);
+                };
+                return enemy;
+            }
             var player = {};
             player.x = c.width/2;
             player.y = c.height/2;
             player.move = function(){
                 if (keydown.up){
-                    player.y -= 5;
+                    if (player.y > 0){
+                        player.y -= 5;
+                    }
                 }if (keydown.down){
-                    player.y += 5;
+                    if (player.y < c.width-5){
+                        player.y += 5;
+                    }
                 }if (keydown.left){
                     if (player.x > 0){
                         player.x -= 5;
@@ -39,14 +59,26 @@
                 }
             };
             player.draw = function(){
-                ctx.fillRect(player.x,player.y,5,5)
+                ctx.fillRect(player.x,player.y,20,20)
             };
             
+            count = 2;
+            
             setInterval(function(){
+                if ((Date.now()-oldTime) > 1000/60){
                 ctx.clearRect(0,0,c.width,c.height);
-                player.draw();
-                player.move();
-            },1000/60)
+                if (enemies.length < count){
+                    enemies.push(new createEnemy());
+                };
+                for (a = 0; a < enemies.length; a++){
+                    enemies[a].live();
+                    if (enemies[a].y > c.height){
+                        enemies.splice(a,1);
+                        count = Math.pow(count,2);
+                    }
+                };
+                    oldTime=Date.now();
+                }},10)
             
         </script>
     </body>
