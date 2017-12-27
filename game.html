@@ -11,74 +11,143 @@
         Game
         </div></head>
     <body>
-        <canvas id="fpCanvas" style="border: 1px solid;"></canvas>
+        <canvas id="canvas" style="border: 1px solid;"></canvas>
         <script>
-            var c = document.getElementById("fpCanvas");
+            var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
             
             var oldTime = Date.now();
             
-            c.width = 1920;
-            c.height = 1080;
+            c.width = 500;
+            c.height = 500;
             
-            var turn = 0;
+            var turn;
+            var score;
+            var enemies;
+            var bullets;
+            var shoot;
             
-            enemies = [];
+            function init(){
+                turn = 0;
+                score = 0;
+                enemies = [];
+                bullets = [];
+                shoot = true;
+                
+            };
+            init();
+            
+            function createBullet(x, y){
+                var bullet = {};
+                bullet.x = x;
+                bullet.y = y;
+                bullet.go = function(){
+                        ctx.fillRect(bullet.x,bullet.y,10,2);
+                        bullet.y--;
+                };
+                bullet.collide = function(){
+                    for (i = 0; i < enemies.length; i++){
+                        if ((enemies[i].x > bullet.x-10 && enemies[i].x < bullet.x+10) && (enemies[i].y > bullet.y-10 && enemies[i].y < bullet.y+10)){
+                            enemies.splice(i,1);
+                            console.log("hit");
+                        }
+                    }
+                }
+                return bullet;
+            };
             
             function createEnemy(){
                 var enemy = {};
                 enemy.x = Math.random()*c.width;
-                enemy.y = 0-(10+Math.random()*50);
+                enemy.y = 0-(Math.random()*500);
+                enemy.dead = false;
                 enemy.live = function(){
+                    ctx.fillStyle = "#f00";
                     ctx.fillRect(enemy.x,enemy.y,5,5);
-                    enemy.x += 2.5-Math.random()*5;
+                    //enemy.x ++;
                     enemy.y += 1*(1+Math.random()*2);
+                };
+                enemy.setDead = function(x, y){
+                    if ((enemies.y > c.height) || (enemy.x == x && enemy.y == y)){
+                        enemy.dead = true;
+                    }
                 };
                 return enemy;
             }
+            
+            /*player*/{
             var player = {};
             player.x = c.width/2;
             player.y = c.height/2;
             player.move = function(){
                 if (keydown.up){
                     if (player.y > 0){
-                        player.y -= 5;
+                        player.y -= 2;
                     }
                 }if (keydown.down){
                     if (player.y < c.width-5){
-                        player.y += 5;
+                        player.y += 2;
                     }
                 }if (keydown.left){
                     if (player.x > 0){
-                        player.x -= 5;
+                        player.x -= 2;
                     }
                 }if (keydown.right){
                     if (player.x < c.width-5){
-                        player.x += 5;
+                        player.x += 2;
                     }
+                }if (keydown.space){
+                    bullets.push(new createBullet(player.x, player.y));
                 }
             };
             player.draw = function(){
-                ctx.fillRect(player.x,player.y,20,20)
+                ctx.fillStyle = "#0f0";
+                ctx.fillRect(player.x,player.y,10,10)
             };
+            player.collide = function(){
+                setInterval(function(){
+                    for (i = 0; i < enemies.length; i++){
+                        if ((enemies[i].x > player.x-5 && enemies[i].x < player.x+10) && (enemies[i].y > player.y && enemies[i].y < player.y+10)){
+                            init();
+                        }
+                    }
+            },0)
+            }
+            }
             
-            count = 2;
+            player.collide();
+            setInterval(function(){
+                for (i = 0; i < bullets.length; i++){
+                    bullets[i].collide();
+                }
+            },0)
+            count = 50;
             
             setInterval(function(){
-                if ((Date.now()-oldTime) > 1000/60){
-                ctx.clearRect(0,0,c.width,c.height);
                 if (enemies.length < count){
                     enemies.push(new createEnemy());
                 };
+                if ((Date.now()-oldTime) > 1000/60){
+                ctx.clearRect(0,0,c.width,c.height);
+                ctx.fillText(score,0,0,100,100);
+                player.move();
+                player.draw();
+                for (b = 0; b < bullets.length; b++){
+                    bullets[b].go();
+                    if (bullets[b].y < 0){
+                        bullets.splice(b,1);
+                    }
+                };
                 for (a = 0; a < enemies.length; a++){
                     enemies[a].live();
-                    if (enemies[a].y > c.height){
+                    if (enemies[a].dead == true){
                         enemies.splice(a,1);
-                        count = Math.pow(count,2);
+                        //count ++;
                     }
                 };
                     oldTime=Date.now();
-                }},10)
+                    score++;
+                }},0)
             
         </script>
     </body>
