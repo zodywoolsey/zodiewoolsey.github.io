@@ -11,68 +11,124 @@
         Game
         </div></head>
     <body>
-        <canvas id="canvas" style="border: 1px solid;"></canvas>
+        <canvas id="canvas" style="margin: 0px;"></canvas>
         <script>
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
+            
+            c.onmousemove = mousepos;
+            c.onmousedown = mousedown;
+            c.onmouseup = mouseup;
             
             var oldTime = Date.now();
             
             c.width = 500;
             c.height = 500;
             
-            var turn;
-            var score;
-            var positions = [[0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0],
-                             [0,0,0,0,0,0,0,0,0,0]];
+            var mouseX = 0;
+            var mouseY = 0;
+            var mouseclick = false;
             
+            var turn = 0;
+            var score = 0;
+            var positions = [];
+            for (p = 0; p < 10; p++){
+                positions.push([]);
+                for (o = 0; o < 10; o++){
+                    positions[p].push(1);
+                }
+            }
+            positions[0][0] = "h";
+            console.log(positions);
             function init(){
                 turn = 0;
                 score = 0;
-                postitions = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
-                
+                positions = [];
+                for (p = 0; p < 10; p++){
+                positions.push([]);
+                for (o = 0; o < 10; o++){
+                    positions[p].push(0);
+                }
+            }
+                console.log(positions);
             };
-            init();
+            //init();
+            
+            function mousepos(event){
+                mouseX = event.clientX - c.getBoundingClientRect().left;
+                mouseY = event.clientY - c.getBoundingClientRect().top;
+            };
+            function mousedown(){
+                mouseclick = true;
+            };
+            function mouseup(){
+                mouseclick = false;
+            }
             
             function thegame(){
                 var obj = {};
+                obj.width = c.width/positions.length;
+                obj.height = c.height/positions[0].length;
+                
+                obj.noX = [];
+                obj.noY = [];
+                
+                obj.mposX = 0;
+                obj.mXO = 0;
+                
+                obj.mposY = 0;
+                obj.mYO = 0;
+                
+                obj.wait = 0;
+                obj.oneColor = ["#",9,0,0];
+                obj.twoColor = ["#",0,0,9];
+                obj.threeColor = ["#",0,0,0];
+                //-----------------------------------------------------------------------------------Functions begin
                 obj.draw = function (){
-                    obj.width = c.width/positions.length;
-                    obj.height = c.height/positions[0].length;
                     for (w = 0; w < positions.length; w++){
                         for (h = 0; h < positions[w].length; h++){
-                            if (positions[w][h] == 0){
-                                ctx.fillStyle = "#f00";
-                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-1,obj.height-1);
-                            }else if(positions[w][h] == 1){
-                                ctx.fillStyle = "#00f";
-                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-1,obj.height-1);
+                            if ((positions[w][h])%2 != 0){
+                                ctx.fillStyle = obj.oneColor[0]+obj.oneColor[1]+obj.oneColor[2]+obj.oneColor[3];
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width,obj.height);
+                            }else if((positions[w][h])%2 == 0){
+                                ctx.fillStyle = obj.twoColor[0]+obj.twoColor[1]+obj.twoColor[2]+obj.twoColor[3];
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width,obj.height);
                             }
                         };
                     };
-                };//draw end
-                obj.click = function(){
-                    c.addEventListener("")
+                };//---------------------------------------------------------------------------------draw end
+                obj.mpos = function(){
+                    obj.mposX = parseInt(mouseX/obj.width);
+                    obj.mposY = parseInt(mouseY/obj.height);
+                };//---------------------------------------------------------------------------------mpos end
+                obj.hover = function(){
+                    if (( !(obj.mposX in [0,1]) || obj.mposY != 0) && obj.wait != 1){
+                        console.log(positions[obj.mposX][obj.mposY]);
+                        positions[obj.mposX][obj.mposY] += 1;
+                        obj.wait = 1;
+                        obj.mXO = obj.mposX;
+                        obj.mYO = obj.mposY;
+                    };
+                };//---------------------------------------------------------------------------------hover end
+                obj.mousepause = function(){
+                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX)){
+                        obj.wait = 0;
+                    }
                 };
                 return obj;
-            };//thegame end
+            };//-------------------------------------------------------------------------------------thegame end
             
             var a = new thegame();
-            a.draw();
+            
             
             setInterval(function(){
                 
                 if ((Date.now()-oldTime) > 1000/60){
-                //ctx.clearRect(0,0,c.width,c.height);
-                
+                    ctx.clearRect(0,0,c.width,c.height);
+                    a.draw();
+                    a.mpos();
+                    a.hover();
+                    a.mousepause();
                     oldTime=Date.now();
                 }},0)
             
