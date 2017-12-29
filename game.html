@@ -46,12 +46,12 @@
                         bullet.y--;
                 };
                 bullet.collide = function(){
-                    for (i = 0; i < enemies.length; i++){
+                    var x = bullet.x;
+                    var y = bullet.y;
                         if ((enemies[i].x > bullet.x-10 && enemies[i].x < bullet.x+10) && (enemies[i].y > bullet.y-10 && enemies[i].y < bullet.y+10)){
-                            enemies.splice(i,1);
+                            enemies.forEach()
                             console.log("hit");
                         }
-                    }
                 }
                 return bullet;
             };
@@ -66,9 +66,12 @@
                     ctx.fillRect(enemy.x,enemy.y,5,5);
                     //enemy.x ++;
                     enemy.y += 1*(1+Math.random()*2);
+                    if (enemy.y > c.height){
+                        enemy.dead = true;
+                    }
                 };
                 enemy.setDead = function(x, y){
-                    if ((enemies.y > c.height) || (enemy.x == x && enemy.y == y)){
+                    if (enemy.x > x -10 && enemy.x < x+10 && enemy.y > y-10 && enemy.y < y+10){
                         enemy.dead = true;
                     }
                 };
