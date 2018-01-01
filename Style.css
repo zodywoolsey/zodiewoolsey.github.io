@@ -38,11 +38,11 @@ input {
 .pageHeader {
     font-weight: bold;
     text-align: center;
-    font-size: 24pt;
+    font-size: 200%;
 }
 
 #subHeader {
-    font-size: 18pt;
+    font-size: 100%;
     padding-bottom: 10px;
 }
 
