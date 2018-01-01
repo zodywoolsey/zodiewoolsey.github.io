@@ -41,6 +41,8 @@
                 for (o = 0; o < 10; o++){
                     if (Math.random()*10 > 5){
                         positions[p].push("r");
+                    }else{
+                        positions[p].push("b");
                     }
                 }
             }
@@ -52,10 +54,14 @@
                 turn = 0;
                 score = 0;
                 positions = [];
-                for (p = 0; p < 10; p++){
+            for (p = 0; p < 10; p++){
                 positions.push([]);
                 for (o = 0; o < 10; o++){
-                    positions[p].push(parseInt(Math.random()*10));
+                    if (Math.random()*10 > 5){
+                        positions[p].push("r");
+                    }else{
+                        positions[p].push("b");
+                    }
                 }
             }
                 //console.log(positions);
@@ -95,27 +101,37 @@
                 obj.draw = function (){
                     for (w = 0; w < positions.length; w++){
                         for (h = 0; h < positions[w].length; h++){
-                            if ((positions[w][h])%2 != 0){
+                            if ((positions[w][h]) == "r"){
                                 ctx.fillStyle = obj.oneColor[0]+obj.oneColor[1]+obj.oneColor[2]+obj.oneColor[3];
                                 ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
-                            }else if((positions[w][h])%2 == 0){
+                            }else if((positions[w][h]) == "b"){
                                 ctx.fillStyle = obj.twoColor[0]+obj.twoColor[1]+obj.twoColor[2]+obj.twoColor[3];
                                 ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
                             }
                         };
                     };
+                    ctx.fillStyle = "#0008";
+                    ctx.fillRect(obj.mXO*obj.width-6,obj.mYO*obj.height-6,obj.width+10,obj.height+10);
                 };//---------------------------------------------------------------------------------draw end
                 obj.mpos = function(){
                     obj.mposX = parseInt(mouseX/obj.width);
                     obj.mposY = parseInt(mouseY/obj.height);
                 };//---------------------------------------------------------------------------------mpos end
                 obj.click = function(){
-                    if (( !(obj.mposX in obj.noX) || !(obj.mposY in obj.noY) ) && obj.wait != 1 && mouseclick == true){
-                        console.log(positions[obj.mposX][obj.mposY]);
-                        positions[obj.mposX][obj.mposY] += 1;
-                        obj.wait = 1;
-                        obj.mXO = obj.mposX;
-                        obj.mYO = obj.mposY;
+                    if (( !(obj.mposX in obj.noX) || !(obj.mposY in obj.noY) ) && obj.wait != 1){
+                        if(mouseclick == true){
+                            console.log(positions[obj.mposX][obj.mposY]);
+                            if (positions[obj.mposX][obj.mposY] == "r"){
+                                positions[obj.mposX][obj.mposY] = "b";
+                            }else if (positions[obj.mposX][obj.mposY] == "b"){
+                                positions[obj.mposX][obj.mposY] = "r"
+                            }
+                            obj.mXO = obj.mposX;
+                            obj.mYO = obj.mposY;
+                        }
+                            obj.wait = 1;
+                            
+                        
                     };
                 };//---------------------------------------------------------------------------------hover end
                 obj.mousepause = function(){
@@ -135,26 +151,24 @@
                         count++;
                     }
                 }
-                if (count == positions.length){
+                if (count > positions.length){
                     return true;
                 };
             };//-------------------------------------------------------------------------------------solveCheck end
             
             setInterval(function(){
-                
-                if ((Date.now()-oldTime) > 1000/60){
-                    ctx.clearRect(0,0,c.width,c.height);
-                    a.draw();
-                    a.mpos();
-                    a.click();
-                    a.mousepause();
-                    if (solveCheck() == true){
-                        init();
-                    }
-                    
-                    
-                    oldTime=Date.now();
-                }},0)
+                ctx.clearRect(0,0,c.width,c.height);
+                a.draw();
+                a.mpos();
+                a.click();
+                a.mousepause();
+                if (solveCheck() == true){
+                    init();
+                }
+
+
+                oldTime=Date.now();
+                },0)
             
         </script>
     </body>
