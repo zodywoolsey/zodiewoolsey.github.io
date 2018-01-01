@@ -9,7 +9,11 @@
     <script language="javascript" src="jqinput/sound.js" type="text/javascript"></script>
     <head><div class="pageHeader">
         Make all the squares the same color!
-        </div></head>
+        <div id="subHeader">
+        (PS: start in the top left one)
+        </div>
+        </div>
+    </head>
     <body>
         <canvas id="canvas" style="margin: 0px;"></canvas>
         <script>
@@ -35,11 +39,15 @@
             for (p = 0; p < 10; p++){
                 positions.push([]);
                 for (o = 0; o < 10; o++){
-                    positions[p].push(1);
+                    if (Math.random()*10 > 5){
+                        positions[p].push("r");
+                    }
                 }
             }
-            positions[0][0] = "h";
-            console.log(positions);
+            
+            //positions[0][0] = "h";
+            //console.log(positions);
+            
             function init(){
                 turn = 0;
                 score = 0;
@@ -47,10 +55,10 @@
                 for (p = 0; p < 10; p++){
                 positions.push([]);
                 for (o = 0; o < 10; o++){
-                    positions[p].push(0);
+                    positions[p].push(parseInt(Math.random()*10));
                 }
             }
-                console.log(positions);
+                //console.log(positions);
             };
             //init();
             
@@ -89,10 +97,10 @@
                         for (h = 0; h < positions[w].length; h++){
                             if ((positions[w][h])%2 != 0){
                                 ctx.fillStyle = obj.oneColor[0]+obj.oneColor[1]+obj.oneColor[2]+obj.oneColor[3];
-                                ctx.fillRect(w*obj.width,h*obj.height,obj.width,obj.height);
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
                             }else if((positions[w][h])%2 == 0){
                                 ctx.fillStyle = obj.twoColor[0]+obj.twoColor[1]+obj.twoColor[2]+obj.twoColor[3];
-                                ctx.fillRect(w*obj.width,h*obj.height,obj.width,obj.height);
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
                             }
                         };
                     };
@@ -101,8 +109,8 @@
                     obj.mposX = parseInt(mouseX/obj.width);
                     obj.mposY = parseInt(mouseY/obj.height);
                 };//---------------------------------------------------------------------------------mpos end
-                obj.hover = function(){
-                    if (( !(obj.mposX in [0,1]) || obj.mposY != 0) && obj.wait != 1){
+                obj.click = function(){
+                    if (( !(obj.mposX in obj.noX) || !(obj.mposY in obj.noY) ) && obj.wait != 1 && mouseclick == true){
                         console.log(positions[obj.mposX][obj.mposY]);
                         positions[obj.mposX][obj.mposY] += 1;
                         obj.wait = 1;
@@ -114,12 +122,23 @@
                     if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX)){
                         obj.wait = 0;
                     }
-                };
+                };//---------------------------------------------------------------------------------mousepause end
                 return obj;
             };//-------------------------------------------------------------------------------------thegame end
             
             var a = new thegame();
             
+            function solveCheck(){
+                var count = 0;
+                for (q = 0; q < positions.length; q++){
+                    if (positions[q] == positions[q+1]){
+                        count++;
+                    }
+                }
+                if (count == positions.length){
+                    return true;
+                };
+            };//-------------------------------------------------------------------------------------solveCheck end
             
             setInterval(function(){
                 
@@ -127,8 +146,13 @@
                     ctx.clearRect(0,0,c.width,c.height);
                     a.draw();
                     a.mpos();
-                    a.hover();
+                    a.click();
                     a.mousepause();
+                    if (solveCheck() == true){
+                        init();
+                    }
+                    
+                    
                     oldTime=Date.now();
                 }},0)
             
