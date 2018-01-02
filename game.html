@@ -15,10 +15,12 @@
         </div>
     </head>
     <body>
-        <canvas id="canvas" style="margin: 0px;"></canvas>
+        <canvas id="canvas" style="margin-left: 30%; margin-right: 30%;"></canvas>
+        <div id="score" style="text-align: center"></div>
         <script>
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
+            var scoretag = document.getElementById("score");
             
             c.onmousemove = mousepos;
             c.onmousedown = mousedown;
@@ -33,37 +35,33 @@
             var mouseY = 0;
             var mouseclick = false;
             
+            var size = 5;
+            
             var turn = 0;
             var score = 0;
             var positions = [];
-            for (p = 0; p < 10; p++){
-                positions.push([]);
-                for (o = 0; o < 10; o++){
-                    if (Math.random()*10 > 5){
-                        positions[p].push("r");
-                    }else{
-                        positions[p].push("b");
+            function genPos(){
+                for (p = 0; p < size; p++){
+                    positions.push([]);
+                    for (o = 0; o < size; o++){
+                        if (Math.random()*size > size/2){
+                            positions[p].push("r");
+                        }else{
+                            positions[p].push("b");
+                        }
                     }
                 }
+                return positions;
             }
+            positions = genPos();
             
             //positions[0][0] = "h";
             //console.log(positions);
             
             function init(){
                 turn = 0;
-                score = 0;
                 positions = [];
-            for (p = 0; p < 10; p++){
-                positions.push([]);
-                for (o = 0; o < 10; o++){
-                    if (Math.random()*10 > 5){
-                        positions[p].push("r");
-                    }else{
-                        positions[p].push("b");
-                    }
-                }
-            }
+                positions = genPos();
                 //console.log(positions);
             };
             //init();
@@ -145,17 +143,29 @@
             var a = new thegame();
             
             function solveCheck(){
-                var count = 0;
+                var check = false;
                 for (q = 0; q < positions.length; q++){
-                    if (positions[q] == positions[q+1]){
-                        count++;
+                    for (w = 0; w < positions[q].length; w++){
+                        if (positions[q][w] == positions[0][0]){
+                            check = true;
+                            //console.log( q, w, positions[q][w], check);
+                        }else{
+                            check = false;
+                            //console.log( q, w, positions[q][w], check, "break");
+                            break;
+                        }
+                    }
+                    if (check == false){
+                        //console.log("full break");
+                        break;
                     }
                 }
-                if (count > positions.length){
+                if (check == true){
                     return true;
-                };
+                }
+                
             };//-------------------------------------------------------------------------------------solveCheck end
-            
+            score = 0;
             setInterval(function(){
                 ctx.clearRect(0,0,c.width,c.height);
                 a.draw();
@@ -163,10 +173,12 @@
                 a.click();
                 a.mousepause();
                 if (solveCheck() == true){
+                    
+                    score ++;
+                    
                     init();
-                }
-
-
+                };
+                scoretag.innerHTML = "Score:"+score;
                 oldTime=Date.now();
                 },0)
             

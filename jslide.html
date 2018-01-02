@@ -80,7 +80,7 @@
     var display = document.getElementById("display").innerHTML;
     
     setInterval(function(){
-        var distance = 25;
+        var distance = 50;
         canvas.height = canvas.clientHeight;
         canvas.width = canvas.clientWidth;
         try{
@@ -96,10 +96,10 @@
         ctx.fillStyle = "#909f";
         ctx.fillRect(0,0,canvas.width,canvas.height);
         ctx.fillStyle = "#000b";
-        for (a = -20; a < canvas.width+20; a+=distance){
+        for (a = -distance; a < canvas.width+distance; a+=distance){
         ctx.fillRect((i+a),0,10,canvas.height);
         }
-        for (a = -20; a < canvas.height+20; a+=distance){
+        for (a = -distance; a < canvas.height+distance; a+=distance){
         ctx.fillRect(0,(i+a),canvas.width,10);
         }
         
