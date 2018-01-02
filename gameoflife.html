@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html><title>Game of life</title>
+    <canvas id="canvas" style="border: 1px solid black"></canvas>
+    <script>
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        
+        c.width = screen.availHeight-(0);
+        c.height = screen.availHeight-(0);
+        
+        size = 50;
+        
+        life = [];
+        
+        for (a = 0; a < size; a ++){
+            life.push([]);
+            for (e = 0; e < size; e ++){
+                life[a].push("d");
+            }
+        }
+        function createLife(){
+            for (i = 0; i < 500; i++){
+                life[parseInt((size/3)+Math.random()*(size/3))][parseInt((size/3)+Math.random()*(size/3))] = "a";
+            }
+        };//-----CREATELIFE END-----
+        createLife();
+        
+        function start(){
+            var obj = {};
+            obj.number = life.length;
+            obj.width = c.width/obj.number;
+            obj.height = c.height/obj.number;
+            obj.gameo = false;
+            
+            obj.draw = function(){
+                
+                for (a = 0; a < life.length; a ++){
+                    for (e = 0; e < life[a].length; e ++){
+                        if (life[a][e] == "a"){
+                            ctx.fillStyle = "#f005"
+                            ctx.fillRect(e*obj.width,a*obj.height,obj.width+2.5,obj.height+1);
+                            ctx.fillStyle = "#0f05"
+                            ctx.fillRect(e*obj.width-2.5,a*obj.height+2.5,obj.width+1,obj.height+1);
+                            ctx.fillStyle = "#00f5"
+                            ctx.fillRect(e*obj.width,a*obj.height,obj.width+1,obj.height+2.5);
+                            ctx.fillStyle = "#000"
+                            ctx.fillRect(e*obj.width-.5,a*obj.height-.5,obj.width+1,obj.height+1);
+                            obj.calc(a,e);
+                        }else if(life[a][e] = "d"){
+                            //ctx.clearRect(e*obj.width,a*obj.height,obj.width,obj.height);
+                            obj.calc(a,e);
+                        }
+                    }
+                }
+                
+            };//-----DRAW END-----
+            obj.calc = function(x,y){
+                obj.livecount=0;
+                if (life[x][y] == "a"){
+                    obj.livecount++;
+                }
+                try{
+                    if (life[x-1][y-1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x-1][y] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x-1][y+1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x][y-1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x][y+1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x+1][y-1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x+1][y] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                try{
+                    if (life[x+1][y+1] == "a"){
+                    obj.livecount++;
+                }}catch (err){}
+                if(obj.livecount < 2 || obj.livecount > 2){
+                    life[x][y] = "d";
+                    //console.log(x,y,"dead",life[x][y]);
+                }else{
+                    life[x][y] = "a";
+                    //console.log(x,y,"alive",life[x][y]);
+                }
+            };//-----CALC END-----
+            obj.gameover = function(){
+                if (obj.gameo == true){
+                    
+                    
+                }
+                obj.gameo = false;
+            };
+            return obj;
+        };//-----START END-----
+        
+        var game = start();
+        game.draw();
+        //console.log(life);
+        setInterval(function(){
+            ctx.clearRect(0,0,c.width,c.height);
+            //console.log(life);
+            game.draw();
+//            if (life.includes("a") == false){
+//                game.gameo = true;
+//                createLife();
+//            }
+        },50*2)
+        setInterval(function(){
+            game.gameover();
+        },500)
+        
+    </script>
+</html>
