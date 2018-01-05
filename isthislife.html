@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><canvas id="canvas" style="border: 1px solid black"></canvas>
+    
+    <script>
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        c.width=500;
+        c.height=500;
+        
+        var board = [];
+        
+        for (i = 0; i < 50; i++){
+            board.push([]);
+            for (a = 0; a < 50; a++){
+                board[i].push("d")
+            }
+        }
+        
+        function drawob(){
+            var obj = {};
+            obj.draw = function(){
+                
+            };
+        }
+        
+    </script>
+    
+</html>
