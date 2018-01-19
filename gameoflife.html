@@ -24,6 +24,7 @@
         life = [];
         living = [];
         food = [];
+        monster = [];
         
         var mouseX;
         var mouseY;
@@ -61,8 +62,8 @@
             }
         }
         function createLife(){
-            for (i = 0; i < 1; i++){
-                //life[parseInt((size/10)+Math.random()*(size/10))][parseInt((size/10)+Math.random()*(size/10))] = "a";
+            for (i = 0; i < 10; i++){
+                life[parseInt((size/12)+Math.random()*(size/12))][parseInt((size/12)+Math.random()*(size/12))] = "a";
             };
             for (i = 0; i < 10; i++){
                 food[parseInt(Math.random()*size)][parseInt(Math.random()*size)]+=2;
@@ -83,6 +84,7 @@
             obj.stop = 0;
             obj.low = 4;
             obj.high = 6;
+            obj.length = 
             
             obj.go = function(){
                 obj.add();
@@ -108,17 +110,41 @@
                 for (a = 0; a < life.length; a ++){
                     for (e = 0; e < life[a].length; e ++){
                         if(food[a][e] > 0){
-                            ctx.fillStyle = "#0f05";
+                            ctx.fillStyle = "#0004";
                             ctx.fillRect(e*obj.width,a*obj.height,obj.width,obj.height);
                         }
                         if (life[a][e] == "a"){
-                            ctx.fillStyle = "#f00"
-                            ctx.fillRect(e*obj.width,a*obj.height,obj.width+2.5,obj.height+1);
-                            ctx.fillStyle = "#0f0"
+                            ctx.fillStyle = "#0f0f"
                             ctx.fillRect(e*obj.width-2.5,a*obj.height+2.5,obj.width+1,obj.height+1);
-                            ctx.fillStyle = "#00f"
-                            ctx.fillRect(e*obj.width,a*obj.height,obj.width+1,obj.height+2.5);
-                            ctx.fillStyle = "#000"
+                            ctx.fillStyle = "#f00c"
+                            ctx.fillRect(e*obj.width-3,a*obj.height,obj.width+5,obj.height+4);
+                            ctx.fillStyle = "#00c"
+                            ctx.fillRect(e*obj.width-1,a*obj.height-1,obj.width+4,obj.height+3);
+                            ctx.fillStyle = "#000f"
+                            ctx.fillRect(e*obj.width-.5,a*obj.height-.5,obj.width+1,obj.height+1);
+                        }else if(life[a][e] = "d"){
+                            //ctx.clearRect(e*obj.width,a*obj.height,obj.width,obj.height);
+                        }
+                    }
+                }
+                
+            };//-----DRAW END-----
+obj.draw = function(){
+                obj.newlife = life;
+                for (a = 0; a < life.length; a ++){
+                    for (e = 0; e < life[a].length; e ++){
+                        if(food[a][e] > 0){
+                            ctx.fillStyle = "#0004";
+                            ctx.fillRect(e*obj.width,a*obj.height,obj.width,obj.height);
+                        }
+                        if (life[a][e] == "a"){
+                            ctx.fillStyle = "#0f0f"
+                            ctx.fillRect(e*obj.width-2.5,a*obj.height+2.5,obj.width+1,obj.height+1);
+                            ctx.fillStyle = "#f00c"
+                            ctx.fillRect(e*obj.width-3,a*obj.height,obj.width+5,obj.height+4);
+                            ctx.fillStyle = "#00c"
+                            ctx.fillRect(e*obj.width-1,a*obj.height-1,obj.width+4,obj.height+3);
+                            ctx.fillStyle = "#000f"
                             ctx.fillRect(e*obj.width-.5,a*obj.height-.5,obj.width+1,obj.height+1);
                         }else if(life[a][e] = "d"){
                             //ctx.clearRect(e*obj.width,a*obj.height,obj.width,obj.height);
@@ -252,10 +278,6 @@
         game.go();
         game.gocalc();
         var printout = "";
-        setInterval(function(){
-            life[parseInt(Math.random()*size)][parseInt(Math.random()*size)]="a";
-            life[parseInt(Math.random()*size)][parseInt(Math.random()*size)]="a";
-            life[parseInt(Math.random()*size)][parseInt(Math.random()*size)]="a";
-        },1000*5)
+        
     </script>
 </html>
