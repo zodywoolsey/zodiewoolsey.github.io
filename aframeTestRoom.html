@@ -5,9 +5,9 @@
     </head>
 
 <body>
-    <a-scene>
+    <a-scene shadow="autoUpdate: false;">
     <a-sky color="#777"></a-sky>
-    <a-entity geometry="primitive: sphere; radius: .1" light="type: point; color: #888; intensity: 2; castShadow: true;" material="color: white; shader: flat;" position="1 2 0"></a-entity>
+    <a-entity geometry="primitive: sphere; radius: .1" light="type: point; color: #888; intensity: 2; castShadow: true; shadowBias: -.0001;" material="color: white; shader: flat;" position="0 2 0"></a-entity>
     <a-collada-model src="firsthouse.dae" position="-2 0 1" shadow="receive: true;"></a-collada-model>
     
     </a-scene>
