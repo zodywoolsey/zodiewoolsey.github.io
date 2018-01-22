@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head>
+    
+    </head>
+    <body>
+        <canvas id="canvas" style="border: 1px solid"></canvas>
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            
+            c.width = 100;
+            c.height = 100;
+            
+            function thingy(){
+                this.x = 20;
+                this.y = 15;
+                this.size = 5;
+                this.vel = .1;
+                
+                this.draw = function(){
+                    ctx.fillRect(this.x,this.y,this.size,this.size);
+                };
+                
+                this.move = function(){
+                    this.x+=this.vel;
+                    this.y+=this.vel;
+                };
+                
+                this.col = function(x,y){
+                    if ( ( (x < this.x+this.size && x > this.x) && (y < this.y+this.size && y > this.y) ) || ( (x+this.size < this.x+this.size && x+this.size > this.x) && (y+this.size < this.y+this.size && y+this.size > this.y) ) ){
+                        console.log("hit");
+                        this.vel *= -1;
+                        return true;
+                    }else{return false;};
+                };
+                
+                this.getx = function(){
+                    return this.x;
+                };
+                this.gety = function(){
+                    return this.y;
+                }
+            };
+            
+            play = new thingy();
+            play2 = new thingy();
+            play2.x = 50;
+            play2.y = 50;
+            setInterval(function(){
+                ctx.clearRect(0,0,c.width,c.height);
+                play.draw();
+                play.move();
+                play.col(play2.getx(),play2.gety());
+                play2.draw();
+                
+            },1000/60)
+            
+        </script>
+    </body>
+</html>
