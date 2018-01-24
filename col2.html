@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collision Testing 2</title>
+    <meta name="keywords" content="collision, detection, project, testing, zody, woolsey, fun, cool, game">
+    </head>
+    <body>
+    <canvas id="canvas" style="border: 1px solid black"></canvas>
+    <script>
+        
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        
+        c.width = 500;
+        c.height = 500;
+        
+        function objects(x ,y){
+            this.x = x;
+            this.y = y;
+            
+            this.draw = function(){
+                ctx.fillRect(this.x,this.y,5,5);
+            }
+        };
+        
+        
+        
+        </script>
+    </body>
+</html>
