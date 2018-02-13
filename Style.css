@@ -1,11 +1,13 @@
 /*Header*/
 
 header h1 {
-    font-size: x-large;
+    font-size: 5em;
+    line-height: .5;
 }
 
 header nav{
-    font-size: xx-large;
+    font-size: 3em;
+    line-height: 1.4;
 }
 
 /*  */
