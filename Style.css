@@ -1,4 +1,14 @@
+/*Header*/
 
+header h1 {
+    font-size: 3em;
+}
+
+header nav{
+    font-size: 1.5em;
+}
+
+/*  */
 input {
     width: 200px;
 }
@@ -31,32 +41,6 @@ input {
     height: 105%;
 }
 
-#ad {
-    
-}
-
-.pageHeader {
-    font-weight: bold;
-    text-align: center;
-    font-size: 500%;
-}
-
-#subHeader {
-    font-size: 65%;
-    padding-bottom: 10px;
-}
-
-.Banner {
-    
-}
-
-#home {
-    
-}
-
-#page {
-    
-}
 #centerCanvas {
     position: fixed;
     border: 1px solid black;
