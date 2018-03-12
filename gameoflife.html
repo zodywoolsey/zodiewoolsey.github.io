@@ -1,7 +1,20 @@
 <!DOCTYPE html>
-<html><title>Game of life</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <canvas id="canvas" style="border: 5px solid;"></canvas>
+<html>
+    <head>
+    <title>Game of life</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="resize.js"></script>
+    </head>
+    <body>
+        <nav>
+        <ul id="nav">
+            <li><a href="ball.html">Balls</a></li>
+            <li><a href="game.html">Pattern Game</a></li>
+            <li><a href="gameoflife.html">A Game Of Life</a></li>
+            <li><a href="oopTesting.html">Some trippy stuff</a></li>
+        </ul>
+    </nav>
+    <canvas id="canvas" style="border: 5px solid; width: 100%;"></canvas>
     <div id="disp"></div>
     <script>
         var c = document.getElementById("canvas");
@@ -287,4 +300,5 @@ obj.draw = function(){
         var printout = "";
         
     </script>
+    </body>
 </html>
