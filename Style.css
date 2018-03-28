@@ -9,6 +9,13 @@ h1 {
     box-shadow: 0px 0px 100px 100px #ddd9;
 }
 
+#image{
+    text-align: center;
+}
+#image img{
+    width: 50%;
+}
+
 #nav {
     margin: 0px;
     padding: 0px;
@@ -16,10 +23,6 @@ h1 {
     display: flex;
     justify-content: space-between;
       
-}
-
-#smashBrosPic {
-    resize: both;
 }
 
 #nav li {
@@ -62,9 +65,7 @@ p {
     background: "mePicture.jpg";
 }
 
-img {
-    width: 100%;
-}
+
 
 footer{
     width: 100%;

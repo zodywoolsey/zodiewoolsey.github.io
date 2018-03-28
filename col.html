@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collision Testing 2</title>
+    <meta name="keywords" content="collision, detection, project, testing, zody, woolsey, fun, cool, game">
+    </head>
+    <body>
+    <canvas id="canvas" style="border: 1px solid black"></canvas>
+    <script>
+        
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        
+        c.width = 500;
+        c.height = 500;
+        
+        function things(){
+            obj = {};
+            obj.x = 0;
+            obj.y = 0;
+            
+            obj.vel = [1,1];
+            
+            obj.neighbors = function(){
+                //idk how to do this yet....
+            }
+            
+            obj.draw = function(){
+                ctx.fillRect(obj.x,obj.y,5,5);
+                obj.move();
+            }
+            
+            obj.move = function(){
+                obj.x += obj.vel[0];
+                obj.y += obj.vel[1];
+            }
+            return obj;
+        }
+        
+        var go = new things();
+        
+        setInterval(function(){
+            ctx.clearRect(0,0,c.width,c.height)
+            go.draw();
+            
+        }, 1000/20)
+        </script>
+    </body>
+</html>
