@@ -39,6 +39,3 @@ var d = new Date();
     document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds() + "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
 })
 
-window.onbeforeunload = function(){
-    sessionStorage.setItem("scroll", document.querySelector("html").scrollTop)
-}
