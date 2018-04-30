@@ -3,11 +3,23 @@ html {
     color: white;
     overflow-x: hidden;
 }
+.html {
+    transform: none;
+    transition: transform ease 5s;
+}
+
+.html.init {
+    transition: transform ease 5s;
+    transform: scale(.01);
+}
 /*Header styles*/
 
 header {
+    margin: 0px;
+    padding: 0px;
     height: 512px;
     background-color: #0002;
+    border: solid 1px #0002;
 }
 
 h1 {
@@ -53,12 +65,14 @@ ul{
     flex-direction: row;
     justify-content: space-around;
     list-style: none;
+    font-size: 2em;
 }
 
 nav {
+    position: relative;
     background: #0001;
-    left: -1%;
-    width: 102%;
+    left: -5%;
+    width: 106%;
     margin: 0px;
     padding: 0px;
     border-bottom: 2px solid black;
