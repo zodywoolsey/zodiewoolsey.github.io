@@ -36,7 +36,19 @@ setInterval(function(){
 var d = new Date();
     document.getElementById("logo").style.filter = ("blur("+ document.querySelector("html").scrollTop/64 + "px)");
     
-    document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds() + "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
+    apm = ""
+    
+    if(d.getHours() >= 12){
+        apm = "PM";
+    }else if(d.getHour() < 12){
+        apm = "AM";
+    }
+    
+    if(d.getHours()%12 == 0 || d.getHours()%12 == "0"){
+        d.setHours(12);
+    }
+    
+    document.getElementById("clock").innerHTML = "Time: " + (d.getHours()%12) +":"+ d.getMinutes() +":"+ d.getSeconds() +" "+ apm+ "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
 })
 
 setInterval(function(){
