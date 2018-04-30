@@ -8,13 +8,13 @@
     top: 0px;
 }
 .topGrad.media{
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #335;
 }
 .topGrad.home{
     box-Shadow: 0px 0px 512px var(--shadowHeight) #333;
 }
 .topGrad.info{
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #533;
 }
 .topGrad.mediaTrans {
     -moz-transition: ease 3s;
@@ -22,7 +22,7 @@
     -ms-transition: ease 3s;
     -o-transition: ease 3s;
     transition: ease 3s;
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #335;
 }
 .topGrad.homeTrans {
     -moz-transition: ease 3s;
@@ -38,7 +38,7 @@
     -ms-transition: ease 3s;
     -o-transition: ease 3s;
     transition: ease 3s;
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #533;
 }
 
 html,body {
