@@ -3,15 +3,6 @@ html {
     color: white;
     overflow-x: hidden;
 }
-.html {
-    transform: none;
-    transition: transform ease 5s;
-}
-
-.html.init {
-    transition: transform ease 5s;
-    transform: scale(.01);
-}
 /*Header styles*/
 
 header {
