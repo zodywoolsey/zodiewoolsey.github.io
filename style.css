@@ -29,7 +29,12 @@ h1 a{
     text-decoration: none;
     color: white;
     background: none;
-    font-size: 4em;
+    font-size: 2em;
+}
+@media only screen and (max-width: 640px) {
+    h1 a{
+        font-size: 3em;
+    }
 }
 
 h2 {
@@ -40,8 +45,13 @@ h2 {
     -3px 3px 0 #000,
      3px 3px 0 #000;
     text-align: center;
-    font-size: 6em;
+    font-size: 3em;
     margin: 0;
+}
+@media only screen and (max-width: 640px) {
+    h2{
+        font-size: 4em;
+    }
 }
 
 #sub {
@@ -53,6 +63,11 @@ h2 {
      1px 1px 0 #000;
     text-align: center;
     font-size: 2em;
+}
+@media only screen and (max-width: 640px) {
+    #sub{
+        font-size: 2em;
+    }
 }
 #logo {
     z-index: -50;
@@ -75,9 +90,7 @@ ul{
     flex-direction: row;
     justify-content: space-around;
     list-style: none;
-    font-size: 2em;
 }
-
 nav {
     position: relative;
     background: #0001;
@@ -87,6 +100,14 @@ nav {
     padding: 0px;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
+}
+.navi ul {
+    font-size: 1.5em;
+}
+@media only screen and (max-width: 640px) {
+    .navi ul {
+        font-size: 1.5em;
+    }
 }
 
 
@@ -101,16 +122,23 @@ footer {
     left: 0;
     bottom: 0;
 }
+footer nav ul {
+    
+}
+@media only screen and (max-width: 640px) {
+    footer nav ul {
+        font-size: 1em;
+    }
+}
 
 a {
     text-decoration: none;
     color: white;
 }
 
-#invImg {
-    height: 90%;
-    visibility: hidden;
-}
+
+
+/*Media Page CSS*/
 
 #smashHeader {
     text-shadow:
@@ -126,11 +154,17 @@ a {
     height: 7em;
 }
 
-.body{
-    margin-bottom: 6em;
-}
+/* Media Page END */
 
+
+/* Some janky CSS things that might work alongside js or not */
+#invImg {
+    height: 90%;
+    visibility: hidden;
+}
 #clock {
+    z-index: 100;
+    position: fixed;
     background-color: #000a;
     box-shadow: 0px 0px 20px 10px #000a;
     text-shadow:
@@ -139,11 +173,7 @@ a {
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000;
-
-/*Scaling styles FIX THIS PLEASE, ZODY*/
-@media only screen and (max-width: 640px) {
-    h1 {
-        font-size-adjust: ;
-    }
 }
-/*Scaling styles end*/
+.body{
+    margin-bottom: 6em;
+}

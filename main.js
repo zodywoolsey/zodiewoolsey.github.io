@@ -36,5 +36,9 @@ setInterval(function(){
 var d = new Date();
     document.getElementById("logo").style.filter = ("blur("+ document.querySelector("html").scrollTop/64 + "px)");
     
-    document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds();
+    document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds() + "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
 })
+
+window.onbeforeunload = function(){
+    sessionStorage.setItem("scroll", document.querySelector("html").scrollTop)
+}
