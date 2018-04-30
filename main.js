@@ -55,7 +55,7 @@ var d = new Date();
     
     //console.log(sh.getBoundingClientRect().top);
     if(sh.getBoundingClientRect().top < 0){
-        sh.style.filter = ("blur("+ -(sh.getBoundingClientRect().top/20) + "px)");
+        sh.style.filter = ("blur("+ -(sh.getBoundingClientRect().top/30) + "px)");
     }else{
         sh.style.filter = ("blur("+ "0" + "px)");
     }
