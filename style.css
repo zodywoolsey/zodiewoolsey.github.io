@@ -13,10 +13,21 @@ They might be completely useless.*/
     }
 }
 
+html {
+    overflow-x: hidden;
+}
+
 .topGrad {
     font-family: sans-serif;
     color: white;
-    overflow-x: hidden;
+}
+
+
+#container {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    padding: 1px;
 }
 
 p {
@@ -26,6 +37,16 @@ p {
     p {
         font-size: 1.3em;
     }
+}
+
+a {
+    text-shadow: 0px 0px  10px #f00;
+    filter: saturate(100);
+    filter: brightness(2);
+}
+
+#yoyoThunder {
+    filter: brightness(.6);
 }
 
 /*Header styles*/
@@ -121,20 +142,24 @@ ul{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-grow: auto;
+    flex-shrink: auto;
     list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
 nav {
     position: relative;
     background: #0001;
-    left: -5%;
-    width: 120%;
-    margin-left: -10%;
+    width: 100%;
     padding: 0px;
+    margin: 0px;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
 }
 
 .navi ul {
+    position: static;
     font-size: 1.5em;
 }
 @media only screen and (max-width: 640px) {
@@ -193,6 +218,7 @@ li a {
     background-image: url(media/FalcomDance.gif);
     background-repeat: no-repeat;
     background-size: 100%;
+    vertical-align: middle;
 }
 @media only screen and (max-width: 640px) {
     #smashHeader {
@@ -255,7 +281,10 @@ li a {
      1px 1px 0 #000;
 }
 .body{
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 6em;
+    width: 90%;
 }
 
 /* Form Styles */

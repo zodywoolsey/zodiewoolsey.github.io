@@ -39,3 +39,16 @@ var d = new Date();
     document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds() + "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
 })
 
+setInterval(function(){
+try{
+    sh = document.getElementById("smashHeader");
+    
+    //console.log(sh.getBoundingClientRect().top);
+    if(sh.getBoundingClientRect().top < 0){
+        sh.style.filter = ("blur("+ -(sh.getBoundingClientRect().top/20) + "px)");
+    }else{
+        sh.style.filter = ("blur("+ "0" + "px)");
+    }
+}catch(Exception){}
+    
+});

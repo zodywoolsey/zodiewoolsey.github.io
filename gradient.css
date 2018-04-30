@@ -41,11 +41,6 @@
 html,body {
     height: 100%;
 }
-#container {
-    min-height: 100%;
-    position: relative;
-    padding: 1px;
-}
 
 #bottomGrad{
     background-color: black;
