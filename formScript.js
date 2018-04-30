@@ -12,7 +12,8 @@ function subb(){
     
     if (localStorage.getItem("fname") != null && localStorage.getItem("lname") != null && localStorage.getItem("email") != null && localStorage.getItem("comment") != null){
     document.getElementById("subbedInfo").innerHTML = "Name: " + localStorage.getItem("fname") + " " + localStorage.getItem("lname") + "<br>" + "E-Mail: " + localStorage.getItem("email") + "<br>" + "Comment: " + localStorage.getItem("comment");
-}
+    }
+    
 }
 
 if (localStorage.getItem("fname") != null && localStorage.getItem("lname") != null && localStorage.getItem("email") != null && localStorage.getItem("comment") != null){
