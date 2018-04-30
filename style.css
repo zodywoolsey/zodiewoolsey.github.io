@@ -9,7 +9,7 @@ They might be completely useless.*/
 }
 @media only screen and (max-width: 640px) {
     :root{
-        --logoHeight: 256px;
+        --logoHeight: 250px;
     }
 }
 
@@ -28,6 +28,7 @@ html {
     min-height: 100%;
     min-width: 100%;
     padding: 1px;
+    margin: -7px;
 }
 
 p {
@@ -279,6 +280,12 @@ li a {
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000;
+}
+@media only screen and (max-width: 640px) {
+    #clock {
+        position: absolute;
+        bottom: 2.3em;
+    }
 }
 .body{
     margin-left: auto;

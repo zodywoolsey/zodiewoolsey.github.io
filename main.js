@@ -49,10 +49,8 @@ var d = new Date();
     }
     
     document.getElementById("clock").innerHTML = "Time: " + (d.getHours()%12) +":"+ d.getMinutes() +":"+ d.getSeconds() +" "+ apm+ "<br>" + "Date: " + d.getDay() + " " + ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()] + " " + d.getFullYear();
-})
-
-setInterval(function(){
-try{
+    
+    try{
     sh = document.getElementById("smashHeader");
     
     //console.log(sh.getBoundingClientRect().top);
@@ -62,5 +60,4 @@ try{
         sh.style.filter = ("blur("+ "0" + "px)");
     }
 }catch(Exception){}
-    
-});
+})
