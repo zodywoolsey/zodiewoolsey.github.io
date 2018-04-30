@@ -3,8 +3,6 @@ var last = localStorage.getItem("last");
 localStorage.setItem("last", document.title);
 var topp = document.getElementsByClassName("topGrad")[0];
 
-
-
 if(last == "HomePage"){
     this.topp.classList.add("home");
 }else if(last == "Media"){
@@ -29,3 +27,9 @@ setTimeout(function(){
         this.topp.classList.add("infoTrans");
     }
 }, 10)
+
+
+
+setInterval(function(){
+    document.getElementById("logo").style.filter = ("blur("+ document.querySelector("html").scrollTop/64 + "px)");
+})

@@ -1,5 +1,8 @@
 html {
     font-family: sans-serif;
+    color: white;
+    transition: ease .5s;
+    overflow-x: hidden;
 }
 /*Header styles*/
 
@@ -11,14 +14,31 @@ h1 {
 h1 a{
     margin: 0px;
     padding: 0px;
-    color: #000;
     text-decoration: none;
+    color: white;
+    background: none;
 }
 
 h2 {
     text-align: center;
     font-size: 2.5em;
     margin: .1em;
+}
+
+#sub {
+    text-align: center;
+}
+.logo {
+    width: 50%;
+    background-color: #000;
+}
+#logo {
+    z-index: -50;
+    position: absolute;
+    display: block;
+    margin-left: -280px;
+    margin-right: auto;
+    left: 50%;
 }
 
 /*Header styles end*/
@@ -28,6 +48,7 @@ ul{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    list-style: none;
 }
 
 nav {
@@ -41,12 +62,29 @@ nav {
     border-top: 2px solid black;
 }
 
+div nav {
+    position: absolute;
+    
+    
+}
+
 /*Nav bar styles end*/
+
+
+footer {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 
 /*Scaling styles*/
 @media only screen and (max-width: 640px) {
     h1 {
-        font-size: 4em;
+        font-size-adjust: ;
     }
 }
 /*Scaling styles end*/

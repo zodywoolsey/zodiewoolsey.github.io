@@ -8,37 +8,37 @@
     top: 0px;
 }
 .topGrad.media{
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #cff;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
 }
 .topGrad.home{
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fcf;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #333;
 }
 .topGrad.info{
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #ffc;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
 }
 .topGrad.mediaTrans {
-    -moz-transition: ease 1s;
-    -webkit-transition: ease 1s;
-    -ms-transition: ease 1s;
-    -o-transition: ease 1s;
-    transition: ease 1s;
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #cff;
+    -moz-transition: ease 3s;
+    -webkit-transition: ease 3s;
+    -ms-transition: ease 3s;
+    -o-transition: ease 3s;
+    transition: ease 3s;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
 }
 .topGrad.homeTrans {
-    -moz-transition: ease 1s;
-    -webkit-transition: ease 1s;
-    -ms-transition: ease 1s;
-    -o-transition: ease 1s;
-    transition: ease 1s;
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #fcf;
+    -moz-transition: ease 3s;
+    -webkit-transition: ease 3s;
+    -ms-transition: ease 3s;
+    -o-transition: ease 3s;
+    transition: ease 3s;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #333;
 }
 .topGrad.infoTrans {
-    -moz-transition: ease 1s;
-    -webkit-transition: ease 1s;
-    -ms-transition: ease 1s;
-    -o-transition: ease 1s;
-    transition: ease 1s;
-    box-Shadow: 0px 0px 512px var(--shadowHeight) #ffc;
+    -moz-transition: ease 3s;
+    -webkit-transition: ease 3s;
+    -ms-transition: ease 3s;
+    -o-transition: ease 3s;
+    transition: ease 3s;
+    box-Shadow: 0px 0px 512px var(--shadowHeight) #fff;
 }
 
 html,body {
@@ -50,11 +50,12 @@ html,body {
 }
 
 #bottomGrad{
+    background-color: black;
     position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
     z-index: -100;
     transition: ease 2s;
-    box-shadow: 0px 0px 512px 300px #000;
+    box-shadow: 0px 0px 100px 50px #000;
 }
