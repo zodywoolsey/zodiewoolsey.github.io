@@ -1,7 +1,6 @@
 html {
     font-family: sans-serif;
     color: white;
-    transition: ease .5s;
     overflow-x: hidden;
 }
 /*Header styles*/
