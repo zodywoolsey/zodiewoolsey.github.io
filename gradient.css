@@ -1,5 +1,5 @@
 :root {
-    --shadowHeight: 1000000px;
+    --shadowHeight: 5000px;
 }
 .topGrad {
     z-index: -101;
