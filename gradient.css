@@ -17,11 +17,11 @@
     box-Shadow: 0px 0px 512px var(--shadowHeight) #533;
 }
 .topGrad.mediaTrans {
-    -moz-transition: ease 10s;
-    -webkit-transition: ease 10s;
-    -ms-transition: ease 10s;
-    -o-transition: ease 10s;
-    transition: ease 10s;
+    -moz-transition: ease 3s;
+    -webkit-transition: ease 3s;
+    -ms-transition: ease 3s;
+    -o-transition: ease 3s;
+    transition: ease 3s;
     box-Shadow: 0px 0px 512px var(--shadowHeight) #335;
 }
 .topGrad.homeTrans {
@@ -47,15 +47,16 @@ html,body {
 #container {
     min-height: 100%;
     position: relative;
+    padding: 1px;
 }
 
 #bottomGrad{
+    padding-top: 2em;
     background-color: black;
     position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
     z-index: -100;
-    transition: ease 2s;
     box-shadow: 0px 0px 100px 50px #000;
 }

@@ -32,5 +32,9 @@ setTimeout(function(){
 
 //Code to make the logo blur on scroll
 setInterval(function(){
+    
+var d = new Date();
     document.getElementById("logo").style.filter = ("blur("+ document.querySelector("html").scrollTop/64 + "px)");
+    
+    document.getElementById("clock").innerHTML = "Time: " + d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds();
 })
