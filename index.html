@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html class="topGrad">
     <head>
-        <div id="styleHolder"></div>
         <Title>HomePage</Title>
         <meta name="description" content="This is a website mockup designed by Zody L. Woolsey for Professor Mann's Web Development class." />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="gradient.css">
         <script src="main.js" defer></script>
+        <script src="formScript.js" defer></script>
     </head>
     <body>
         <div id="container">
@@ -30,20 +30,40 @@
                         <li>
                             <a href="media.html" title="Click to go to the media page">Media</a>
                         </li>
-                        <li></li>
                     </ul>
                 </nav>
             <div class="body">
-                <p>Add some text and **** here</p>
-                <p>Don't forget to use media queries in css even though it's not working for me.</p>
+                <p>Use the form below to contact us!</p>
+                <form>
+                    <p>First name:</p>
+                    <input type="text" name="firstname" autocomplete="given-name">
+                    <p>Last name:<br></p>
+                    <input type="text" name="lastname" autocomplete="family-name">
+                    <p>E-Mail:<br></p>
+                    <input type="text" name="email" autocomplete="email">
+                    <p>Comment:</p>
+                    <textarea name="comment"></textarea>
+                    <br />
+                    <input type="button" value="Submit" id="submitButton" onclick="subb()">
+                </form>
+                
+                <div id="subbedInfo"></div>
             </div>
             
             <div id="bottomGrad"></div>
             <footer>
                 <ul>
-                    <li>Site By: Zody Woolsey</li>
+                    <li><address>
+                        Author: <a href="mailto:zodywoolsey@gmail.com" title="Click to email: zodywoolsey@gmail.com">Zody Woolsey</a>
+                        <br>
+                        <a href="https://goo.gl/maps/tbeEjRxC5EP2" title="Click to view location">Address: 1001 E Chestnut Expy, Springfield, MO 65802</a>
+                        <br>
+                        Instructor: Niel Mann
+                        </address></li>
                     <li></li>
-                    <li></li>
+                    <li><a href="http://www.facebook.com">Facebook</a>
+                    <br>
+                    <a href="http://www.twitter.com">Twitter</a></li>
                 </ul>
             </footer>
         </div>

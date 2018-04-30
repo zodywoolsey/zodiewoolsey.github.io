@@ -127,8 +127,8 @@ nav {
     position: relative;
     background: #0001;
     left: -5%;
-    width: 106%;
-    margin: 0px;
+    width: 120%;
+    margin-left: -10%;
     padding: 0px;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
@@ -143,6 +143,9 @@ nav {
     }
 }
 
+.navi ul li {
+    
+}
 
 /*Nav bar styles end*/
 
@@ -176,6 +179,10 @@ li a {
 
 /* Media Page CSS */
 
+#smashHeader img{
+    width: calc(100% - 1em);
+}
+
 #smashHeader {
     text-shadow:
     3px 3px 0 #000,
@@ -186,15 +193,10 @@ li a {
     background-image: url(media/FalcomDance.gif);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: top;
-    height: 7em;
 }
 @media only screen and (max-width: 640px) {
     #smashHeader {
-        
-        height: 4.4em;
         background-size: 100%;
-        background-position: 0px -30px;
     }
 }
 
@@ -208,7 +210,7 @@ li a {
 }
 @media only screen and (max-width: 640px) {
     .hoursTable table{
-        font-size: 1.3em;
+        font-size: 1em;
     }
     .hoursTable .body tr td{
         padding-top: 10px;
@@ -255,3 +257,18 @@ li a {
 .body{
     margin-bottom: 6em;
 }
+
+/* Form Styles */
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Form Styles END */
+
+
+
+
+
