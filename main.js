@@ -61,3 +61,7 @@ var d = new Date();
     }
 }catch(Exception){}
 })
+
+function bigText(){
+    document.getElementById("lorem").style.fontSize="2em";
+}
