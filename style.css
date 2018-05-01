@@ -283,12 +283,6 @@ li a {
     -1px 1px 0 #000,
      1px 1px 0 #000;
 }
-@media only screen and (max-width: 640px) {
-    #clock {
-        position: absolute;
-        bottom: 2.3em;
-    }
-}
 .body{
     margin-left: auto;
     margin-right: auto;
