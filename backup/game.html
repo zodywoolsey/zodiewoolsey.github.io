@@ -27,29 +27,35 @@
         </div>
         <div id="score" style="text-align: center"></div>
         <script>
-            var c = document.getElementById("canvas");
-            var ctx = c.getContext("2d");
-            var scoretag = document.getElementById("score");
+            var c = document.getElementById("canvas");//Creates connection to canvas element on the page
+            var ctx = c.getContext("2d");//Creates a 2d context object for the canvas element
+            var scoretag = document.getElementById("score");//Creates a connection to the score element on the page
             
-            c.onmousemove = mousepos;
-            c.onmousedown = mousedown;
-            c.onmouseup = mouseup;
+            c.onmousemove = mousepos;//sets the onmousemove event of the canvas to my mousepos function
+            c.onmousedown = mousedown;//sets onmousedown event of the canvas to my mousedown function
+            c.onmouseup = mouseup;//sets onmouseup event of the canvas to my mouseup function
             
-            var oldTime = Date.now();
+            var oldTime = Date.now();//date element for screen update timings
             
-            c.width = 500;
-            c.height = 500;
+            c.width = 500;//sets width of canvas renderer in pixels
+            c.height = 500;//sets height of canvas renderer in pixels
             
+            //creates zeroed out vriables for int:mouseX , int:mouseY and bool:mouseclick
             var mouseX = 0;
             var mouseY = 0;
             var mouseclick = false;
             
+            //sets scale of game by number of panels (size=10 is a 10x10 square)
             var size = 10;
+            //variable defining base number of mixes for difficulty scaling
             var difficulty = 1;
             
+            //creates zeroed out variables for int:turn , int:score
             var turn = 0;
             var score = 0;
+            //array for the different locations on the game grid and their current color values
             var positions = [];
+            //function for generating all blue positions to initialize the correctly sized array for the game grid
             function genPos(){
                 for (p = 0; p < size; p++){
                     positions.push([]);
@@ -59,47 +65,54 @@
                 }
                 return positions;
             }
-            positions = genPos();
+            positions = genPos();//runs genPos to set the array:position variable to the generated array
             
             //positions[0][0] = "h";
             //console.log(positions);
             
             
-            
+            //function for parsing exact mouse position so it does not include extra space from dom padding/margin/etc.
             function mousepos(event){
                 mouseX = event.clientX - c.getBoundingClientRect().left;
                 mouseY = event.clientY - c.getBoundingClientRect().top;
             };
+            //function to define whether the mouse has been clicked
             function mousedown(){
                 mouseclick = true;
             };
+            //function to define whether the mouse has been unclicked
             function mouseup(){
                 mouseclick = false;
             }
             
+            //full game function
             function thegame(){
-                var obj = {};
-                obj.width = c.width/positions.length;
-                obj.height = c.height/positions[0].length;
+                var obj = {};//object for oop js for instancing the game
+                obj.width = c.width/positions.length;//parses array width for game grid size calibration
+                obj.height = c.height/positions[0].length;//same as above for height
                 
+                //the two variables below are required because of the logic of the game
+                //if the outer edges of the game were selectable, the simple logic would break
+                //this would cause patterns that do not fit within the desired logic of the game
+                //      this is also a lazy workaround for array reference issues but turns out to preserver game logic as well
                 obj.noX = [0,size-1];
                 obj.noY = [0,size-1];
                 
-                obj.mposX = 1;
+                obj.mposX = 1;//mouse x position variable
                 obj.mXO = 1;
                 
-                obj.mposY = 1;
+                obj.mposY = 1;//mosue y position variable
                 obj.mYO = 1;
                 
-                obj.wait = 0;
-                obj.oneColor = "#f00";
-                obj.twoColor = "#00f";
-                obj.threeColor = ["#",0,0,0];
+                obj.wait = 0;//poorly named variable to enable only adjacent sqaure activation
+                obj.oneColor = "#0f0";//predefined red color for ease of use and color customizability
+                obj.twoColor = "#808";//predefined colr for ease of use and color customizability
+                obj.threeColor = ["#",0,0,0];//array for having a randomly generated set of colors, I like hex so I wanted it to be converted to hex. However this has major limitations and I wrote this a while back so i don't feel like improving it just yet
                 //-----------------------------------------------------------------------------------Functions begin
-                obj.draw = function (){
-                    for (w = 0; w < positions.length; w++){
+                obj.draw = function (){//draw function for the game grid
+                    for (w = 0; w < positions.length; w++){//nested for loop for ensuring that every grid space is updated
                         for (h = 0; h < positions[w].length; h++){
-                            if ((positions[w][h]) == "r"){
+                            if ((positions[w][h]) == "r"){//if statement doing forked versions of the same commands for red or blue spaces
                                 ctx.fillStyle = obj.oneColor;
                                 ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
                             }else if((positions[w][h]) == "b"){
@@ -108,10 +121,11 @@
                             }
                         };
                     };
-                    ctx.fillStyle = "#0008";
+                    ctx.fillStyle = "#0008";//transparent overlay for whichever space the game cursor is at
                     ctx.fillRect(obj.mXO*obj.width-6,obj.mYO*obj.height-6,obj.width+10,obj.height+10);
                 };//---------------------------------------------------------------------------------draw end
-                obj.mpos = function(){
+                obj.mpos = function(){//parses the mouse position from the full width and height down to a multiple of 
+                    //                      of the size of the game grid to ensure easy and correct cursor positioning
                     obj.mposX = parseInt(mouseX/obj.width);
                     obj.mposY = parseInt(mouseY/obj.height);
                 };//---------------------------------------------------------------------------------mpos end
@@ -126,15 +140,18 @@
                         }
                             obj.wait = 1;
                             
-                        
+                         /*######################################################
+                           #| DON'T FORGET TO ADD KEYBOARD AND SCREEN CONTROLS |#
+                           ######################################################
+                         */
                     };
                 };//---------------------------------------------------------------------------------hover end
-                obj.mousepause = function(){
+                obj.mousepause = function(){//function for disallowing the player to select nonadjacent grid spaces
                     if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX)){
                         obj.wait = 0;
                     }
                 };//---------------------------------------------------------------------------------mousepause end
-                obj.flip = function(){
+                obj.flip = function(){//function for flipping all the grid spaces around the selected space
                     
                     if (positions[obj.mposX][obj.mposY] == "r"){
                         positions[obj.mposX][obj.mposY] = "b";
@@ -147,35 +164,43 @@
                     }else if (positions[obj.mposX-1][obj.mposY] == "b"){
                         positions[obj.mposX-1][obj.mposY] = "r"
                     }
-                    }catch (err) {}
+                    }
+                    //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
+                    catch (err) {Console.log("Error at line 169");}
                     try {
                     if (positions[obj.mposX][obj.mposY-1] == "r"){
                         positions[obj.mposX][obj.mposY-1] = "b";
                     }else if (positions[obj.mposX][obj.mposY-1] == "b"){
                         positions[obj.mposX][obj.mposY-1] = "r"
                     }
-                    }catch (err) {}
+                    }
+                    //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
+                    catch (err) {Console.log("Error at line 178");}
                     try{
                     if (positions[obj.mposX][obj.mposY+1] == "r"){
                         positions[obj.mposX][obj.mposY+1] = "b";
                     }else if (positions[obj.mposX][obj.mposY+1] == "b"){
                         positions[obj.mposX][obj.mposY+1] = "r"
                     }
-                    }catch (err) {}
+                    }
+                    //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
+                    catch (err) {Console.log("Error at line 187");}
                     try{
                     if (positions[obj.mposX+1][obj.mposY] == "r"){
                         positions[obj.mposX+1][obj.mposY] = "b";
                     }else if (positions[obj.mposX+1][obj.mposY] == "b"){
                         positions[obj.mposX+1][obj.mposY] = "r"
                     }
-                    }catch (err) {}
+                    }
+                    //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
+                    catch (err) {Console.log("Error at line 196");}
                 }
-                return obj;
+                return obj;//returns the game object for proper instantiation
             };//-------------------------------------------------------------------------------------thegame end
             
             var a = new thegame();
             
-            function solveCheck(){
+            function solveCheck(){//easy checker for seeing if the current puzzle has been solved
                 var check = false;
                 for (q = 0; q < positions.length; q++){
                     for (w = 0; w < positions[q].length; w++){
@@ -200,7 +225,7 @@
             };//-------------------------------------------------------------------------------------solveCheck end
             
             
-            function init(){
+            function init(){//reinitialization funciton for when the next level begins
                 turn = 0;
                 positions = [];
                 positions = genPos();
@@ -212,9 +237,9 @@
                 difficulty ++;
                 //console.log(positions);
             };
-            init();
+            init();//runs first initialization
             
-            score = 0;
+            score = 0;//reverts score to zero externally so that it is not affected by above level progression init function
             setInterval(function(){
                 ctx.clearRect(0,0,c.width,c.height);
                 a.draw();
