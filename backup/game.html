@@ -138,33 +138,27 @@
                             obj.mYO = obj.mposY;
                             //console.log(obj.mXO,obj.mYO)
                         }
-                            
-                            
-                         /*######################################################
-                           #| DON'T FORGET TO ADD KEYBOARD AND SCREEN CONTROLS |#
-                           ######################################################
-                         */
                         
                         obj.wait = 1;
                     };
                 };//---------------------------------------------------------------------------------hover end
                 obj.keys = function(){
-                    if( (keydown.a || keydown.left) && !(obj.noX.includes(obj.mXO-1))){
-                            obj.flip();
+                    if( (keydown.a || keydown.left) && !(obj.noX.includes(obj.mXO-1)) && obj.wait != 1){
                             obj.mXO = obj.mXO-1;
-                        }if( (keydown.d || keydown.right ) && !(obj.noX.includes(obj.mXO+1))){
                             obj.flip();
-                            obj.mXO = obj.mXO+1;   
-                        }if( (keydown.w || keydown.up) && !(obj.noY.includes(obj.mYO+1))){
+                        }if( (keydown.d || keydown.right ) && !(obj.noX.includes(obj.mXO+1)) && obj.wait != 1){
+                            obj.mXO = obj.mXO+1;
                             obj.flip();
+                        }if( (keydown.w || keydown.up) && !(obj.noY.includes(obj.mYO+1)) && obj.wait != 1){
                             obj.mYO = obj.mYO+1;
-                        }if( (keydown.s || keydown.down) && !(obj.noY.includes(obj.mYO-1))){
                             obj.flip();
+                        }if( (keydown.s || keydown.down) && !(obj.noY.includes(obj.mYO-1)) && obj.wait != 1){
                             obj.mYO = obj.mYO-1;
+                            obj.flip();
                         }
                 };//---------------------------------------------------------------------------------keys end
                 obj.mousepause = function(){//function for disallowing the player to select nonadjacent grid spaces
-                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX)){
+                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX) && !(keydown.a || keydown.d || keydown.w || keydown.s || keydown.up || keydown.down || keydown.left || keydown.right)){
                         obj.wait = 0;
                     }
                 };//---------------------------------------------------------------------------------mousepause end
