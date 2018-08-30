@@ -123,6 +123,7 @@
                     };
                     ctx.fillStyle = "#0008";//transparent overlay for whichever space the game cursor is at
                     ctx.fillRect(obj.mXO*obj.width-6,obj.mYO*obj.height-6,obj.width+10,obj.height+10);
+                    console.log(obj.mXO,obj.mYO,obj.mposX,obj.mposY,obj.wait);
                 };//---------------------------------------------------------------------------------draw end
                 obj.mpos = function(){//parses the mouse position from the full width and height down to a multiple of 
                     //                      of the size of the game grid to ensure easy and correct cursor positioning
@@ -132,10 +133,10 @@
                 obj.click = function(){
                     if (( !(obj.noX.includes(obj.mposX)) && !(obj.noY.includes(obj.mposY)) ) && obj.wait != 1){
                         if(mouseclick == true){
-                            console.log(positions[obj.mposX][obj.mposY]);
-                            obj.flip();
+                            //console.log(positions[obj.mposX][obj.mposY]);
                             obj.mXO = obj.mposX;
                             obj.mYO = obj.mposY;
+                            obj.flip();
                             //console.log(obj.mXO,obj.mYO)
                         }
                         
@@ -162,49 +163,52 @@
                         }
                 };//---------------------------------------------------------------------------------keys end
                 obj.mousepause = function(){//function for disallowing the player to select nonadjacent grid spaces
-                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX) && !(keydown.a || keydown.d || keydown.w || keydown.s || keydown.up || keydown.down || keydown.left || keydown.right)){
-                        obj.wait = 0;
+                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX) ){
+                        if ( !(keydown.a || keydown.d || keydown.w || keydown.s || keydown.up || keydown.down || keydown.left || keydown.right)){
+                            obj.wait = 0;
+                        }
                     }
+                    //console.log(obj.wait);
                 };//---------------------------------------------------------------------------------mousepause end
                 obj.flip = function(){//function for flipping all the grid spaces around the selected space
                     
-                    if (positions[obj.mposX][obj.mposY] == "r"){
-                        positions[obj.mposX][obj.mposY] = "b";
-                    }else if (positions[obj.mposX][obj.mposY] == "b"){
-                        positions[obj.mposX][obj.mposY] = "r"
+                    if (positions[obj.mXO][obj.mYO] == "r"){
+                        positions[obj.mXO][obj.mYO] = "b";
+                    }else if (positions[obj.mXO][obj.mYO] == "b"){
+                        positions[obj.mXO][obj.mYO] = "r"
                     }
                     try {
-                    if (positions[obj.mposX-1][obj.mposY] == "r"){
-                        positions[obj.mposX-1][obj.mposY] = "b";
-                    }else if (positions[obj.mposX-1][obj.mposY] == "b"){
-                        positions[obj.mposX-1][obj.mposY] = "r"
+                    if (positions[obj.mXO-1][obj.mYO] == "r"){
+                        positions[obj.mXO-1][obj.mYO] = "b";
+                    }else if (positions[obj.mXO-1][obj.mYO] == "b"){
+                        positions[obj.mXO-1][obj.mYO] = "r"
                     }
                     }
                     //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
                     catch (err) {console.log("Error at line 169");}
                     try {
-                    if (positions[obj.mposX][obj.mposY-1] == "r"){
-                        positions[obj.mposX][obj.mposY-1] = "b";
-                    }else if (positions[obj.mposX][obj.mposY-1] == "b"){
-                        positions[obj.mposX][obj.mposY-1] = "r"
+                    if (positions[obj.mXO][obj.mYO-1] == "r"){
+                        positions[obj.mXO][obj.mYO-1] = "b";
+                    }else if (positions[obj.mXO][obj.mYO-1] == "b"){
+                        positions[obj.mXO][obj.mYO-1] = "r"
                     }
                     }
                     //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
                     catch (err) {console.log("Error at line 178");}
                     try{
-                    if (positions[obj.mposX][obj.mposY+1] == "r"){
-                        positions[obj.mposX][obj.mposY+1] = "b";
-                    }else if (positions[obj.mposX][obj.mposY+1] == "b"){
-                        positions[obj.mposX][obj.mposY+1] = "r"
+                    if (positions[obj.mXO][obj.mYO+1] == "r"){
+                        positions[obj.mXO][obj.mYO+1] = "b";
+                    }else if (positions[obj.mXO][obj.mYO+1] == "b"){
+                        positions[obj.mXO][obj.mYO+1] = "r"
                     }
                     }
                     //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
                     catch (err) {console.log("Error at line 187");}
                     try{
-                    if (positions[obj.mposX+1][obj.mposY] == "r"){
-                        positions[obj.mposX+1][obj.mposY] = "b";
-                    }else if (positions[obj.mposX+1][obj.mposY] == "b"){
-                        positions[obj.mposX+1][obj.mposY] = "r"
+                    if (positions[obj.mXO+1][obj.mYO] == "r"){
+                        positions[obj.mXO+1][obj.mYO] = "b";
+                    }else if (positions[obj.mXO+1][obj.mYO] == "b"){
+                        positions[obj.mXO+1][obj.mYO] = "r"
                     }
                     }
                     //any errors at this point, are irrelevant to the actual function of the game as it has been tested extensively
