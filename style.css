@@ -61,7 +61,7 @@ nav li:active{
     -ms-touch-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
-    padding: 1%;
+    padding: 1% 1% 2% 1%;
     font-size: 26pt;
     background-color: #d44;
     transition: background-color 200ms ease 0s;
