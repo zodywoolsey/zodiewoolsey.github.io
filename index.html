@@ -1,71 +1,60 @@
 <!DOCTYPE html>
-<html class="topGrad">
+<html>
     <head>
-        <Title>HomePage</Title>
-        <meta name="description" content="This is a website mockup designed by Zody L. Woolsey for Professor Mann's Web Development class." />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="Author" content="Zody Woolsey">
+        <meta name="Application name" content="hw1&dash;css">
+        <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="gradient.css">
-        <script src="main.js" defer></script>
-        <script src="formScript.js" defer></script>
+        <script src="script.js" defer></script>
     </head>
     <body>
-        <div id="container">
-            <header>
-                <clk id="clock"></clk>
-                <div><div class="logo"></div><img src="media/Logo.png" alt="VideoGames Logo (Logo.png)" id="logo"></div>
-                <div id="headerText">
-                    <h1><a href="">Video Games</a></h1>
-                    <h2>Home</h2>
-                    <p id="sub">We have the thing you want the most, and we want to provide it to you!</p>
-                    </div>
-            </header>
-            <!-- I know this isn't where this belongs but I am going to be lazy on this part because I don't want to write any more css as of right now :( sorry (referring to \/ \/ \/ \/ \/)-->
-                <nav class="navi">
-                    <ul>
-                        <li>
-                            <a href="details.html" title="Click to go to the information page">Information</a>
-                        </li>
-                        <li><a href="index.html" title="Click to go to the home page">Home</a></li>
-                        <li>
-                            <a href="media.html" title="Click to go to the media page">Media</a>
-                        </li>
-                    </ul>
+        <div id="pageContainer">
+            <h1>Mac and Cheese</h1>
+            <div id="navContainer">
+                <nav id="navButton">
+                    <li><mark id="nav_butt"> &updownarrow; </mark></li>
                 </nav>
-            <div class="body">
-                <p>Use the form below to contact us!</p>
-                <form>
-                    <p>First name:</p>
-                    <input type="text" name="firstname" autocomplete="given-name">
-                    <p>Last name:<br></p>
-                    <input type="text" name="lastname" autocomplete="family-name">
-                    <p>E-Mail:<br></p>
-                    <input type="text" name="email" autocomplete="email">
-                    <p>Comment:</p>
-                    <textarea name="comment"></textarea>
-                    <br />
-                    <input type="button" value="Submit" id="submitButton" onclick="subb()">
-                </form>
-                
-                <div id="subbedInfo"></div>
+                <nav id="nav_bar">
+                    <li>Test</li>
+                    <li>Test2</li>
+                </nav>
             </div>
-            
-            <div id="bottomGrad"></div>
-            <footer>
-                <ul>
-                    <li><address>
-                        Author: <a href="mailto:zodywoolsey@gmail.com" title="Click to email: zodywoolsey@gmail.com">Zody Woolsey</a>
-                        <br>
-                        Address: <a href="https://goo.gl/maps/tbeEjRxC5EP2" title="Click to view location">1001 E Chestnut Expy, Springfield, MO 65802</a>
-                        <br>
-                        Instructor: Professor Mann
-                        </address></li>
-                    <li></li>
-                    <li><a href="http://www.facebook.com">Facebook</a>
-                    <br>
-                    <a href="http://www.twitter.com">Twitter</a></li>
-                </ul>
-            </footer>
+            <div id="paragraphContainer">
+                <p>My favorite food is Mac and Cheese! But, not any Mac and Cheese, only the kind that is extra thick and goopy but still has a melted cheese tatse that is not too dry. I am the kind of person who really likes salty foods, so cheddar cheese is certainly my favorite cheese, even for Mac and Cheese! </p>
+                <img id="asciiImg" src="Screenshot from 2018-09-11 00-54-44.png"><img id="asciiImg" src="Screenshot from 2018-09-11 00-57-30.png">
+                <hr>
+                <p>As you can see by the image above a bowl of well cooked noodles and a nice easily meltable cheese is the perfect combination for a lazy snack/meal. It appeases the typical american unhealthy craving and is fairly delicious as well!</p>
+                <hr>
+                <p></p>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Mac</li>
+                            <li>and</li>
+                            <li>Cheese</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>is</li>
+                            <li>pretty</li>
+                            <li>good</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>and</li>
+                            <li>you</li>
+                            <li>should</li>
+                            <li>try</li>
+                            <li>it</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
         </div>
+        
     </body>
 </html>
