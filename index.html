@@ -9,23 +9,31 @@
     </head>
     <body>
         <div id="pageContainer">
-            <h1 id="top">Mac and Cheese</h1>
+            <h1 id="top"><a id="noStyleLink" href="">Mac and Cheese</a></h1>
             <div id="navContainer">
                 <nav id="navButton">
                     <li><mark id="nav_butt"> &updownarrow; </mark></li>
                 </nav>
                 <nav id="nav_bar">
-                    <li><a id="noStyleLink" href="#asciiImg">Test</a></li>
-                    <li><a id="noStyleLink" href="#bot">Test2</a></li>
+                    <li onclick="location.href='#asciiImg'">Images</li>
+                    <li onclick="location.href='#bot'">Bottom</li>
                 </nav>
             </div>
             <div id="paragraphContainer">
+                <hr>
                 <p>My favorite food is Mac and Cheese! But, not any Mac and Cheese, only the kind that is extra thick and goopy but still has a melted cheese tatse that is not too dry. I am the kind of person who really likes salty foods, so cheddar cheese is certainly my favorite cheese, even for Mac and Cheese! </p>
+                <hr>
                 <img id="asciiImg" src="ascii_cheese.png"><img id="asciiImg" src="ascii_hot_bowl.png">
                 <hr>
                 <p>As you can see by the image above a bowl of well cooked noodles and a nice easily meltable cheese is the perfect combination for a lazy snack/meal. It appeases the typical american unhealthy craving and is fairly delicious as well!</p>
                 <hr>
-                <p></p>
+                <p>I am not really sure what else to say about Mac and Cheese. I know you know what it is
+                    and I am pretty sure that everybody likes it! The only issue is that there is no real way for you to send feedback on you Mac and Cheese status.... Hmmmmmmmmmm...
+                    I suppose this could come in a later update to the site?
+                </p>
+                <p>But how much work would that really be? Ha Ha Ha... . . . </p>
+                <p>Not much, actually. I wouldn't really be able to make any super cool solutions, though because I don't think github allows serverside code execution. That means that I can't really just go out and initialize a database on my github.io site. And, since that is what I currently use for my site hosting &DoubleVerticalBar; Becuase it's free!!! &DoubleVerticalBar; I will be quite limited from what I understand.</p>
+                <hr>
             </div>
             <table id="bot">
                 <tr>
@@ -41,8 +49,8 @@
                             <li>is</li>
                             <li>pretty</li>
                             <li>good</li>
-                            <li><nav id="navButton">
-                                <li><mark id="nav_butt"><a id="noStyleLink" href="#top"> &uparrow;top&uparrow; </a></mark></li>
+                            <li class="botNavButt"><nav id="navButton">
+                                <li><mark id="nav_butt" onclick="location.href='#top'">&uparrow;&uparrow;</mark></li>
                             </nav></li>
                         </ul>
                     </td>
