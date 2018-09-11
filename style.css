@@ -51,7 +51,6 @@ nav li:active{
 }
 #navButton li mark{
     color: #fff;
-    text-shadow: #00f 0px 0px 8px;
     user-select: none;
     -moz-user-select: none;
     -ms-touch-select: none;
@@ -84,18 +83,19 @@ h1{
     text-align: center;
     margin: auto;
 }
-#canvas{
-    border: 1px solid white;
+#noStyleLink{
+    all: inherit;
 }
 #asciiImg{
     display: block;
     margin: auto;
-    height: 100px;
-    width: 100px;
+    height: 10em;
+    width: 10em;
 }
 table{
-    padding-top: 5%;
+    padding: 2% 0 0 0;
     margin: auto;
+    margin-bottom: -5%;
 }
 table ul{
     display: block;
