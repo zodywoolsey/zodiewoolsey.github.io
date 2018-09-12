@@ -2,7 +2,7 @@ html{
     background: #000;
     font-size: 1.5em;
 }
-#pageContainer{
+.pageContainer{
     margin: auto;
     padding: 5% 0 5% 0;
     width: 80%;
@@ -16,70 +16,39 @@ nav{
     -ms-touch-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
-    max-height: 0px;
     overflow: hidden;
     background-color: #d44;
     text-align: center;
     list-style: none;
-    transition: max-height 500ms ease 0s;
 }
 nav li{
     font-size: 16pt;
-    margin: 0 1em 0 1em;
     user-select: none;
     -moz-user-select: none;
     -ms-touch-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
-    padding: 1% 2% 1% 2%;
     display: inline;
-    background-color: #d44;
+}
+nav a{
+    margin: 0 1em 0 1em;
+    padding: 2% 3% 2% 3%;
+    background-color: #a00;
     transition: background-color 200ms ease 0s;
 }
-nav li:hover{
-    background-color: #a22;
+nav a:hover{
+    background-color: #555;
 }
-nav li:active{
+nav a:active{
     transition: background-color 0ms ease 0s;
-    background-color: #622
+    background-color: #000;
 }
-#navButton {
-    max-height: unset;
-    text-align: center;
-    background-color: unset;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-#navButton li{
-    all: unset;
-}
-#navButton li mark{
-    color: #fff;
-    user-select: none;
-    -moz-user-select: none;
-    -ms-touch-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    padding: 1%;
-    font-size: 26pt;
-    background-color: #d44;
-    transition: background-color 200ms ease 0s;
-}
-#navButton li mark:hover{
-    
-    background-color: #a22;
-}
-#navButton li mark:active{
-    transition: background-color 0ms ease 0s;
-    background-color: #622
-}
-#pageContainer #paragraphContainer{
+.pageContainer #paragraphContainer{
     margin: auto;
     background-color: #222;
     padding: 5%;
 }
-#paragraphContainer p{
+.paragraphContainer p{
     margin: auto;
     text-align: justify;
     width: 60%;
@@ -97,26 +66,29 @@ h1:active{
     transition: background-color 0ms ease 0s;
     color: #b99;
 }
-#noStyleLink{
-    all: inherit;
-    width: 100%;
-}
-#asciiImg{
+.asciiImg{
     display: block;
     margin: auto;
-    height: 10em;
-    width: 10em;
+    height: 25%;
+    width: 25%;
 }
 table{
     padding: 2% 0 0 0;
     margin: auto;
-    margin-bottom: -5%;
 }
 table ul{
     display: block;
     margin: auto;
     list-style-type: none;
 }
-.botNavButt{
-    margin: 20% 0 0 0;
+.bot_nav, .bot_nav li, .bot_nav ul{
+    margin: 1% 0 0 0;
+    padding-bottom: .2em;
+    height: 1.5em;
+}
+a{
+    text-decoration: inherit;
+    color: inherit;
+    font: inherit;
+    /*all: inherit <-- this threw errors in validator*/
 }
