@@ -1,0 +1,89 @@
+html{
+    background: #fff;
+}
+
+/* */
+h1 {
+    text-align: center;
+    background: #ddd9;
+    box-shadow: 0px 0px 100px 100px #ddd9;
+}
+
+#image{
+    text-align: center;
+}
+#image img{
+    width: 50%;
+}
+
+#nav {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+      
+}
+
+#nav li {
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
+
+a:link {
+    text-decoration: none;
+    color: #f55;
+}
+a:visited{
+    color: #f99;
+}
+a {
+    font-weight: bold;
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
+
+a:hover{
+    box-shadow: 0px 0px 10px #00f8;
+    background: #ddd;
+    background: #0001;
+}
+
+.centerCanvas {
+    text-align: center;
+}
+
+p {
+    line-height: 1.5;
+}
+
+#smashBrosP {
+    background: "mePicture.jpg";
+}
+
+
+
+footer{
+    width: 100%;
+    background: #ddd9;
+    box-shadow: 0px 0px 100px 100px #ddd9;
+}
+
+#foot {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+#foot li{
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
