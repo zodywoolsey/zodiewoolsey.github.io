@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="Style.css">
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/jquery.hotkeys.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/key_status.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/util.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/sprite.js" type="text/javascript"></script>
+    <script language="javascript" src="jqinput/sound.js" type="text/javascript"></script>
+    <head>
+    </head>
+    <body>
+        <h1>Pattern Game</h1>
+        <p style="text-align: center;">
+        Make all the squares the same color!
+        (PS: start in the top left one)
+        </p>
+        <div class="centerCanvas">
+        <canvas id="canvas">.</canvas>
+        </div>
+        <div id="score" style="text-align: center"></div>
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            var scoretag = document.getElementById("score");
+            
+            c.onmousemove = mousepos;
+            c.onmousedown = mousedown;
+            c.onmouseup = mouseup;
+            
+            var oldTime = Date.now();
+            
+            c.width = 500;
+            c.height = 500;
+            
+            var mouseX = 0;
+            var mouseY = 0;
+            var mouseclick = false;
+            
+            var size = 10;
+            var difficulty = 1;
+            
+            var turn = 0;
+            var score = 0;
+            var positions = [];
+            function genPos(){
+                for (p = 0; p < size; p++){
+                    positions.push([]);
+                    for (o = 0; o < size; o++){
+                            positions[p].push("b");
+                        }
+                }
+                return positions;
+            }
+            positions = genPos();
+            
+            //positions[0][0] = "h";
+            //console.log(positions);
+            
+            
+            
+            function mousepos(event){
+                mouseX = event.clientX - c.getBoundingClientRect().left;
+                mouseY = event.clientY - c.getBoundingClientRect().top;
+            };
+            function mousedown(){
+                mouseclick = true;
+            };
+            function mouseup(){
+                mouseclick = false;
+            }
+            
+            function thegame(){
+                var obj = {};
+                obj.width = c.width/positions.length;
+                obj.height = c.height/positions[0].length;
+                
+                obj.noX = [0,size-1];
+                obj.noY = [0,size-1];
+                
+                obj.mposX = 1;
+                obj.mXO = 1;
+                
+                obj.mposY = 1;
+                obj.mYO = 1;
+                
+                obj.wait = 0;
+                obj.oneColor = "#f00";
+                obj.twoColor = "#00f";
+                obj.threeColor = ["#",0,0,0];
+                //-----------------------------------------------------------------------------------Functions begin
+                obj.draw = function (){
+                    for (w = 0; w < positions.length; w++){
+                        for (h = 0; h < positions[w].length; h++){
+                            if ((positions[w][h]) == "r"){
+                                ctx.fillStyle = obj.oneColor;
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
+                            }else if((positions[w][h]) == "b"){
+                                ctx.fillStyle = obj.twoColor;
+                                ctx.fillRect(w*obj.width,h*obj.height,obj.width-2,obj.height-2);
+                            }
+                        };
+                    };
+                    ctx.fillStyle = "#0008";
+                    ctx.fillRect(obj.mXO*obj.width-6,obj.mYO*obj.height-6,obj.width+10,obj.height+10);
+                };//---------------------------------------------------------------------------------draw end
+                obj.mpos = function(){
+                    obj.mposX = parseInt(mouseX/obj.width);
+                    obj.mposY = parseInt(mouseY/obj.height);
+                };//---------------------------------------------------------------------------------mpos end
+                obj.click = function(){
+                    if (( !(obj.noX.includes(obj.mposX)) && !(obj.noY.includes(obj.mposY)) ) && obj.wait != 1){
+                        if(mouseclick == true){
+                            console.log(positions[obj.mposX][obj.mposY]);
+                            obj.flip();
+                            obj.mXO = obj.mposX;
+                            obj.mYO = obj.mposY;
+                            console.log(obj.mXO,obj.mYO)
+                        }
+                            obj.wait = 1;
+                            
+                        
+                    };
+                };//---------------------------------------------------------------------------------hover end
+                obj.mousepause = function(){
+                    if ((( Math.abs(obj.mYO - obj.mposY) < 2 ) && Math.abs(obj.mXO - obj.mposX) < 2 ) && ( obj.mYO != obj.mposY || obj.mXO != obj.mposX)){
+                        obj.wait = 0;
+                    }
+                };//---------------------------------------------------------------------------------mousepause end
+                obj.flip = function(){
+                    
+                    if (positions[obj.mposX][obj.mposY] == "r"){
+                        positions[obj.mposX][obj.mposY] = "b";
+                    }else if (positions[obj.mposX][obj.mposY] == "b"){
+                        positions[obj.mposX][obj.mposY] = "r"
+                    }
+                    try {
+                    if (positions[obj.mposX-1][obj.mposY] == "r"){
+                        positions[obj.mposX-1][obj.mposY] = "b";
+                    }else if (positions[obj.mposX-1][obj.mposY] == "b"){
+                        positions[obj.mposX-1][obj.mposY] = "r"
+                    }
+                    }catch (err) {}
+                    try {
+                    if (positions[obj.mposX][obj.mposY-1] == "r"){
+                        positions[obj.mposX][obj.mposY-1] = "b";
+                    }else if (positions[obj.mposX][obj.mposY-1] == "b"){
+                        positions[obj.mposX][obj.mposY-1] = "r"
+                    }
+                    }catch (err) {}
+                    try{
+                    if (positions[obj.mposX][obj.mposY+1] == "r"){
+                        positions[obj.mposX][obj.mposY+1] = "b";
+                    }else if (positions[obj.mposX][obj.mposY+1] == "b"){
+                        positions[obj.mposX][obj.mposY+1] = "r"
+                    }
+                    }catch (err) {}
+                    try{
+                    if (positions[obj.mposX+1][obj.mposY] == "r"){
+                        positions[obj.mposX+1][obj.mposY] = "b";
+                    }else if (positions[obj.mposX+1][obj.mposY] == "b"){
+                        positions[obj.mposX+1][obj.mposY] = "r"
+                    }
+                    }catch (err) {}
+                }
+                return obj;
+            };//-------------------------------------------------------------------------------------thegame end
+            
+            var a = new thegame();
+            
+            function solveCheck(){
+                var check = false;
+                for (q = 0; q < positions.length; q++){
+                    for (w = 0; w < positions[q].length; w++){
+                        if (positions[q][w] == positions[0][0]){
+                            check = true;
+                            //console.log( q, w, positions[q][w], check);
+                        }else{
+                            check = false;
+                            //console.log( q, w, positions[q][w], check, "break");
+                            break;
+                        }
+                    }
+                    if (check == false){
+                        //console.log("full break");
+                        break;
+                    }
+                }
+                if (check == true){
+                    return true;
+                }
+                
+            };//-------------------------------------------------------------------------------------solveCheck end
+            
+            
+            function init(){
+                turn = 0;
+                positions = [];
+                positions = genPos();
+                for (dif = 0; dif < difficulty; dif++){
+                    a.mposX = parseInt(1+Math.random()*(size-2));
+                    a.mposY = parseInt(1+Math.random()*(size-2));
+                    a.flip();
+                }
+                difficulty ++;
+                //console.log(positions);
+            };
+            init();
+            
+            score = 0;
+            setInterval(function(){
+                ctx.clearRect(0,0,c.width,c.height);
+                a.draw();
+                a.mpos();
+                a.click();
+                a.mousepause();
+                if (solveCheck() == true){
+                    
+                    score ++;
+                    
+                    init();
+                };
+                scoretag.innerHTML = "Score:"+score;
+                oldTime=Date.now();
+                },0)
+            
+        </script>
+    </body>
+</html>
