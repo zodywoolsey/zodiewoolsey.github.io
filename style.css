@@ -1,307 +1,89 @@
-/* I tried to organize these things but
-I kept adding things in different places
-so please *partially disregard* the 
-organization comments.
-They might be completely useless.*/
-
-:root{
-    --logoHeight: 512px;
-}
-@media only screen and (max-width: 640px) {
-    :root{
-        --logoHeight: 250px;
-    }
+html{
+    background: #fff;
 }
 
-html {
-    overflow-x: hidden;
+/* */
+h1 {
+    text-align: center;
+    background: #ddd9;
+    box-shadow: 0px 0px 100px 100px #ddd9;
 }
 
-.topGrad {
-    font-family: sans-serif;
-    color: white;
+#image{
+    text-align: center;
+}
+#image img{
+    width: 50%;
 }
 
+#nav {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+      
+}
 
-#container {
-    position: relative;
-    min-height: 100%;
-    min-width: 100%;
-    padding: 1px;
-    margin: -10px;
+#nav li {
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
+
+a:link {
+    text-decoration: none;
+    color: #f55;
+}
+a:visited{
+    color: #f99;
+}
+a {
+    font-weight: bold;
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
+
+a:hover{
+    box-shadow: 0px 0px 10px #00f8;
+    background: #ddd;
+    background: #0001;
+}
+
+.centerCanvas {
+    text-align: center;
 }
 
 p {
-    font-size: 1em;
-}
-@media only screen and (max-width: 640px) {
-    p {
-        font-size: 1.3em;
-    }
+    line-height: 1.5;
 }
 
-a {
-    text-shadow: 0px 0px  10px #f00;
-    filter: saturate(100);
-    filter: brightness(2);
+#smashBrosP {
+    background: "mePicture.jpg";
 }
 
-#yoyoThunder {
-    filter: brightness(.6);
-    max-width: 90%;
-}
 
-/*Header styles*/
 
-header {
-    margin: 0px;
-    padding: 0px;
-    height: var(--logoHeight);
-    background-color: #0002;
-    border: solid 1px #0002;
-}
-@media only screen and (max-width: 600px) {
-    header {
-        height: auto;
-    }
-}
-
-h1 {
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-}
-h1 a{
-    text-shadow:
-    3px 3px 0 #000,
-   -4px -4px 0 #000,  
-    4px -4px 0 #000,
-    -4px 4px 0 #000,
-     4px 4px 0 #000;
-    margin: 0;
-    text-decoration: none;
-    color: white;
-    background: none;
-    font-size: 1.9em;
-}
-@media only screen and (max-width: 640px) {
-    h1 a{
-        font-size: 2em;
-    }
-}
-
-h2 {
-    text-shadow:
-    3px 3px 0 #000,
-   -3px -3px 0 #000,  
-    3px -3px 0 #000,
-    -3px 3px 0 #000,
-     3px 3px 0 #000;
-    text-align: center;
-    font-size: 3em;
-    margin: 0;
-}
-@media only screen and (max-width: 640px) {
-    h2{
-        font-size: 3.1em;
-    }
-}
-
-#sub {
-    text-shadow:
-    3px 3px 0 #000,
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
-    text-align: center;
-    font-size: 2em;
-}
-@media only screen and (max-width: 640px) {
-    #sub{
-        font-size: 1.5em;
-    }
-}
-#logo {
-    
-    height: var(--logoHeight);
-    z-index: -50;
-    position: absolute;
-    display: block;
-    margin-left: calc(0px - var(--logoHeight)/2);
-    margin-right: auto;
-    left: 50%;
-}
-
-header h1{
-    vertical-align: text-bottom;
-}
-
-/*Header styles end*/
-
-/*Nav bar styles*/
-ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-grow: auto;
-    flex-shrink: auto;
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-}
-nav {
-    position: relative;
-    background: #0001;
+footer{
     width: 100%;
-    padding: 0px;
+    background: #ddd9;
+    box-shadow: 0px 0px 100px 100px #ddd9;
+}
+
+#foot {
     margin: 0px;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-}
-
-.navi ul {
-    position: static;
-    font-size: 1.5em;
-}
-@media only screen and (max-width: 640px) {
-    .navi ul {
-        font-size: 1.5em;
-    }
-}
-
-.navi ul li {
-    
-}
-
-/*Nav bar styles end*/
-
-/* Footer stuff */
-footer {
-    margin-bottom: -2em;
-    padding-top: 2em;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-}
-footer nav ul {
-    
-}
-@media only screen and (max-width: 640px) {
-    footer nav ul {
-        font-size: 1em;
-    }
-}
-/* Footer stuff END*/
-
-li a {
-    position: relative;
-    text-decoration: none;
-    color: white;
-}
-
-
-
-
-/* Media Page CSS */
-
-#smashHeader img{
-    width: calc(100% - 1em);
-}
-
-#smashHeader {
-    text-shadow:
-    3px 3px 0 #000,
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
-    background-image: url(media/FalcomDance.gif);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    vertical-align: middle;
-}
-@media only screen and (max-width: 640px) {
-    #smashHeader {
-        background-size: 100%;
-    }
-}
-
-/* Media Page END */
-
-/* Details page CSS */
-
-.hoursTable table{
-    margin: auto;
-    font-size: 1em;
-}
-@media only screen and (max-width: 640px) {
-    .hoursTable table{
-        font-size: 1em;
-    }
-    .hoursTable .body tr td{
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-}
-.hoursTable .body tr td{
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
-.hoursTable .body tr td:first-child{
-    border-left: 2px solid black;
-    text-align: left;
-    padding-right: 20px;
-}
-.hoursTable .body tr td:last-child{
-    border-right: 2px solid black;
-    text-align: right;
-    padding-left: 20px;
-}
-@media only screen and (max-width: 640px) {
-    
-}
-
-/* Details page END */
-
-/* Some janky CSS things that might work alongside js or not */
-#invImg {
-    height: 90%;
-    visibility: hidden;
-}
-#clock {
-    z-index: 100;
-    position: fixed;
-    left: .4em;
-    top: .4em;
-    background-color: #000a;
-    box-shadow: 0px 0px 20px 10px #000a;
-    text-shadow:
-    3px 3px 0 #000,
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
-}
-.body{
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6em;
-    width: 90%;
-}
-
-/* Form Styles */
-
-form {
+    padding: 0px;
+    list-style-type: none;
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    justify-content: space-between;
 }
 
-/* Form Styles END */
-
-
-
-
-
+#foot li{
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}

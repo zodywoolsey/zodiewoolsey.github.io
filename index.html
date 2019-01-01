@@ -1,71 +1,53 @@
 <!DOCTYPE html>
-<html class="topGrad">
-    <head>
-        <Title>HomePage</Title>
-        <meta name="description" content="This is a website mockup designed by Zody L. Woolsey for Professor Mann's Web Development class." />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="gradient.css">
-        <script src="main.js" defer></script>
-        <script src="formScript.js" defer></script>
-    </head>
-    <body>
-        <div id="container">
-            <header>
-                <clk id="clock"></clk>
-                <div><div class="logo"></div><img src="media/Logo.png" alt="VideoGames Logo (Logo.png)" id="logo"></div>
-                <div id="headerText">
-                    <h1><a href="">Video Games</a></h1>
-                    <h2>Home</h2>
-                    <p id="sub">We have the thing you want the most, and we want to provide it to you!</p>
-                    </div>
-            </header>
-            <!-- I know this isn't where this belongs but I am going to be lazy on this part because I don't want to write any more css as of right now :( sorry (referring to \/ \/ \/ \/ \/)-->
-                <nav class="navi">
-                    <ul>
-                        <li>
-                            <a href="details.html" title="Click to go to the information page">Information</a>
-                        </li>
-                        <li><a href="index.html" title="Click to go to the home page">Home</a></li>
-                        <li>
-                            <a href="media.html" title="Click to go to the media page">Media</a>
-                        </li>
-                    </ul>
-                </nav>
-            <div class="body">
-                <p>Use the form below to contact us!</p>
-                <form>
-                    <p>First name:</p>
-                    <input type="text" name="firstname" autocomplete="given-name">
-                    <p>Last name:<br></p>
-                    <input type="text" name="lastname" autocomplete="family-name">
-                    <p>E-Mail:<br></p>
-                    <input type="text" name="email" autocomplete="email">
-                    <p>Comment:</p>
-                    <textarea name="comment"></textarea>
-                    <br />
-                    <input type="button" value="Submit" id="submitButton" onclick="subb()">
-                </form>
-                
-                <div id="subbedInfo"></div>
+<head>
+    <title>ZW Portfolio</title>
+    <meta name="author" content="Zody Woolsey">
+    <meta name="description" content="Portfolio page for OTC web dev class">
+    <meta name="keywords" content="work, school, homework, class, practice, portfolio, mobile, cross, platform, resume">
+    <link href="Style.css" rel="stylesheet">
+    <script src="resize.js"></script>
+    
+</head>
+<body>
+    <h1>Home Page</h1>
+    <nav>
+        <ul id="nav">
+            <a href="index.html">Home</a>
+            <a href="ball.html">Balls</a>
+            <a href="game.html">Pattern Game</a>
+            <a href="gameoflife.html">A Game Of Life</a>
+            <a href="oopTesting.html">Some trippy stuff</a>
+        </ul>
+    </nav>
+    <div id="paras">
+        <p>
+            Hello, my name is Zody Woolsey. I absolutely love programming and anything that involves software development (yes even some of the documentation (under certain conditions)). I write little projects all the time and I am currently working on a cross platform mobile app. 
+        </p>
+        <p>
+            My current favorite language might be javascript (with html5/css) followed closely by python and C++. Js is my favorite as of right now because I can quickly make full test apps and things with little care to quality or syntax. The other two, simply because of power. Yeah, python is powerful.... and awesome. I am currently attempting to learn C++ within an arch linux virtual machine because of the flexibility.
+        </p>
+        <p id="smashBrosP">
+            Lastly, I friggin love video games and my favorite so far is smash bros or maybe darksouls. Both of these games are simply games. They do not lend themselves to overpowering stories or realism, they are games with the best possible mechanics for how you play them. Easy to learn, hard to master... <br><br><strong>My favorite</strong>.
+            <div id="image">
+            <img src="smash.jpg" id="smashBroPic">
+                </div>
+        </p>
+        <p>
+            Along with all my interests, I love my girlfriend. There is an easter egg in one of the pages for her. Hint: "H".
+            <div id="image">
+            <img src="mePicture.jpg">
             </div>
-            
-            <div id="bottomGrad"></div>
-            <footer>
-                <ul>
-                    <li><address>
-                        Author: <a href="mailto:zodywoolsey@gmail.com" title="Click to email: zodywoolsey@gmail.com">Zody Woolsey</a>
-                        <br>
-                        Address: <a href="https://goo.gl/maps/tbeEjRxC5EP2" title="Click to view location">1001 E Chestnut Expy, Springfield, MO 65802</a>
-                        <br>
-                        Instructor: Professor Mann
-                        </address></li>
-                    <li></li>
-                    <li><a href="http://www.facebook.com">Facebook</a>
-                    <br>
-                    <a href="http://www.twitter.com">Twitter</a></li>
-                </ul>
-            </footer>
-        </div>
-    </body>
-</html>
+        </p>
+    </div>
+    <footer>
+        <nav>
+            <ul id="foot">
+                <li>Phone: <a href="tel:8702043894">870-204-3894</a></li>
+                <li>
+                    Addr: 1234 S School Assignment Lane
+                </li>
+                <li>Email: <a href="mailto:zodywoolsey@gmail.com">zodywoolsey@gmail.com</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
