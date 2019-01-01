@@ -152,12 +152,12 @@
                             obj.mXO = obj.mXO+1;
                             obj.flip();
                             obj.wait = 1;
-                        }if( (keydown.w || keydown.up) && !(obj.noY.includes(obj.mYO+1)) && obj.wait != 1){
-                            obj.mYO = obj.mYO+1;
+                        }if( (keydown.w || keydown.up) && !(obj.noY.includes(obj.mYO-1)) && obj.wait != 1){
+                            obj.mYO = obj.mYO-1;
                             obj.flip();
                             obj.wait = 1;
-                        }if( (keydown.s || keydown.down) && !(obj.noY.includes(obj.mYO-1)) && obj.wait != 1){
-                            obj.mYO = obj.mYO-1;
+                        }if( (keydown.s || keydown.down) && !(obj.noY.includes(obj.mYO+1)) && obj.wait != 1){
+                            obj.mYO = obj.mYO+1;
                             obj.flip();
                             obj.wait = 1;
                         }
