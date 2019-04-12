@@ -1,8 +1,11 @@
 let bodyElem = document.querySelector("#pageContainer");
 
 setTimeout( ()=>{
+    bodyElem.classList.add("borderExpanse");
+} )
+setTimeout( ()=>{
     bodyElem.classList.add("heightExpanse");
-}, 100 )
+}, 200 )
 setTimeout( ()=>{
     bodyElem.classList.add("widthExpanse");
 }, 1500 );
