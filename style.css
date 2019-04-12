@@ -1,0 +1,57 @@
+
+html {
+    background-color: black;
+    color: #f8f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ANIMATIONS */
+
+.widthExpanse {
+    width: 80% !important;
+}
+.heightExpanse {
+    max-height: 1000px !important;
+}
+
+.wordWrapOn {
+    white-space: normal !important;
+}
+
+/* HEADER/FOOTER */
+header {
+    text-align: center;
+    overflow: inherit;
+}
+
+footer, ul, li {
+    width: inherit;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+/* BODY */
+body {
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#pageContainer {
+    margin: auto;
+    padding: 0px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid #235;
+    max-height: 0px;
+    width: 0px;
+    background-color: #235;
+    white-space: nowrap;
+    overflow: inherit;
+    transition-delay: .5s;
+    transition-duration: 2s;
+}
