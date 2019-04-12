@@ -13,7 +13,10 @@ html {
 .heightExpanse {
     max-height: 1000px !important;
 }
-
+.borderExpanse {
+    border-left: .2em solid white !important;
+    border-right: .2em solid white !important;
+}
 .wordWrapOn {
     white-space: normal !important;
 }
@@ -44,8 +47,8 @@ body {
 #pageContainer {
     margin: auto;
     padding: 0px;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-left: 0px solid #f0f;
+    border-right: 0px solid #f0f;
     border-top: 1px solid #235;
     max-height: 0px;
     width: 0px;
