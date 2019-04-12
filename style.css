@@ -1,8 +1,12 @@
 
 html {
-    background-color: #353542;
+    background-color: #354050;
     color: #bd5fbd;
     font-family: Arial, Helvetica, sans-serif;
+    overflow: -moz-scrollbars-none;
+}
+html ::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 /* TRANSITIONS */
@@ -11,8 +15,16 @@ html {
     width: 90% !important;
 }
 .borderExpanse {
-    border-left: .2em solid #336 !important;
-    border-right: .2em solid #336 !important;
+    border-left: 1em solid #0000 !important;
+    border-right: 1em solid #0000 !important;
+}
+.borderColorOne {
+    border-left-color: #0000;
+    border-right-color: #0000;
+}
+.borderColorTwo {
+    border-left-color: #0000;
+    border-right-color: #0000;
 }
 .wordWrapOn {
     white-space: normal !important;
@@ -25,7 +37,7 @@ header {
     color: #bd5fbd;
 }
 
-footer, ul, li {
+footer, .footerNav, .footerUl, .footerUl>li {
     width: inherit;
     overflow: hidden;
 }
@@ -46,12 +58,12 @@ body {
     color: white;
     margin: auto;
     padding: 0px;
-    border-left: 1px solid #f00;
-    border-right: 1px solid #00f;
-    border-top: 1px solid #353542;
+    border-left: 0px solid #f0f;
+    border-right: 0px solid #f0f;
+    border-top: 1px solid #404558;
     max-height: 0px;
     width: 0px;
-    background-color: #454552;
+    background-color: #404558;
     white-space: nowrap;
     overflow: inherit;
     transition-delay: .5s;

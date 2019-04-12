@@ -1,27 +1,27 @@
-let bodyElem = document.querySelector("#pageContainer");
+let pageContainer = document.querySelector("#pageContainer");
 let tmp = 0;
 setTimeout( ()=>{
-    bodyElem.classList.add("borderExpanse");
-} )
+    pageContainer.classList.add("borderExpanse");
+}, 500 )
 setTimeout( ()=>{
     tmp += 500;
-    bodyElem.style.maxHeight = `${tmp}px`;
+    pageContainer.style.maxHeight = `${tmp}px`;
     setTimeout( ()=>{
         tmp += 500;
-        bodyElem.style.maxHeight = `${tmp}px`;
+        pageContainer.style.maxHeight = `${tmp}px`;
         setTimeout( ()=>{
             tmp += 500;
-            bodyElem.style.maxHeight = `${tmp}px`;
+            pageContainer.style.maxHeight = `${tmp}px`;
             setTimeout( ()=>{
                 tmp += 500;
-                bodyElem.style.maxHeight = `${tmp}px`;
+                pageContainer.style.maxHeight = `${tmp}px`;
                 setTimeout( ()=>{
-                    bodyElem.classList.add("widthExpanse");
+                    pageContainer.classList.add("widthExpanse");
                 }, 1500 );
                 setTimeout( ()=>{
-                    bodyElem.classList.add("wordWrapOn");
-                    document.all[0].style.overflow = "auto";
-                    bodyElem.style.maxHeight = "unset";
+                    pageContainer.classList.add("wordWrapOn");
+                    // document.all[0].style.overflow = "auto";
+                    pageContainer.style.maxHeight = "unset";
                 }, 2500 );
             }, 200 )
         }, 200 )
