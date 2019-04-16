@@ -1,9 +1,8 @@
 
 html {
-    background-color: #354050;
-    color: #bd5fbd;
+    background-color: #303045;
+    /* color: #bd5fbd; */
     font-family: Arial, Helvetica, sans-serif;
-    overflow: -moz-scrollbars-none;
 }
 html ::-webkit-scrollbar {
     width: 0 !important;
@@ -26,8 +25,9 @@ html ::-webkit-scrollbar {
     border-left-color: #0000;
     border-right-color: #0000;
 }
-.wordWrapOn {
+.pageInitFinish {
     white-space: normal !important;
+    overFlow: auto !important;
 }
 
 /* HEADER/FOOTER */
@@ -37,13 +37,32 @@ header {
     color: #bd5fbd;
 }
 
-footer, .footerNav, .footerUl, .footerUl>li {
-    width: inherit;
-    overflow: hidden;
-}
-
 h1 {
     font-size: 4em;
+}
+
+.footerContainer  {
+    
+}
+
+.footerContainer > div {
+    border: 1px solid white;
+}
+
+footer > div ul {
+    list-style-type: none;
+}
+
+footer ul img {
+    max-width: 2em;
+}
+
+footer div ul {
+    margin: 0px;
+    padding: 1em .5em .5em .5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 /* BODY */
@@ -51,10 +70,10 @@ body {
     top: 0px;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
 }
 
 #pageContainer {
+    overflow: hidden;
     color: white;
     margin: auto;
     padding: 0px;
@@ -65,7 +84,6 @@ body {
     width: 0px;
     background-color: #404558;
     white-space: nowrap;
-    overflow: inherit;
-    transition-delay: .5s;
-    transition-duration: 2s;
+    transition-delay: 0s;
+    transition-duration: 1s;
 }
