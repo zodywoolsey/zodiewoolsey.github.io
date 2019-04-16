@@ -5,6 +5,7 @@ let initDelay = 200;
 let pageInit = () => {
     pageContainer.classList.add("borderExpanse");
     setTimeout( ()=>{
+        pageContainer.style.minHeight = `${innerHeight}px`;
         pageContainer.style.maxHeight = `${innerHeight}px`;
 
     }, 100 )
@@ -19,6 +20,7 @@ let pageInit = () => {
     initDelay = transitionDuration+100;
     setTimeout( ()=>{
         pageContainer.classList.add("widthExpanse");
+        pageContainer.style.minHeight = `${innerHeight}`;
         pageContainer.style.maxHeight = "unset";
     }, initDelay );
     initDelay += 1000;

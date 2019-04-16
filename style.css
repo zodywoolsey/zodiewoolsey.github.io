@@ -83,6 +83,7 @@ body {
     border-right: 0px solid #f0f;
     border-top: 1px solid #404558;
     max-height: 0px;
+    min-height: 0px;
     width: 0px;
     background-color: #404558;
     white-space: nowrap;
