@@ -23,6 +23,19 @@ let pageInit = () => {
         pageContainer.style.overflow = "auto";
     }, initDelay );
 }
+function closePage(){
+    pageContainer.classList.toggle("widthExpanse");
+    pageContainer.classList.toggle("borderExpanse");
+    pageContainer.classList.toggle("pageInitFinish");
+    setTimeout( ()=>{
+        pageContainer.classList.toggle("borderExpanse");
+        pageContainer.classList.toggle("widthExpanse");
+        pageContainer.classList.toggle("pageInitFinish");
+    },1000 )
+}
+
+
+document.querySelector("button").click = closePage;
 setTimeout( ()=>{
     pageInit();
 }, 100 );
