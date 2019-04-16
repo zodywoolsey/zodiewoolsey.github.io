@@ -1,6 +1,6 @@
 
 html {
-    background-color: #303045;
+    background-color: #354050;
     /* color: #bd5fbd; */
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -11,11 +11,13 @@ html ::-webkit-scrollbar {
 /* TRANSITIONS */
 
 .widthExpanse {
-    width: 90% !important;
+    width: 80% !important;
+    padding: 1em !important;
 }
 .borderExpanse {
-    border-left: 1em solid #0000 !important;
-    border-right: 1em solid #0000 !important;
+    border-left: .2em solid #0001 !important;
+    border-right: .2em solid #0001 !important;
+    border-bottom: 0em solid #0001 !important;
 }
 .borderColorOne {
     border-left-color: #0000;
@@ -76,7 +78,7 @@ body {
     overflow: hidden;
     color: white;
     margin: auto;
-    padding: 0px;
+    padding: 1em 0px 1em 0px;
     border-left: 0px solid #f0f;
     border-right: 0px solid #f0f;
     border-top: 1px solid #404558;
