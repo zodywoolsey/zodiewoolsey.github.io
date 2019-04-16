@@ -32,7 +32,7 @@ html ::-webkit-scrollbar {
     overFlow: auto !important;
 }
 
-/* HEADER/FOOTER */
+/*          HEADER/FOOTER          */
 header {
     text-align: center;
     overflow: inherit;
@@ -43,8 +43,13 @@ h1 {
     font-size: 4em;
 }
 
-.footerContainer  {
-    
+footer {
+    position: absolute;
+    bottom: 0px;
+    left: 1em;
+    right: 1em;
+    overflow: inherit;
+    width: auto;
 }
 
 .footerContainer > div {
@@ -64,10 +69,13 @@ footer div ul {
     padding: 1em .5em .5em .5em;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+}
+footer div ul li {
+    margin: auto;
 }
 
-/* BODY */
+/*          BODY            */
 body {
     top: 0px;
     margin: 0px;
@@ -89,4 +97,6 @@ body {
     white-space: nowrap;
     transition-delay: 0s;
     transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    position: relative;
 }

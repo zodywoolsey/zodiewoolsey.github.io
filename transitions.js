@@ -1,14 +1,9 @@
 let pageContainer = document.querySelector("#pageContainer");
-let transitionDuration = window.getComputedStyle(pageContainer).transitionDuration.replace(/\D/, '' )*1000;
-let smoothHeightVar = 0;
-let initDelay = 200;
 let pageInit = () => {
+    let transitionDuration = window.getComputedStyle(pageContainer).transitionDuration.replace(/\D/, '' )*1000;
+    let initDelay = 200;
     pageContainer.classList.add("borderExpanse");
-    setTimeout( ()=>{
         pageContainer.style.minHeight = `${innerHeight}px`;
-        pageContainer.style.maxHeight = `${innerHeight}px`;
-
-    }, 100 )
     // for(i = 0; i < 1; i++){
     //     setTimeout( ()=>{
     //         smoothHeightVar += 500;
@@ -16,11 +11,10 @@ let pageInit = () => {
     //     }, initDelay )
     //     initDelay+=200
     // }
-    console.log(innerHeight)
     initDelay = transitionDuration+100;
     setTimeout( ()=>{
         pageContainer.classList.add("widthExpanse");
-        pageContainer.style.minHeight = `${innerHeight}`;
+        pageContainer.style.minHeight = "100vh";
         pageContainer.style.maxHeight = "unset";
     }, initDelay );
     initDelay += 1000;
@@ -29,4 +23,6 @@ let pageInit = () => {
         pageContainer.style.overflow = "auto";
     }, initDelay );
 }
-pageInit();
+setTimeout( ()=>{
+    pageInit();
+}, 100 );
