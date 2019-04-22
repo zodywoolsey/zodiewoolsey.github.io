@@ -14,9 +14,23 @@
     <body>
         <div id="pageContainer" >
             <header>
+                <img src="https://placekitten.com/g/200/200">
                 <h1>
                     Welcome
                 </h1>
+                <nav class="headerNav">
+                    <ul>
+                        <li class="liButton" onclick="toPage('resume.html')">
+                            <a> Resume </a>
+                        </li>
+                        <li>
+                            <a> About </a>
+                        </li>
+                        <li>
+                            <a> Test </a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
             <h2>
                 Projects:
@@ -29,6 +43,7 @@
             <p>test</p>
             <p>test</p>
             <p>test</p>
+            <hr>
             <p>test</p>
             <p>test</p>
             <p>test</p>
@@ -54,4 +69,20 @@
             </footer>
         </div>
     </body>
+
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAHrST1LEecRG5-LIEakGtxNtMkPz1tQqA",
+    authDomain: "calendar-dev-75983.firebaseapp.com",
+    databaseURL: "https://calendar-dev-75983.firebaseio.com",
+    projectId: "calendar-dev-75983",
+    storageBucket: "calendar-dev-75983.appspot.com",
+    messagingSenderId: "952843626955"
+  };
+  firebase.initializeApp(config);
+</script>
 </html>

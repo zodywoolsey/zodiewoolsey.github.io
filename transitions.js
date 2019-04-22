@@ -3,18 +3,11 @@ let pageInit = () => {
     let transitionDuration = window.getComputedStyle(pageContainer).transitionDuration.replace(/\D/, '' )*1000;
     let initDelay = 200;
     pageContainer.classList.add("borderExpanse");
-        pageContainer.style.minHeight = `${innerHeight}px`;
-    // for(i = 0; i < 1; i++){
-    //     setTimeout( ()=>{
-    //         smoothHeightVar += 500;
-    //         pageContainer.style.maxHeight = `${smoothHeightVar}px`;
-    //     }, initDelay )
-    //     initDelay+=200
-    // }
-    initDelay = transitionDuration+100;
+        pageContainer.style.maxHeight = `${innerHeight}px`;
+    // initDelay = transitionDuration+100;
     setTimeout( ()=>{
         pageContainer.classList.add("widthExpanse");
-        pageContainer.style.minHeight = "100vh";
+        // pageContainer.style.minHeight = "100vh";
         pageContainer.style.maxHeight = "unset";
     }, initDelay );
     initDelay += 1000;
@@ -30,7 +23,7 @@ function toPageStart(){
 }
 function toPageEnd(){
     pageContainer = document.querySelector("#pageContainer");
-    pageContainer.style.minHeight = "100vh";
+    // pageContainer.style.minHeight = "unset";
     pageContainer.style.maxHeight = "unset";
     setTimeout( ()=>{
         pageContainer.classList.add("borderExpanse");
@@ -43,4 +36,4 @@ function toPageEnd(){
 // document.querySelectorAll("button")[0].click = togglePage;
 setTimeout( ()=>{
     pageInit();
-}, 100 );
+}, 10 );
