@@ -76,6 +76,12 @@ header * {
     box-shadow: 4pt 4pt 2pt -2pt black;
 }
 
+.headerNav li:active{
+    transition-duration: .1s;
+    border: .1em solid black !important;
+    box-shadow: 3pt 3pt 1.5pt -2pt black !important;
+}
+
 footer {
     height: 6em;
 }
