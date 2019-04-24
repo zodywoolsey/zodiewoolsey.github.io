@@ -1,4 +1,4 @@
-let pageContainer = document.querySelector("#pageContainer");
+let pageContainer = document.querySelector(".pageContainer");
 let pageInit = () => {
     let transitionDuration = window.getComputedStyle(pageContainer).transitionDuration.replace(/\D/, '' )*1000;
     let initDelay = 200;
