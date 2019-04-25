@@ -1,20 +1,13 @@
 let pageContainer = document.querySelector(".pageContainer");
-let pageInit = () => {
-    let transitionDuration = window.getComputedStyle(pageContainer).transitionDuration.replace(/\D/, '' )*1000;
-    let initDelay = 200;
-    pageContainer.classList.add("borderExpanse");
-        pageContainer.style.maxHeight = `${innerHeight}px`;
-    // initDelay = transitionDuration+100;
-    setTimeout( ()=>{
-        pageContainer.classList.add("widthExpanse");
-        // pageContainer.style.minHeight = "100vh";
-        pageContainer.style.maxHeight = "unset";
-    }, initDelay );
-    initDelay += 1000;
-    setTimeout( ()=>{
-        pageContainer.classList.add("pageInitFinish");
-        pageContainer.style.overflow = "auto";
-    }, initDelay );
+
+url = document.URL;
+
+if(!url.includes('#') || url.includes('portfolio')){
+    toPage('portfolio.html');
+}else if( url.includes('resume')){
+    toPage('resume.html');
+}else if(url.includes('contact')){
+    toPage('contact.html');
 }
 function toPageStart(){
     pageContainer.classList.remove("widthExpanse");
@@ -22,7 +15,7 @@ function toPageStart(){
     pageContainer.classList.remove("pageInitFinish");
 }
 function toPageEnd(){
-    pageContainer = document.querySelector("#pageContainer");
+    pageContainer = document.querySelector(".pageContainer");
     // pageContainer.style.minHeight = "unset";
     pageContainer.style.maxHeight = "unset";
     setTimeout( ()=>{
@@ -31,9 +24,3 @@ function toPageEnd(){
         pageContainer.classList.add("pageInitFinish");
     }, 200 )
 }
-
-
-// document.querySelectorAll("button")[0].click = togglePage;
-setTimeout( ()=>{
-    pageInit();
-}, 10 );

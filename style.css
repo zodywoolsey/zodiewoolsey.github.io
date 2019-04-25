@@ -11,19 +11,18 @@ html ::-webkit-scrollbar {
 
 .widthExpanse {
     width: 80% !important;
-    max-width: 1000px !important;
     padding: 1em !important;
 }
 .borderExpanse {
-    border: 0px !important;
+    border: 0px solid white !important;
 }
 .borderColorOne {
-    border-left-color: #0000;
-    border-right-color: #0000;
+    /* border-left-color: #0000;
+    border-right-color: #0000; */
 }
 .borderColorTwo {
-    border-left-color: #0000;
-    border-right-color: #0000;
+    /* border-left-color: #0000;
+    border-right-color: #0000; */
 }
 .pageInitFinish {
     white-space: normal !important;
@@ -44,6 +43,8 @@ h1 {
 
 header img {
     margin: auto;
+    height: 25%;
+    width: 25%;
     display: block;
 }
 
@@ -73,6 +74,7 @@ header * {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition-timing-function: ease-in-out;
 }
 .liButton:hover{
     background-color: #f002;
@@ -88,10 +90,11 @@ header * {
 
 footer {
     height: 6em;
+    position: relative;
 }
 
 .footerContainer {
-    height: 6em;
+    height: 4em;
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -124,8 +127,6 @@ body {
     top: 0px;
     margin: 0px;
     padding: 0px;
-    position: relative;
-    z-index: -100;
 }
 
 .pageContainer {
@@ -133,26 +134,21 @@ body {
     overflow-x: hidden !important;
     margin: auto;
     padding: 1em 0px 6em 0px;
-    border-left: 0px solid #f00;
-    border-right: 0px solid #f00;
-    border-top: 1px solid #404558;
-    max-height: 0px;
+    border: 2em solid white;
     width: 0px;
+    max-width: 1000px !important;
     background-color: #ffffff;
     white-space: nowrap;
     transition-delay: 0s;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;
     position: relative;
-    /* box-shadow: .5em .5em .2em 0px #000; */
 }
 
 hr {
-    position: relative;
-    min-width: 110%;
-    right: 3%;
+    min-width: 200%;
+    right: 25%;
     border: 4pt solid #833;
     background-color: #833;
-    /* box-shadow: 1em -4pt 0em 0em #000; */
-    z-index: 100;
+    position: relative;
 }
