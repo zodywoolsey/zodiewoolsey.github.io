@@ -14,8 +14,6 @@ function toPage(url){
         if(pageGetter.readyState === 4 && pageGetter.status === 200){
             let newPage = document.createElement('body');
             newPage.innerHTML = pageGetter.response;
-            console.log(pageGetter.response);
-            console.log(newPage);
             document.querySelectorAll('body')[0].replaceWith(newPage);
             toPageEnd();
         }
