@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html id="page">
+<link rel="stylesheet" href="Style.css">
+<script src="resize.js"></script>
+<head>
+</head>
+<body>
+    <nav>
+        <ul id="nav">
+            <a href="index.html">Home</a>
+            <a href="ball.html">Balls</a>
+            <a href="game.html">Pattern Game</a>
+            <a href="gameoflife.html">A Game Of Life</a>
+            <a href="oopTesting.html">Some trippy stuff</a>
+        </ul>
+    </nav>
+    <input type="range" id="slider" min="-5" max="5" step=".1" value="1" style="width: 50%; height: 5em;">
+<canvas id="slideCanvas" style="position: fixed; top: 0px; left: 0px; z-index: -100; width: 100%; height: 100%;"></canvas>
+<script>
+    
+    var canvas = document.getElementById("slideCanvas");
+    var ctx = canvas.getContext("2d");
+    var page = document.getElementById("page")
+    
+    
+    
+    var halaina = 0;
+    var presstimer = 0;
+    
+    but = document.getElementById("fsbut")
+    window.addEventListener('keydown',function(event){
+        console.log(event.keyCode);
+        if (event.keyCode == 72){
+            halaina += 1;
+        }
+    })
+    
+    setInterval(function(){
+        if (halaina > 5){
+            alert("Halaina is the best!");
+            halaina = 0;
+            presstimer = 0;
+        }
+        presstimer += 1;
+        if (presstimer > 20){
+            halaina = 0;
+            presstimer = 0;
+        }
+    }, 1000/4)
+    
+    
+    setInterval(function(){
+        var distance = 50;
+        canvas.height = canvas.clientHeight;
+        canvas.width = canvas.clientWidth;
+        try{
+            if (i ==0){
+                
+            }
+        }catch (ReferenceError){
+            i = 0;
+        }
+        if (i > distance || i < -distance){
+            i = 0;
+        }
+        ctx.fillStyle = "#909f";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = "#000b";
+        for (a = -distance; a < canvas.width+distance; a+=distance){
+        ctx.fillRect((i+a),0,10,canvas.height);
+        }
+        for (a = -distance; a < canvas.height+distance; a+=distance){
+        ctx.fillRect(0,(i+a),canvas.width,10);
+        }
+        
+        i += parseFloat(slider.value);
+    },1000/60);
+    
+    
+    
+    currentloc = [0,0];
+    newloc = [0,0];
+    speed = 0;
+    
+    currentloc[0];
+    
+    
+    
+    
+</script>
+
+</body>
+</html>

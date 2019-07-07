@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <canvas id="canvas" style="border: 1px solid black"></canvas>
+    <script>
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        
+        c.width = 500;
+        c.height = 500;
+        
+        old = Date.now();
+        newd = Date.now();
+        console.log(old,newd);
+        
+        function food(x, y, z){
+            this.x = x;
+            this.y = y;
+            this.size = z;
+            
+            this.draw = function(){
+                
+            }
+            
+        };
+        
+        function pet(){
+            var obj = {};
+            obj.x = 250;
+            obj.y = 250;
+            obj.size = 5;
+            
+            obj.fInView = true;
+            
+            
+            obj.move = function(){
+                if(obj.fInView){
+                    if(obj.fx > obj.x){
+                        obj.x+=2+(Math.random()*2);
+                    }else if(obj.fx < obj.x){
+                        obj.x-=2+(Math.random()*2);
+                    };
+                    if(obj.fy > obj.y){
+                        obj.y+=2+(Math.random()*2);
+                    }else if(obj.fy < obj.y){
+                        obj.y-=2+(Math.random()*2);
+                    };
+                }
+            };//-----GO-----          
+            obj.drawp = function(){
+                ctx.fillStyle = "#000";
+                ctx.fillRect(obj.x-(obj.size/2),obj.y-(obj.size/2),obj.size,obj.size);
+            };//-----DRAWP-----
+            
+            obj.draw = function(){
+                if(obj.fd){
+                    obj.drawf();
+                    obj.move();
+                }
+                obj.drawp();
+                obj.eat();
+            };//-----DRAW-----
+            
+            return obj;
+        };
+        
+        var play = new pet;
+        
+        setInterval(function(){
+            if ((newd-old)>1000/60){
+                ctx.clearRect(0,0,c.width,c.height);
+                play.draw();
+                old = Date.now();
+            }
+            newd = Date.now();
+        },0)
+        
+        </script>
+    </body>
+</html>
