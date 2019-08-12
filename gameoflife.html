@@ -19,7 +19,7 @@
     <script>
         var c = document.getElementById("canvas");
         var ctx = c.getContext("2d");
-        
+        /*
         if (screen.availHeight < screen.availWidth){
             c.width=screen.availWidth-(screen.availWidth/40);
             c.height=screen.availHeight-(screen.availHeight/9.5);
@@ -27,9 +27,10 @@
             c.height=screen.availWidth-(screen.availWidth/40);
             c.width=screen.availHeight-(screen.availHeight/9.5);
         }
+        */
         
-        //c.width = 500;
-        //c.height = 500;
+        c.width = 500;
+        c.height = 500;
         
         
         size = 100;
@@ -186,7 +187,7 @@
                             living[x][y]+=1;
                         }
                         if(food[x][y]>0){
-                        food[x][y]-=5;
+                        food[x][y]-=.5;
                         }else{
                             living[x][y]+=1;
                         }
