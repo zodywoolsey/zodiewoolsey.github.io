@@ -191,7 +191,7 @@
                         }else{
                             living[x][y]+=1;
                         }
-                        }catch(err){living[x][y]+=1}//minus food
+                        }catch(err){}//minus food
                     
                 } else{
                     
@@ -208,11 +208,8 @@
                     life[x][y] = "d";
                     living[x][y]=0;
                 };
-                if (living[x][y] > 5){
+                if (living[x][y] > 4){
                     life[x][y] = "d";
-                }
-                if (living[x][y] < .1){
-                    food[x][y] -= food[x][y] > .5 ? .1 : 0;
                 }
             };//-----CALC END-----
             obj.gocalc = function(){
