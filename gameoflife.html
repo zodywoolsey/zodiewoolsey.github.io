@@ -166,27 +166,27 @@
                     living[x][y]++;
                     try{
                         if(food[x-1][y]>0){
-                        food[x-1][y]-=.2;
+                        food[x-1][y]-=.5;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x][y-1]>0){
-                        food[x][y-1]-=.2;
+                        food[x][y-1]-=.5;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x][y+1]>0){
-                        food[x][y+1]-=.2;
+                        food[x][y+1]-=.5;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x+1][y]>0){
-                        food[x+1][y]-=.2;
+                        food[x+1][y]-=.5;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x][y]>0){
-                        food[x][y]-=2;
+                        food[x][y]-=5;
                         }else{
                             living[x][y]+=1;
                         }
@@ -200,14 +200,14 @@
                         food[x][y-1]+=3;
                         food[x][y+1]+=3;
                         food[x+1][y]+=3;
-                        food[x][y]+=5;
+                        food[x][y]+=2;
                         }catch(err){}
                         //console.log(x,y,"died")
                     }
                     life[x][y] = "d";
                     living[x][y]=0;
                 };
-                if (living[x][y] > 6){
+                if (living[x][y] > obj.high){
                     life[x][y] = "d";
                 }
             };//-----CALC END-----
