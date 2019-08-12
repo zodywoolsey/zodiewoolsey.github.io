@@ -97,7 +97,7 @@
             obj.goint;
             obj.stop = 0;
             obj.low = 3;
-            obj.high = 5;
+            obj.high = 6;
             obj.length = 1;
             
             obj.go = function(){
@@ -191,7 +191,7 @@
                         }else{
                             living[x][y]+=1;
                         }
-                        }catch(err){}//minus food
+                        }catch(err){living[x][y]+=1}//minus food
                     
                 } else{
                     
