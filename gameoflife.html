@@ -212,7 +212,7 @@
                     life[x][y] = "d";
                 }
                 if (living[x][y] < .1){
-                    foo[x][y] -= food[x][y] > .5 ? .1 : 0;
+                    food[x][y] -= food[x][y] > .5 ? .1 : 0;
                 }
             };//-----CALC END-----
             obj.gocalc = function(){
