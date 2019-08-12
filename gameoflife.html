@@ -142,37 +142,6 @@
                 }
                 
             };//-----DRAW END-----
-obj.draw = function(){
-                obj.newlife = life;
-                for (a = 0; a < life.length; a ++){
-                    for (e = 0; e < life[a].length; e ++){
-                        if(food[a][e] > 0){
-                            ctx.fillStyle = "#0004";
-                            ctx.fillRect(e*obj.width,a*obj.height,obj.width,obj.height);
-                        }
-                        if (life[a][e] == "a"){
-                            ctx.fillStyle = "#0f0f"
-                            ctx.fillRect(e*obj.width-2.5,a*obj.height+2.5,obj.width+1,obj.height+1);
-                            ctx.fillStyle = "#f00c"
-                            ctx.fillRect(e*obj.width-3,a*obj.height,obj.width+5,obj.height+4);
-                            ctx.fillStyle = "#00c"
-                            ctx.fillRect(e*obj.width-1,a*obj.height-1,obj.width+4,obj.height+3);
-                            ctx.fillStyle = "#000f"
-                            ctx.fillStyle = "#f00"
-                            ctx.fillRect(e*obj.width,a*obj.height,obj.width+2.5,obj.height+1);
-                            ctx.fillStyle = "#0f05"
-                            ctx.fillRect(e*obj.width-2.5,a*obj.height+2.5,obj.width+1,obj.height+1);
-                            ctx.fillStyle = "#00f"
-                            ctx.fillRect(e*obj.width,a*obj.height,obj.width,obj.height+2.5);
-                            ctx.fillStyle = "#000"
-                            ctx.fillRect(e*obj.width-.5,a*obj.height-.5,obj.width+1,obj.height+1);
-                        }else if(life[a][e] = "d"){
-                            //ctx.clearRect(e*obj.width,a*obj.height,obj.width,obj.height);
-                        }
-                    }
-                }
-                
-            };//-----DRAW END-----
             obj.calc = function(x,y){
                 //console.log("calc")
                 obj.livecount=0;
