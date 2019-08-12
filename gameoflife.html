@@ -14,6 +14,7 @@
             <li><a href="oopTesting.html">Some trippy stuff</a></li>
         </ul>
     </nav>
+    <button id="killall">Restart<button>
     <canvas id="canvas" style="border: 2px solid"></canvas>
     <div id="disp"></div>
     <script>
@@ -56,23 +57,24 @@
             mdown = false;
         };
         
-        
-        for (a = 0; a < size; a ++){
-            life.push([]);
-            for (e = 0; e < size; e ++){
-                life[a].push("d");
+        function initWorld(){
+            for (a = 0; a < size; a ++){
+                life.push([]);
+                for (e = 0; e < size; e ++){
+                    life[a].push("d");
+                }
             }
-        }
-        for (a = 0; a < size; a ++){
-            living.push([]);
-            for (e = 0; e < size; e ++){
-                living[a].push(0);
+            for (a = 0; a < size; a ++){
+                living.push([]);
+                for (e = 0; e < size; e ++){
+                    living[a].push(0);
+                }
             }
-        }
-        for (a = 0; a < size; a ++){
-            food.push([]);
-            for (e = 0; e < size; e ++){
-                food[a].push(0);
+            for (a = 0; a < size; a ++){
+                food.push([]);
+                for (e = 0; e < size; e ++){
+                    food[a].push(0);
+                }
             }
         }
         function createLife(){
@@ -117,6 +119,7 @@
                         //clearInterval(obj.goint);
                     }
                 };
+            return obj.goint;
             },100)
             }//-----OBJ.GO END-----
             obj.draw = function(){
@@ -243,7 +246,12 @@
         //console.log(life);
         game.go();
         game.gocalc();
-        var printout = "";
+        
+        document.getElementById('killall').onclick = function(){
+            life = [];
+            initWorld();
+            createLife();
+        }
         
     </script>
     </body>
