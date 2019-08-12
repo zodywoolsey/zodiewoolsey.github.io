@@ -166,22 +166,22 @@
                     living[x][y]++;
                     try{
                         if(food[x-1][y]>0){
-                        food[x-1][y]-=.1;
+                        food[x-1][y]-=.2;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x][y-1]>0){
-                        food[x][y-1]-=.1;
+                        food[x][y-1]-=.2;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x][y+1]>0){
-                        food[x][y+1]-=.1;
+                        food[x][y+1]-=.2;
                         }else{
                             living[x][y]+=1;
                         }
                         if(food[x+1][y]>0){
-                        food[x+1][y]-=.1;
+                        food[x+1][y]-=.2;
                         }else{
                             living[x][y]+=1;
                         }
