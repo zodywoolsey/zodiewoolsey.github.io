@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/zodywoolsey
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://zodywoolsey.github.io
+  * I am zodywoolsey (https://keybase.io/zodywoolsey) on keybase.
+  * I have a public key ASAFmJZpsqNfVVb9CAcwzG6SiVUyJ3SFPmUtKVkmwIk7zgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012034438d73de24f523b21b155310da14344f6296ab8884d8c5f5001dcb309efa6b0a",
+      "host": "keybase.io",
+      "kid": "012005989669b2a35f5556fd080730cc6e928955322774853e652d295926c0893bce0a",
+      "uid": "a1d88072185cefa5102ddf9ad2c96a19",
+      "username": "zodywoolsey"
+    },
+    "merkle_root": {
+      "ctime": 1568133023,
+      "hash": "8dba9662ec8e6089e4a285ada12e4fe65ff22c81f8a1b717c03e56b7c9902c1cadbacc6629eb872424705d282f2f1c57cfea23effe8725ea700428267c8949da",
+      "hash_meta": "03cc0d1d7072ab4653b457cdc73a672326cb9525d7bc4d6f8b197aa3f805fcbe",
+      "seqno": 6460337
+    },
+    "service": {
+      "entropy": "1mhw8j/cAxEdyAw0kAfcHnUq",
+      "hostname": "zodywoolsey.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.4.1"
+  },
+  "ctime": 1568133033,
+  "expire_in": 504576000,
+  "prev": "38e3ff036bb07a251d7538265def8a9de24560f4c19c6d22739ed156037cbac6",
+  "seqno": 20,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgBZiWabKjX1VW/QgHMMxukolVMid0hT5lLSlZJsCJO84Kp3BheWxvYWTESpcCFMQgOOP/A2uweiUddTgmXe+KneJFYPTBnG0ic57RVgN8usbEIKFsytx7pCK4vAIukdSW3bhYyEZHLJDfF5g6euxMfr0fAgHCo3NpZ8RA74LvZ+VmHAzvUCkf1H6DOkgBxMhlAP5n0jo4FKcOV8TXT6tJ0g9WMB+/HR5HPOAz6I8BDMw3ZkD3qRHYiceICqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIATiZ6bwgBp4rzAFFPowefYuRyQKX56XS8+n16cRffDYo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zodywoolsey
+
+==================================================================
