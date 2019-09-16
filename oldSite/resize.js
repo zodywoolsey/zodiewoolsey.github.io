@@ -2,29 +2,29 @@ function HvW(){
     if(screen.availHeight > screen.availWidth){
         try{
         document.querySelector("ul").style.fontSize = "2em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.getElementById("foot").style.fontSize = "1.5em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.querySelector("h1").style.fontSize = "3em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.getElementById("paras").style.fontSize = "1em";
-        }catch(){}
+        }catch(ex){}
     }else if(screen.availHeight < screen.availWidth){
         try{
         document.querySelector("ul").style.fontSize = "2em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.getElementById("foot").style.fontSize = "1.5em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.querySelector("h1").style.fontSize = "3em";
-        }catch(){}
+        }catch(ex){}
         try{
         document.getElementById("paras").style.fontSize = "1em";
-        }catch(){}
+        }catch(ex){}
     }
 }
 
