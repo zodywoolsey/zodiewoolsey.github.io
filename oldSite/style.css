@@ -91,8 +91,8 @@ footer{
     vertical-align: middle;
     padding: 4vw 0em;
     transition: all 4s;
-    text-shadow: blue 1px 1px .5px,
-    red -1px -1px .5px;
+    text-shadow: blue .2vw .1vw .1vw,
+    red -.2vw -.1vw .1vw;
 }
 .newSiteLinkTextl:hover {
     box-shadow: 0px 0px 30px 0px #f00b,
