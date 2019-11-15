@@ -7,7 +7,7 @@
                 margin: 0px;
                 padding: 0px;
                 border: 1px solid black;
-                transition:all .5s;
+                transition:all .2s;
                 z-index: 1;
                 max-width: 6vh;
             }
@@ -118,12 +118,16 @@
             tmp={};
             if(e.touches != undefined){
                 tmp.target = document.elementFromPoint( e.touches[0].clientX,e.touches[0].clientY );
+                if(tmp.target != prevTouchElem){
+                    boxAcivate(tmp);
+                    prevTouchElem = tmp.target;
+                }
             }else{
                 tmp.target = e.target;
-            }
-            if(tmp.target != prevTouchElem){
-                boxAcivate(tmp);
-                prevTouchElem = tmp.target;
+                if(tmp.target != prevTouchElem && isClick == true){
+                    boxAcivate(tmp);
+                    prevTouchElem = tmp.target;
+                }
             }
         }
 
@@ -142,10 +146,7 @@
                 if(tmp.splitPos[0] == 0 || tmp.splitPos[0] == 9 || tmp.splitPos[1] == 0 || tmp.splitPos[1] == 9){
                     i--;
                 }
-                setTimeout( 
-                    synthBoxActivate(tmp),
-                    i*1000
-                 )
+                synthBoxActivate(tmp)
             }
         }
         init();
