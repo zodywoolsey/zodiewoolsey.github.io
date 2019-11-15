@@ -61,10 +61,10 @@
                 tmp.style.paddingBottom = "100%";
                 tmp.classList.add('box');
                 tmp.setAttribute('pos',`${i},${a}`);
-                tmp.addEventListener('mouseenter', boxAcivate );
+                tmp.addEventListener('mouseenter', boxTouchActivate );
                 tmp.addEventListener('touchstart', (e)=>{e.preventDefault(); isClick=true;boxTouchActivate(e);} );
                 tmp.addEventListener('touchmove', boxTouchActivate );
-                tmp.addEventListener('mousedown', (e)=>{isClick = true;boxAcivate(e)} );
+                tmp.addEventListener('mousedown', (e)=>{isClick = true;boxTouchActivate(e)} );
                 tmpRow.appendChild(tmp);
             }
             gameContainer.appendChild(tmpRow);
