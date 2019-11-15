@@ -36,6 +36,7 @@
     <body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
         <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content">
             <div id="gameContainer"></div>
+            <h3>Level:<div id="level"></div></h3>
         </div>
     </body>
     <script>
@@ -111,6 +112,7 @@
 
         function init(){
             level += 1;
+            document.querySelector('#level').innerText = level;
             for(i = 0; i < level; i++){
                 synthBoxActivate(boxes[ Math.round(Math.random()*(dimension[0]*dimension[1]))])
             }
