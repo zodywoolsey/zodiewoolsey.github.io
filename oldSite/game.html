@@ -41,6 +41,7 @@
     <script>
 
         let isClick = false;
+        let level = 0;
 
         document.addEventListener('mousedown',()=>{isClick = true;})
         document.addEventListener('mouseup',()=>{isClick = false;})
@@ -84,7 +85,6 @@
                     } )
                     e.target.classList.toggle('b');
                 if(document.querySelectorAll('.b').length == 0){
-                    alert("WIN");
                     init();
                 }
             }
@@ -110,7 +110,8 @@
         }
 
         function init(){
-            for(i = 0; i < 100; i++){
+            level += 1;
+            for(i = 0; i < level; i++){
                 synthBoxActivate(boxes[ Math.round(Math.random()*(dimension[0]*dimension[1]))])
             }
         }
