@@ -3,8 +3,6 @@
     <head>
         <style>
             .box{
-                width: 4em;
-                height: 4em;
                 background-color: darkolivegreen;
                 margin: 0px;
                 padding: 0px;
@@ -35,17 +33,19 @@
     </head>
     <body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
         <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content">
+                <h3 style="color: white; text-align: center;">Level:<div id="level"></div></h3>
             <div id="gameContainer"></div>
-            <h3>Level:<div id="level"></div></h3>
         </div>
     </body>
     <script>
 
         let isClick = false;
         let level = 0;
+        let prevTouchElem = '';
 
         document.addEventListener('mousedown',()=>{isClick = true;})
         document.addEventListener('mouseup',()=>{isClick = false;})
+        document.addEventListener('touchend',()=>{isClick = false;})
 
         let gameContainer = document.querySelector('#gameContainer');
         //let dimension = [Math.floor(window.innerWidth/20) ,Math.floor(window.innerHeight/20)]
@@ -57,9 +57,13 @@
             tmpRow.classList.add('row');
             for(a = 0; a < dimension[1]; a++){
                 let tmp = document.createElement('div');
+                tmp.style.width = "9vw";
+                tmp.style.paddingBottom = "100%";
                 tmp.classList.add('box');
                 tmp.setAttribute('pos',`${i},${a}`);
                 tmp.addEventListener('mouseenter', boxAcivate );
+                tmp.addEventListener('touchstart', (e)=>{e.preventDefault(); isClick=true;boxTouchActivate(e);} );
+                tmp.addEventListener('touchmove', boxTouchActivate );
                 tmp.addEventListener('mousedown', (e)=>{isClick = true;boxAcivate(e)} );
                 tmpRow.appendChild(tmp);
             }
@@ -71,50 +75,75 @@
         function boxAcivate(e){
             let initialPos = e.target.getAttribute('pos');
             initialPos = initialPos.split(',');
-            if(isClick && (initialPos[0] > 0 && initialPos[0] < dimension[0]-1) && ( initialPos[1] > 0 && initialPos[1] < dimension[1]-1 ) ){
-                let posCheck = [`${initialPos[0]-1},${initialPos[1]}`,
-                    `${initialPos[0]-(-1)},${initialPos[1]}`,
-                    `${initialPos[0]},${initialPos[1]-1}`,
-                    `${initialPos[0]},${initialPos[1]-(-1)}`]
-                    // console.log(boxes.filter( (e)=>{posCheck.includes(e.pos)} ));
-                    boxes.forEach( (a)=>{
-                        posCheck.forEach( (z)=>{
-                            if(z == a.getAttribute('pos')){
-                                a.classList.toggle('b');
-                            }
+            if(e.synthetic === true){
+                if((initialPos[0] > 0 && initialPos[0] < dimension[0]-1) && ( initialPos[1] > 0 && initialPos[1] < dimension[1]-1 ) ){
+                    let posCheck = [`${initialPos[0]-1},${initialPos[1]}`,
+                        `${initialPos[0]-(-1)},${initialPos[1]}`,
+                        `${initialPos[0]},${initialPos[1]-1}`,
+                        `${initialPos[0]},${initialPos[1]-(-1)}`]
+                        // console.log(boxes.filter( (e)=>{posCheck.includes(e.pos)} ));
+                        boxes.forEach( (a)=>{
+                            posCheck.forEach( (z)=>{
+                                if(z == a.getAttribute('pos')){
+                                    a.classList.toggle('b');
+                                }
+                            } )
                         } )
-                    } )
-                    e.target.classList.toggle('b');
-                if(document.querySelectorAll('.b').length == 0){
-                    init();
+                        e.target.classList.toggle('b');
+                    if(document.querySelectorAll('.b').length == 0){
+                        init();
+                    }
+                }
+            }else{
+                if(isClick && (initialPos[0] > 0 && initialPos[0] < dimension[0]-1) && ( initialPos[1] > 0 && initialPos[1] < dimension[1]-1 ) ){
+                    let posCheck = [`${initialPos[0]-1},${initialPos[1]}`,
+                        `${initialPos[0]-(-1)},${initialPos[1]}`,
+                        `${initialPos[0]},${initialPos[1]-1}`,
+                        `${initialPos[0]},${initialPos[1]-(-1)}`]
+                        // console.log(boxes.filter( (e)=>{posCheck.includes(e.pos)} ));
+                        boxes.forEach( (a)=>{
+                            posCheck.forEach( (z)=>{
+                                if(z == a.getAttribute('pos')){
+                                    a.classList.toggle('b');
+                                }
+                            } )
+                        } )
+                        e.target.classList.toggle('b');
+                    if(document.querySelectorAll('.b').length == 0){
+                        init();
+                    }
                 }
             }
         }
 
-        function synthBoxActivate(e){
-            let initialPos = e.getAttribute('pos');
-            initialPos = initialPos.split(',');
-            if((initialPos[0] > 0 && initialPos[0] < dimension[0]-1) && ( initialPos[1] > 0 && initialPos[1] < dimension[1]-1 ) ){
-                let posCheck = [`${initialPos[0]-1},${initialPos[1]}`,
-                    `${initialPos[0]-(-1)},${initialPos[1]}`,
-                    `${initialPos[0]},${initialPos[1]-1}`,
-                    `${initialPos[0]},${initialPos[1]-(-1)}`]
-                    boxes.forEach( (a)=>{
-                        posCheck.forEach( (z)=>{
-                            if(z == a.getAttribute('pos')){
-                                a.classList.toggle('b');
-                            }
-                        } )
-                    } )
-                    e.classList.toggle('b');
+        function boxTouchActivate(e){
+            tmp={};
+            tmp.target = document.elementFromPoint( e.touches[0].clientX,e.touches[0].clientY );
+            if(tmp.target != prevTouchElem){
+                boxAcivate(tmp);
+                prevTouchElem = tmp.target;
             }
         }
 
+        function synthBoxActivate(e){
+            e.synthetic = true;
+            boxAcivate(e);
+        }
+
         function init(){
-            level += 1;
+            level++;
             document.querySelector('#level').innerText = level;
             for(i = 0; i < level; i++){
-                synthBoxActivate(boxes[ Math.round(Math.random()*(dimension[0]*dimension[1]))])
+                let tmp = {};
+                tmp.target = boxes[ Math.round(Math.random()*(dimension[0]*dimension[1]))];
+                tmp.splitPos = tmp.target.getAttribute('pos').split(',');
+                if(tmp.splitPos[0] == 0 || tmp.splitPos[0] == 9 || tmp.splitPos[1] == 0 || tmp.splitPos[1] == 9){
+                    i--;
+                }
+                setTimeout( 
+                    synthBoxActivate(tmp),
+                    i*1000
+                 )
             }
         }
         init();
