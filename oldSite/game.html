@@ -116,7 +116,11 @@
 
         function boxTouchActivate(e){
             tmp={};
-            tmp.target = document.elementFromPoint( e.touches[0].clientX,e.touches[0].clientY );
+            if(e.touches != undefined){
+                tmp.target = document.elementFromPoint( e.touches[0].clientX,e.touches[0].clientY );
+            }else{
+                tmp.target = e.target;
+            }
             if(tmp.target != prevTouchElem){
                 boxAcivate(tmp);
                 prevTouchElem = tmp.target;
