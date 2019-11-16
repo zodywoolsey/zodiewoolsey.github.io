@@ -35,22 +35,22 @@
         </style>
     </head>
     <body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
-        <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content">
-            <div style="text-align: center;" id="level"></div>
-            <div id="gameContainer"></div>
-            <div class="buttons">
-                <div>
-                    <input placeholder="Paste pattern code here!" id="inputCode">
-                    <div id="enterCode">Enter a pattern code</div>
-                </div>
-                <div>
-                    <div id="toggleEditMode">Toggle pattern edit mode</div>
-                </div>
-                <div>
-                    <div id="codeGen">Generate pattern code</div>
-                    <div style="user-select:text !important;">Code: <div id="code" style="max-width: 20vw; word-wrap: break-word;"></div></div>
-                </div>
+        <div class="buttons" style="position: absolute;">
+            <div>
+                <input placeholder="Paste pattern code here!" id="inputCode">
+                <div id="enterCode">Enter a pattern code</div>
             </div>
+            <div>
+                <div id="toggleEditMode">Toggle pattern edit mode</div>
+            </div>
+            <div>
+                <div id="codeGen">Generate pattern code</div>
+                <div style="user-select:text !important;">Code: <div id="code" style="max-width: 20vw; word-wrap: break-word;"></div></div>
+            </div>
+        </div>
+        <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content">
+            <div style="text-align: center; font-size: 5vw;" id="level"></div>
+            <div id="gameContainer"></div>
         </div>
     </body>
     <script>
@@ -78,11 +78,10 @@
                 tmp.style.paddingBottom = "100%";
                 tmp.classList.add('box');
                 tmp.setAttribute('pos',`${i},${a}`);
-                tmp.addEventListener('mouseenter', (e)=>{boxTouchActivate(e)} );
-                tmp.addEventListener('mouseenter', (e)=>{e.target.classList.toggle('cursor');} );
+                tmp.addEventListener('mouseenter', (e)=>{e.target.classList.toggle('cursor');boxTouchActivate(e)} );
+                tmp.addEventListener('touchmove', boxTouchActivate );
                 tmp.addEventListener('mouseleave', (e)=>{e.target.classList.toggle('cursor');} );
                 tmp.addEventListener('touchstart', (e)=>{e.preventDefault(); isClick=true;boxTouchActivate(e);} );
-                tmp.addEventListener('touchmove', boxTouchActivate );
                 tmp.addEventListener('mousedown', (e)=>{isClick = true;boxTouchActivate(e)} );
                 tmpRow.appendChild(tmp);
             }
@@ -100,14 +99,9 @@
                         `${initialPos[0]-(-1)},${initialPos[1]}`,
                         `${initialPos[0]},${initialPos[1]-1}`,
                         `${initialPos[0]},${initialPos[1]-(-1)}`]
-                        // console.log(boxes.filter( (e)=>{posCheck.includes(e.pos)} ));
-                        boxes.forEach( (a)=>{
-                            posCheck.forEach( (z)=>{
-                                if(z == a.getAttribute('pos')){
-                                    a.classList.toggle('b');
-                                }
-                            } )
-                        } )
+                        posCheck.forEach( (pos)=>{
+                            document.querySelector(`[pos='${pos}']`).classList.toggle('b');
+                        } );
                         e.target.classList.toggle('b');
                     if(document.querySelectorAll('.b').length == 0){
                         init();
@@ -119,14 +113,9 @@
                         `${initialPos[0]-(-1)},${initialPos[1]}`,
                         `${initialPos[0]},${initialPos[1]-1}`,
                         `${initialPos[0]},${initialPos[1]-(-1)}`]
-                        // console.log(boxes.filter( (e)=>{posCheck.includes(e.pos)} ));
-                        boxes.forEach( (a)=>{
-                            posCheck.forEach( (z)=>{
-                                if(z == a.getAttribute('pos')){
-                                    a.classList.toggle('b');
-                                }
-                            } )
-                        } )
+                        posCheck.forEach( (pos)=>{
+                            document.querySelector(`[pos='${pos}']`).classList.toggle('b');
+                        } );
                         e.target.classList.toggle('b');
                     if(document.querySelectorAll('.b').length == 0 && patternEditMode == false){
                         init();
@@ -175,16 +164,6 @@
             }
         }
 
-        document.addEventListener('keypress',(e)=>{
-            console.log(e.key);
-            if(document.querySelector('.cursor') != undefined){
-                document.querySelector('.cursor').classList.toggle('cursor');
-            }
-            if(e.key == " "){
-                document.querySelector('[pos="1,1"]').classList.toggle('cursor');
-            }
-        })
-
         function patternParser(patternString){
             if(patternString == undefined){
                 let parsedPattern = '';
@@ -223,6 +202,7 @@
         function toggleEditMode(){
             if(patternEditMode === false){
                 patternEditMode = true;
+                document.querySelector('#level').innerText = "Pattern Edit Mode";
             if(document.querySelector('.cursor') != undefined){
                 document.querySelector('.cursor').classList.toggle('cursor');
             }
@@ -242,7 +222,7 @@
 
         document.querySelector('#codeGen').addEventListener('click', ()=>{document.querySelector('#code').innerText = (patternParser())});
         document.querySelector('#toggleEditMode').addEventListener('click', ()=>{toggleEditMode()} )
-        document.querySelector('#enterCode').addEventListener('click', ()=>{toggleEditMode(document.querySelector('#inputCode').value)} )
+        document.querySelector('#enterCode').addEventListener('click', ()=>{patternParser(document.querySelector('#inputCode').value)} )
 
         init();
     </script>
