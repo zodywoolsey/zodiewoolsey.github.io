@@ -1,96 +1,158 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            .box{
-                background-color: #095;
-                margin: 0px;
-                padding: 0px;
-                border: 1pt solid black;
-                transition:all .2s;
-                z-index: 1;
-                max-width: 6vh;
-            }
-            .box.cursor{
-                background-color: #8ee;
-            }
-            .b {
-                background-color: #f00;
-            }
-            .box.b.cursor{
-                background-color: #f88;
-            }
-            #gameContainer{
-                display: flex;
-            }
-            body{
-                overflow: hidden;
-                background-color: black;
-            }
-            html{
-                user-select: none;
-                color: white;
-                font-family: sans-serif;
-            }
-        </style>
+    <style>
+    .box{
+        background-color: #66f;
+        margin: 1pt;
+        padding: 0px;
+        /* border: 1pt solid black; */
+        transition: all .2s;
+        border-radius: 5%;
+    }
+    .box.cursor{
+        background-color: #aaf;
+        /* filter: brightness(2); */
+    }
+    .b {
+        background-color: #d66;
+    }
+    .box.b.cursor{
+        /* background-color: #f88; */
+        background-color: #eaa;
+    }
+    #gameContainer{
+        display: flex;
+        margin-top: 25%;
+    }
+    body{
+        overflow: hidden;
+        background-color: #000;
+    }
+    html{
+        user-select: none;
+        color: #fff;
+        font-family: sans-serif;
+    }
+    .button{
+        padding: 1vh 1vw;
+        background-color: #856;
+        border-radius: 5px;
+    }
+    .buttons{
+        position: absolute;
+        background-color: #000;
+        width: 0vw;
+        overflow: hidden;
+        height: 100vh;
+        padding: 0px;
+        margin: 0px auto;
+        transition: width .5s;
+    }
+    .buttons.expanded{
+        width: 100vw;
+    }
+    #sideMenuButton{
+        width: fit-content;
+    }
+    .menuBar{
+        margin: .2em 0px;
+        padding: .15em 0px;
+        border-radius: 5px;
+        width: 2em;
+        background-color: #fff;
+    }
+</style>
     </head>
-    <body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
-        <div class="buttons" style="position: absolute;">
-            <div>
-                <input placeholder="Paste pattern code here!" id="inputCode">
-                <div id="enterCode">Enter a pattern code</div>
+<body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
+    <div id="sideMenuButton">
+        <div class="menuBar"></div>
+        <div class="menuBar"></div>
+        <div class="menuBar"></div>
+    </div>
+        <div class="buttons ">
+            <div style="width: fit-content; margin: auto;">
+                <input placeholder="Paste pattern code here!" id="inputCode" style='border-radius: 5px; border-style: solid; border-width: 0px; text-align: center;'>
+                <div class="button" id="enterCode" style="width: fit-content; margin: 0px auto;">Enter a pattern code</div>
             </div>
-            <div>
-                <div id="toggleEditMode">Toggle pattern edit mode</div>
+            <hr style="width: 80vw" />
+            <div style="width: fit-content; margin: auto;">
+                <div class="button" id="toggleEditMode" style="width: fit-content; margin: 0px auto;">Toggle pattern edit mode</div>
             </div>
-            <div>
-                <div id="codeGen">Generate pattern code</div>
-                <div style="user-select:text !important;">Code: <div id="code" style="max-width: 20vw; word-wrap: break-word;"></div></div>
+            <hr style="width: 80vw" />
+            <div style="width: fit-content; margin: auto;">
+                <div class="button" style="width: fit-content; margin: 0px auto;" id="codeGen">Generate pattern code</div>
+                <div style="user-select:text !important;">Code: <div id="code" style="max-width: 80vw; word-wrap: break-word;"></div></div>
             </div>
         </div>
-        <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content">
-            <div style="text-align: center; font-size: 5vw;" id="level"></div>
-            <div id="gameContainer"></div>
+        <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content;">
+            <ul style="list-style-type: none; margin-left: auto; margin-right: auto; padding: 0px;">
+                <li>
+                    <div style="text-align: center; font-size: 2em;" id="level"></div>
+                </li>
+                <li style="margin: 0px auto; padding: 0px;">
+                    <div id="gameContainer"></div>
+                </li>
+            </ul>
         </div>
-    </body>
     <script>
 
         let isClick = false;
         let level = 0;
         let prevTouchElem = '';
         let patternEditMode = false;
+        let dimension;
+        let gameContainer;
 
         document.addEventListener('mousedown',()=>{isClick = true;})
         document.addEventListener('mouseup',()=>{isClick = false;})
         document.addEventListener('touchend',()=>{isClick = false;})
 
-        let gameContainer = document.querySelector('#gameContainer');
-        //let dimension = [Math.floor(window.innerWidth/20) ,Math.floor(window.innerHeight/20)]
-        let dimension = [10,10];
+        function init(dimx,dimy){
+            
+            level = 0;
+            prevTouchElem = '';
+            patternEditMode = false;
 
-        let squares = [];
-        for( i = 0; i < dimension[0]; i++ ){
-            let tmpRow = document.createElement('div');
-            tmpRow.classList.add('row');
-            for(a = 0; a < dimension[1]; a++){
-                let tmp = document.createElement('div');
-                tmp.style.width = "9vw";
-                tmp.style.paddingBottom = "100%";
-                tmp.classList.add('box');
-                tmp.setAttribute('pos',`${i},${a}`);
-                tmp.addEventListener('mouseenter', (e)=>{e.target.classList.toggle('cursor');boxTouchActivate(e)} );
-                tmp.addEventListener('touchmove', boxTouchActivate );
-                tmp.addEventListener('mouseleave', (e)=>{e.target.classList.toggle('cursor');} );
-                tmp.addEventListener('touchstart', (e)=>{e.preventDefault(); isClick=true;boxTouchActivate(e);} );
-                tmp.addEventListener('mousedown', (e)=>{isClick = true;boxTouchActivate(e)} );
-                tmpRow.appendChild(tmp);
+            gameContainer = document.querySelector('#gameContainer');
+
+            dimension = [dimx,dimy];
+
+            for( i = 0; i < dimension[0]; i++ ){
+                let tmpRow = document.createElement('div');
+                tmpRow.classList.add('row');
+                for(a = 0; a < dimension[1]; a++){
+                    let tmp = document.createElement('div');
+                    tmp.style.width = `${100/dimension[0]}vw`;
+                    tmp.style.maxWidth = `${100/dimension[0]-1}vw`;
+                    tmp.style.paddingBottom = "100%";
+                    tmp.classList.add('box');
+                    tmp.setAttribute('pos',`${i},${a}`);
+                    tmp.addEventListener('mouseenter', (e)=>{boxTouchActivate(e)} );
+                    tmp.addEventListener('touchmove', boxTouchActivate );
+                    tmp.addEventListener('touchstart', (e)=>{e.preventDefault(); isClick=true;boxTouchActivate(e);} );
+                    tmp.addEventListener('mousedown', (e)=>{isClick = true;boxTouchActivate(e)} );
+                    tmpRow.appendChild(tmp);
+                }
+                gameContainer.appendChild(tmpRow);
             }
-            gameContainer.appendChild(tmpRow);
+    
+            let boxes = document.querySelectorAll('.box');
+            startLevel();
         }
 
-        let boxes = document.querySelectorAll('.box');
+        function reStart(x,y){
+            document.querySelectorAll('.row').forEach( (e)=>{e.remove();} );
+            init(x,y);
+        }
 
         function boxAcivate(e){
+            if( document.querySelector('cursor') != undefined ){
+                document.querySelector('cursor').classList.remove('cursor')
+                if(!e.target.classList.contains('cursor')){
+                    e.target.classList.add('cursor');
+                }
+            }
             let initialPos = e.target.getAttribute('pos');
             initialPos = initialPos.split(',');
             if(e.synthetic === true){
@@ -104,7 +166,7 @@
                         } );
                         e.target.classList.toggle('b');
                     if(document.querySelectorAll('.b').length == 0){
-                        init();
+                        startLevel();
                     }
                 }
             }else{
@@ -118,7 +180,7 @@
                         } );
                         e.target.classList.toggle('b');
                     if(document.querySelectorAll('.b').length == 0 && patternEditMode == false){
-                        init();
+                        startLevel();
                     }
                 }
             }
@@ -150,17 +212,20 @@
             boxAcivate(e);
         }
 
-        function init(){
+        function startLevel(){
             level++;
             document.querySelector('#level').innerText = 'Level: '+level;
             for(i = 0; i < level; i++){
                 let tmp = {};
-                tmp.target = boxes[ Math.round(Math.random()*(dimension[0]*dimension[1]))];
-                tmp.splitPos = tmp.target.getAttribute('pos').split(',');
-                if(tmp.splitPos[0] == 0 || tmp.splitPos[0] == 9 || tmp.splitPos[1] == 0 || tmp.splitPos[1] == 9){
+                let flipx = Math.round( Math.random()*dimension[0] )-1;
+                let flipy = Math.round( Math.random()*dimension[1] )-1;
+                if(flipx <= 0 || flipx >= dimension[0]-1 || flipy <= 0 || flipy >= dimension[1]-1){
                     i--;
+                }else{
+                    tmp.target = document.querySelector(`[pos='${flipx},${flipy}']`);
+                    tmp.splitPos = tmp.target.getAttribute('pos').split(',');
+                    synthBoxActivate(tmp)
                 }
-                synthBoxActivate(tmp)
             }
         }
 
@@ -215,15 +280,25 @@
                     e.classList.toggle('b');
                 } )
                 level -= 1;
-                init();
+                startLevel();
             }
         }
 
 
         document.querySelector('#codeGen').addEventListener('click', ()=>{document.querySelector('#code').innerText = (patternParser())});
-        document.querySelector('#toggleEditMode').addEventListener('click', ()=>{toggleEditMode()} )
-        document.querySelector('#enterCode').addEventListener('click', ()=>{patternParser(document.querySelector('#inputCode').value)} )
+        document.querySelector('#toggleEditMode').addEventListener('click', ()=>{toggleEditMode()} );
+        document.querySelector('#enterCode').addEventListener('click', ()=>{patternParser(document.querySelector('#inputCode').value)} );
+        document.querySelector('#sideMenuButton').addEventListener('click', ()=>{
+            document.querySelector('.buttons').classList.toggle('expanded');
+            let tmpCursor = document.querySelectorAll('.cursor');
+            if(tmpCursor.length > 0){
+                tmpCursor[0].classList.toggle('cursor');
+            }
+        })
 
-        init();
+        
+        init(10,10);
+        reStart(10,10);
+    </script>
     </script>
 </html>
