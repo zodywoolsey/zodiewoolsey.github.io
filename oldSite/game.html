@@ -148,8 +148,8 @@
                 tmpRow.classList.add('row');
                 for(a = 0; a < dimension[1]; a++){
                     let tmp = document.createElement('div');
-                    tmp.style.width = `${100/dimension[0]}vw`;
-                    tmp.style.maxWidth = `${100/dimension[0]-1}vw`;
+                    tmp.style.width = `${100/dimension[0]-1}vw`;
+                    tmp.style.maxWidth = `${ (100/dimension[0]-1)/1.5}vh`;
                     tmp.style.paddingBottom = "100%";
                     tmp.classList.add('box');
                     tmp.setAttribute('pos',`${i},${a}`);
