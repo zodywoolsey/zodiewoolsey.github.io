@@ -2,13 +2,13 @@ let pageContainer = document.querySelector(".pageContainer");
 
 url = document.URL;
 
-if(!url.includes('#') || url.includes('portfolio')){
-    toPage('portfolio.html');
-}else if( url.includes('resume')){
-    toPage('resume.html');
-}else if(url.includes('contact')){
-    toPage('contact.html');
-}
+// if(!url.includes('#') || url.includes('portfolio')){
+//     toPage('portfolio.html');
+// }else if( url.includes('resume')){
+//     toPage('resume.html');
+// }else if(url.includes('contact')){
+//     toPage('contact.html');
+// }
 function toPageStart(){
     pageContainer.classList.remove("widthExpanse");
     pageContainer.classList.remove("borderExpanse");
