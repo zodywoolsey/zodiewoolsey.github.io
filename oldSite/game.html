@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
     .box{
         background-color: #66f;
@@ -35,22 +36,29 @@
         font-family: sans-serif;
     }
     .button{
-        padding: 1vh 1vw;
+        padding: 2vh;
         background-color: #856;
         border-radius: 5px;
+        width: 80vw;
+        text-align: center;
+    }
+    .button:active{
+        background-color: #a79;
     }
     .buttons{
         position: absolute;
         background-color: #000;
-        width: 0vw;
+        width: 100vw;
         overflow: hidden;
         height: 100vh;
-        padding: 0px;
+        padding: 25% 0px 0px 0px;
         margin: 0px auto;
-        transition: width .5s;
+        transition: left .5s;
+        left: -100%;
     }
     .buttons.expanded{
-        width: 100vw;
+        /* width: 100vw; */
+        left: 0px;
     }
     #sideMenuButton{
         width: fit-content;
@@ -62,6 +70,9 @@
         width: 2em;
         background-color: #fff;
     }
+    .buttonDivider{
+        border: 0px solid transparent;
+    }
 </style>
     </head>
 <body style="width: 100vw; height: 100vh; margin: 0px; padding: 0px;">
@@ -70,19 +81,33 @@
         <div class="menuBar"></div>
         <div class="menuBar"></div>
     </div>
-        <div class="buttons ">
-            <div style="width: fit-content; margin: auto;">
-                <input placeholder="Paste pattern code here!" id="inputCode" style='border-radius: 5px; border-style: solid; border-width: 0px; text-align: center;'>
-                <div class="button" id="enterCode" style="width: fit-content; margin: 0px auto;">Enter a pattern code</div>
-            </div>
-            <hr style="width: 80vw" />
-            <div style="width: fit-content; margin: auto;">
-                <div class="button" id="toggleEditMode" style="width: fit-content; margin: 0px auto;">Toggle pattern edit mode</div>
-            </div>
-            <hr style="width: 80vw" />
-            <div style="width: fit-content; margin: auto;">
-                <div class="button" style="width: fit-content; margin: 0px auto;" id="codeGen">Generate pattern code</div>
-                <div style="user-select:text !important;">Code: <div id="code" style="max-width: 80vw; word-wrap: break-word;"></div></div>
+        <div class="buttons expanded">
+            <div style="width: fit-content; margin: auto; position: absolute; left: 50%; transform: translateX(-50%);">
+                <div hidden >
+                    <input placeholder="Paste pattern code here!" id="inputCode" style='border-radius: 5px; border-style: solid; border-width: 0px; text-align: center; padding: .5em 0em; width: 80vw'>
+                    <div class="button" id="enterCode" style="width: fit-content; margin: 0px auto;">Enter a pattern code</div>
+                </div>
+                <hr style="width: 80vw" hidden />
+                <div hidden >
+                    <div class="button" id="toggleEditMode" style="width: fit-content; margin: 0px auto;">Toggle pattern edit mode</div>
+                </div>
+                <hr style="width: 80vw" hidden />
+                <div hidden >
+                    <div class="button" style="width: fit-content; margin: 0px auto;" id="codeGen">Generate pattern code</div>
+                    <div style="user-select:text !important;">Code: <div id="code" style="max-width: 80vw; word-wrap: break-word; width: 80vw;"></div></div>
+                </div>
+                <div>
+                    <div class="button" onclick="reStart(5,5);menuToggle()" >Easy (5,5)</div>
+                </div>
+                <hr class="buttonDivider" />
+                <div>
+                    <div class="button" onclick="reStart(10,10);menuToggle()">Normal (10,10)</div>
+                </div>
+                <hr class="buttonDivider" />
+                <div>
+                    <div class="button" onclick="reStart(15,15);menuToggle()">Hard (15,15)</div>
+                </div>
+
             </div>
         </div>
         <div style="margin-left: auto; margin-right: auto; padding: 0px; width: min-content;">
@@ -230,6 +255,7 @@
         }
 
         function patternParser(patternString){
+            console.log(patternString);
             if(patternString == undefined){
                 let parsedPattern = '';
                 document.querySelectorAll('.b').forEach( (e)=>{
@@ -241,11 +267,12 @@
             }else if(patternString.includes(',') && patternString.includes(';')){
                 clearPattern();
                 patternString.split(';').forEach( (e)=>{
-                    boxes.forEach( (a)=>{
-                        if(a.getAttribute('pos') == e && !a.classList.contains('b')){
-                            a.classList.toggle('b');
-                        }
-                    } )
+                    // boxes.forEach( (a)=>{
+                        // if(a.getAttribute('pos') == e && !a.classList.contains('b')){
+                        //     a.classList.toggle('b');
+                        // }
+                        document.querySelector(`[pos="${e}"]`).classList.toggle('b');
+                    // } )
                 } )
             }
         }
@@ -262,9 +289,8 @@
             }
         }
 
-        
-
         function toggleEditMode(){
+            menuToggle();
             if(patternEditMode === false){
                 patternEditMode = true;
                 document.querySelector('#level').innerText = "Pattern Edit Mode";
@@ -284,17 +310,18 @@
             }
         }
 
-
-        document.querySelector('#codeGen').addEventListener('click', ()=>{document.querySelector('#code').innerText = (patternParser())});
-        document.querySelector('#toggleEditMode').addEventListener('click', ()=>{toggleEditMode()} );
-        document.querySelector('#enterCode').addEventListener('click', ()=>{patternParser(document.querySelector('#inputCode').value)} );
-        document.querySelector('#sideMenuButton').addEventListener('click', ()=>{
+        function menuToggle(){
             document.querySelector('.buttons').classList.toggle('expanded');
             let tmpCursor = document.querySelectorAll('.cursor');
             if(tmpCursor.length > 0){
                 tmpCursor[0].classList.toggle('cursor');
             }
-        })
+        }
+
+        document.querySelector('#codeGen').addEventListener('click', ()=>{document.querySelector('#code').innerText = (patternParser())});
+        document.querySelector('#toggleEditMode').addEventListener('click', ()=>{toggleEditMode()} );
+        document.querySelector('#enterCode').addEventListener('click', ()=>{patternParser(document.querySelector('#inputCode').value)} );
+        document.querySelector('#sideMenuButton').addEventListener('click', menuToggle);
 
         
         init(10,10);
