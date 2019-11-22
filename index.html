@@ -61,7 +61,13 @@
             </div>
         </footer>
     </div>
-        <script>window.addEventListener('readystatechange',()=>{toPageEnd();})</script>
+        <script>
+            window.addEventListener('readystatechange',()=>{
+                setTimeout( ()=>{
+                toPageEnd();
+                } ), 500);
+            })
+        </script>
     </body>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
