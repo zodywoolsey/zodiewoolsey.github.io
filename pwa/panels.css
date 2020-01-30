@@ -1,0 +1,40 @@
+/* All Panels */
+
+.panel {
+    width: 95vw;
+    background-color: #333;
+    margin: 1vh auto;
+    border-radius: 10px;
+    color: white;
+}
+.panel-title{
+    padding: 2vh 0 0 0;
+    text-align: center;
+}
+.panel-content{
+    width: 95%;
+    margin: auto;
+    padding: 0 0 2vh 0;
+}
+
+/* Calendar Panel */
+
+.panel-calendar *{
+    border: 0px solid transparent;
+}
+
+.panel-calendar {
+    width: 100%;
+    background-color: #544;
+}
+.panel-calendar th{
+    text-align: center;
+    min-width: 12%;
+    max-width: 12%; 
+    background-color: #333;
+}
+.panel-calendar td{
+    text-align: center;
+}
+
+/* Next Panel */
