@@ -1,6 +1,6 @@
 *{
     user-select: none;
-
+    transition: all .5s;
 }
 
 html {
