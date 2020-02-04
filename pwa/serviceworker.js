@@ -1,6 +1,6 @@
 self.importScripts('main.js')
 
-var cacheName = 'calendarTest'
+var cacheName = 'calendarTest_0.0.1'
 var appShellFiles = [
     `/`,
     `/img/`,
@@ -34,6 +34,18 @@ self.addEventListener('fetch',function(e){
                     return response
                 })
             })
+        })
+    )
+})
+
+self.addEventListener('activate', (e)=>{
+    e.waitUntil(
+        cashes.keys().then((keylist) => {
+            return Promise.all(keylist.map((key) => {
+                if(key != casheName) {
+                    return caches.delete(key);
+                }
+            }))
         })
     )
 })
