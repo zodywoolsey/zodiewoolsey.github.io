@@ -2,15 +2,15 @@ self.importScripts('main.js')
 
 var cacheName = 'calendarTest_0.0.1'
 var appShellFiles = [
-    `/`,
-    `/img/`,
-    `/img/test.jpg`,
-    `/icon/`,
-    `/icon/icon.png`,
-    `/app.js`,
-    `/main.js`,
-    `/index.html`,
-    `/style.css`
+    `./`,
+    `./img/`,
+    `./img/test.jpg`,
+    `./icon/`,
+    `./icon/icon.png`,
+    `./app.js`,
+    `./main.js`,
+    `./index.html`,
+    `./style.css`
 ]
 
 self.addEventListener('install', function(e){
