@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                font-size: larger;
+                font-family: sans-serif;
+                color: white;
+                user-select: none;
+            }
+            input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+                -webkit-appearance: none;
+            }
+
+            .buttonDiv{
+                background-color: #334;
+                width: 20%;
+                margin: auto;
+                padding: 1em;
+                width: min-content;
+                height: min-content;
+                
+            }
+            .buttonDiv:hover{
+                background-color: #445;
+            }
+            .buttonDiv:active{
+                background-color: #435;
+            }
+            input, textarea{
+                user-select: auto !important;
+            }
+        </style>
+    </head>
+    <body style="width: 100vw; height: 100vh; overflow: hidden; margin: 0; padding: 0; background-color: black;">
+        <header>
+            <div style="color: white; width: 100vw; text-align: center;font-size: 64pt; background-color: #223;">notime</div>
+        </header>
+        <div class="bodyDiv">
+            <br>
+            <div style="width: 80%; padding: 50px 10px; background-color: #446; color: white; margin: auto; font-weight: bold; text-align: center;">Send a repeating notification to remind you to constantly check on something.</div>
+            <div style="display: flex; width: 90%; margin: auto;">
+                <div style="display: flex; width: 100%; margin: 2em auto; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="hour" style="font-size: 32pt; text-align: center; width: 30%">hours</label>
+                        <label for="minute" style="font-size: 32pt; text-align: center; width: 30%">minutes</label>
+                        <label for="second" style="font-size: 32pt; text-align: center; width: 30%">seconds</label>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <input name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <input name='minute' type="number" placeholder="minute(s)" title="minute(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <input name='second' type="number" placeholder="second(s)" title="second(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="message" style="font-size: 32pt; text-align: center; width: 100%">text:</label>
+                        <textarea name="message" placeholder="notification text" maxlength="50" style="margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 90%; height: 4em; font-size: 32pt;"></textarea>
+                    </div>
+                    <div class="buttonDiv">
+                        start
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
