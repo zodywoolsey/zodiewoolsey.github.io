@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width">
         <style>
             * {
                 font-size: larger;
@@ -30,6 +31,12 @@
             input, textarea{
                 user-select: auto !important;
             }
+
+            @media only screen and (min-device-width: 150mm) {
+                * {
+                    font-size: x-large !important;
+                }
+            }
         </style>
     </head>
     <body style="width: 100vw; height: 100vh; overflow: hidden; margin: 0; padding: 0; background-color: black;">
@@ -37,7 +44,6 @@
             <div style="color: white; width: 100vw; text-align: center;font-size: 64pt; background-color: #223;">notime</div>
         </header>
         <div class="bodyDiv">
-            <br>
             <div style="width: 80%; padding: 50px 10px; background-color: #446; color: white; margin: auto; font-weight: bold; text-align: center;">Send a repeating notification to remind you to constantly check on something.</div>
             <div style="display: flex; width: 90%; margin: auto;">
                 <div style="display: flex; width: 100%; margin: 2em auto; flex-direction: column;">
