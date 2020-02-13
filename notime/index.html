@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width">
         <style>
             * {
-                font-size: larger;
+                font-size: large;
                 font-family: sans-serif;
                 color: white;
                 user-select: none;
@@ -36,6 +36,9 @@
                 * {
                     font-size: x-large !important;
                 }
+                body{
+                    max-width: 150mm;
+                }
             }
         </style>
     </head>
@@ -48,9 +51,9 @@
             <div style="display: flex; width: 90%; margin: auto;">
                 <div style="display: flex; width: 100%; margin: 2em auto; flex-direction: column;">
                     <div style="display: flex; justify-content: space-evenly;">
-                        <label for="hour" style="font-size: 32pt; text-align: center; width: 30%">hours</label>
-                        <label for="minute" style="font-size: 32pt; text-align: center; width: 30%">minutes</label>
-                        <label for="second" style="font-size: 32pt; text-align: center; width: 30%">seconds</label>
+                        <label for="hour" style="font-size: 32pt; text-align: center; width: 25%">h</label>
+                        <label for="minute" style="font-size: 32pt; text-align: center; width: 25%">m</label>
+                        <label for="second" style="font-size: 32pt; text-align: center; width: 25%">s</label>
                     </div>
                     <div style="display: flex; justify-content: space-evenly;">
                         <input name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
