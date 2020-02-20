@@ -60,9 +60,12 @@
                         <label for="second" style="font-size: 32pt; text-align: center; width: 25%">s</label>
                     </div>
                     <div style="display: flex; justify-content: space-evenly;">
-                        <input name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
-                        <input name='minute' type="number" placeholder="minute(s)" title="minute(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
-                        <input name='second' type="number" placeholder="second(s)" title="second(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <select name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                            </select>
+                        <select name='minute' type="number" placeholder="minute(s)" title="minute(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                            </select>
+                        <select name='second' type="number" placeholder="second(s)" title="second(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                            </select>
                     </div>
                     <div style="display: flex; flex-direction: column;">
                         <label for="message" style="font-size: 32pt; text-align: center; width: 100%">text:</label>
@@ -75,4 +78,30 @@
             </div>
         </div>
     </body>
+    <script>
+
+        h = document.querySelector('select[name=hour]');
+        m = document.querySelector('select[name=minute]');
+        s = document.querySelector('select[name=second]');
+
+        for(i=0;i<25;i++){
+            tmp = document.createElement('option');
+            tmp.value = i;
+            tmp.innerText = i;
+            h.appendChild(tmp);
+        }
+        for(i=0;i<61;i++){
+            tmp = document.createElement('option');
+            tmp.value = i;
+            tmp.innerText = i;
+            m.appendChild(tmp);
+        }
+        for(i=0;i<61;i++){
+            tmp = document.createElement('option');
+            tmp.value = i;
+            tmp.innerText = i;
+            s.appendChild(tmp);
+        }
+
+    </script>
 </html>
