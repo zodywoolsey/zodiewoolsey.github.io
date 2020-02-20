@@ -109,7 +109,15 @@
         b = document.querySelector('.buttonDiv');
         b.onclick = ()=>{
             Notification.requestPermission();
-            setTimeout(()=>{new Notification('Time up')},5000);
+            audio = new AudioContext();
+            osc = audio.createOscillator();
+            gain = audio.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 0;
+            osc.connect(audio.destination);
+            osc.start();
+            //oscNode.connect(finish)
+            setTimeout(()=>{new Notification('Time up')},1000);
         }
 
     </script>
