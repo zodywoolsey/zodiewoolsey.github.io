@@ -108,6 +108,7 @@
 
         b = document.querySelector('.buttonDiv');
         b.onclick = ()=>{
+            Notification.requestPermission();
             setTimeout(()=>{new Notification('Time up')},5000);
         }
 
