@@ -60,16 +60,19 @@
                         <label for="second" style="font-size: 32pt; text-align: center; width: 25%">s</label>
                     </div>
                     <div style="display: flex; justify-content: space-evenly;">
-                        <select name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <select name='hour' type="number" placeholder="hour(s)" title="hour(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%;'>
                             </select>
-                        <select name='minute' type="number" placeholder="minute(s)" title="minute(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <select name='minute' type="number" placeholder="minute(s)" title="minute(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%;'>
                             </select>
-                        <select name='second' type="number" placeholder="second(s)" title="second(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%; font-size: 32pt'>
+                        <select name='second' type="number" placeholder="second(s)" title="second(s)" step="1" style='-moz-appearance: textfield; margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 30%;'>
                             </select>
                     </div>
                     <div style="display: flex; flex-direction: column;">
-                        <label for="message" style="font-size: 32pt; text-align: center; width: 100%">text:</label>
+                        <label for="message" style="font-size: 32pt; text-align: center; width: 100%">message:</label>
                         <textarea name="message" placeholder="notification text" maxlength="50" style="margin: .5em auto .5em auto; text-align: center; background-color: #123; border-width: 0px; width: 90%; height: 4em; font-size: 32pt;"></textarea>
+                    </div>
+                    <div class="messageCounter" style="margin: 0 auto .2em auto;">
+                        0/50
                     </div>
                     <div class="buttonDiv">
                         start
