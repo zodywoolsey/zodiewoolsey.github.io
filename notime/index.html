@@ -103,5 +103,10 @@
             s.appendChild(tmp);
         }
 
+        b = document.querySelector('.buttonDiv');
+        b.onclick = ()=>{
+            setTimeout(()=>{new Notification('Time up')},5000);
+        }
+
     </script>
 </html>
