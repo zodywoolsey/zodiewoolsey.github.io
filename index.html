@@ -8,6 +8,7 @@
         <title>ZodyWoolsey &dash; Welcome</title>
         <link rel="stylesheet" href="style.css">
         <script src="main.js" defer></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
     </head>
     <body>
         <div class="pageContainer widthExpanse" >
@@ -42,6 +43,9 @@
                         <li>
                             <a href="https://www.linkedin.com/in/zodywoolsey" title="https://www.linkedin.com/in/zodywoolsey"> <img src="images/In-2C-128px-TM.png"> </a>
                         </li>
+                        <li>
+                            <button onclick="email()"> Test button </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,5 +58,18 @@
           google_ad_client: "ca-pub-7557515487848783",
           enable_page_level_ads: true
      });
+    function email(){
+        Email.send({
+            Host : "smtp.gmail.com",
+            Username : "zodywoolsey1",
+            Password : "Zodwols123!",
+            To : 'zodywoolsey@gmail.com',
+            From : "zody",
+            Subject : "Test",
+            Body : "Test"
+        }).then(
+            message => alert(message)
+        );
+    }
 </script>
 </html>
