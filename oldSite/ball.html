@@ -72,9 +72,11 @@
             }
             if(obj.yv < 10){
                 obj.yv+= grav;
-            };
-            if(obj.xv < 10){
-                obj.xv+= grav;
+            }else{
+                obj.yv = 10;
+            }
+            if(obj.xv > 10){
+                obj.xv = 10;
             };
         }
         return obj;
