@@ -30,8 +30,8 @@
     function ball(){
         var obj = {};
         obj.color = "#"+parseInt(Math.random()*9)+parseInt(Math.random()*9)+parseInt(Math.random()*9)
-        obj.x = (((c.width*.75)-c.width)/3)+Math.random()*(c.width*.75);
-        obj.y = (((c.height*.75)-c.height)/3)+Math.random()*(c.height*.75);
+        obj.x = (c.width*.05)+Math.random()*(c.width*.9);
+        obj.y = (c.height*.05)+Math.random()*(c.height*.9);
 
         obj.xv = 10-Math.random()*20;
         obj.yv = 10-Math.random()*20;
