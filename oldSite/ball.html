@@ -81,8 +81,8 @@
         play.push(new ball());
     },1000)
     setInterval(function(){
-        c.width = window.visualViewport.width-(c.getBoundingClientRect.x*4);
-        c.height = window.visualViewport.height-(c.getBoundingClientRect.y*4);
+        c.width = window.visualViewport.width-(c.getBoundingClientRect().x*4);
+        c.height = window.visualViewport.height-(c.getBoundingClientRect().y*4);
         grav = parseFloat(document.getElementById("grav").value);
         document.getElementById("gravval").innerHTML = grav;
         bounce = parseFloat(document.getElementById("bounce").value);
