@@ -16,7 +16,7 @@
 <input type="range" id="grav" step=".1" max="1" min="-1" value="1"> gravity (<text id="gravval">1</text>)<br>
 <input type="range" id="bounce" step=".2" max="5" min="-1" value="1"> bounciness (<text id="bounceval">1</text>)
     <br>
-<canvas id="canvas" style="border: 5px solid black"></canvas>
+<canvas id="canvas" style="margin: 0px; padding: 0px;"></canvas>
 
 <script>
     var c = document.getElementById("canvas");
@@ -81,8 +81,8 @@
         play.push(new ball());
     },1000)
     setInterval(function(){
-        c.width = window.visualViewport.width;
-        c.height = window.visualViewport.height;
+        c.width = window.visualViewport.width-c.getBoundingClientRect.x;
+        c.height = window.visualViewport.height-c.getBoundingClientRect.y;
         grav = parseFloat(document.getElementById("grav").value);
         document.getElementById("gravval").innerHTML = grav;
         bounce = parseFloat(document.getElementById("bounce").value);
