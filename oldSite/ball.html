@@ -69,7 +69,7 @@
                     obj.y = 2;
                 }
             }
-            if(obj.yv < 1000){
+            if(obj.yv < 100){
                 obj.yv+= grav;
             };
         }
@@ -77,6 +77,8 @@
     }
     play.push(new ball());
     setInterval(function(){
+        c.width = window.visualViewport.width;
+        c.height = window.visualViewport.height;
         play.push(new ball());
     },1000)
     setInterval(function(){
@@ -89,7 +91,7 @@
             play[i].draw();
         }
     },1000/60)
-
+    
 </script>
 </body>
 
