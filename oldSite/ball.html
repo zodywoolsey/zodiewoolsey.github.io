@@ -70,8 +70,11 @@
                     obj.y = 2;
                 }
             }
-            if(obj.yv < 100){
+            if(obj.yv < 10){
                 obj.yv+= grav;
+            };
+            if(obj.xv < 10){
+                obj.xv+= grav;
             };
         }
         return obj;
