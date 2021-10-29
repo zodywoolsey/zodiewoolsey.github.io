@@ -1,4 +1,4 @@
-# chairsoft.org <div style='font-size: 10pt;'>by zodyWoolsey</div>
+# zodiepupper <div style='font-size: 10pt;'>by zodiepupper</div>
 This is where my projects will live!
 
 ## This site will always be 'under construction'
