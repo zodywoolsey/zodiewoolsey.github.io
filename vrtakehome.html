@@ -1,0 +1,91 @@
+<html>
+<head>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <style>
+        body,#renderCanvas { width: 100%; height: 100%;}
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById("renderCanvas");
+        const engine = new BABYLON.Engine(canvas, true);
+        var planet = BABYLON.AbstractMesh;
+        var clouds = BABYLON.AbstractMesh;
+        var marker = BABYLON.AbstractMesh;
+
+        const createScene = async function() {
+            const scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color3.Black;
+
+            const alpha =  Math.PI/4;
+            const beta = Math.PI/3;
+            const radius = 8;
+            const target = new BABYLON.Vector3(0, 0, 0);
+
+            const camera = new BABYLON.ArcRotateCamera("Camera", alpha, beta, radius, target, scene);
+            camera.attachControl(canvas, true);
+
+            const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
+
+
+            marker = BABYLON.MeshBuilder.CreateCylinder("marker", {height:.1, diameterTop:0, diameterBottom:.1, tessellation:8}, scene);
+
+            const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 4, height: 4});
+
+            
+            BABYLON.SceneLoader.ImportMesh("", "/planet/", "planet.obj", scene, function (newMeshes) {
+                planet = newMeshes[0];
+                clouds = newMeshes[1];
+
+                console.log(planet);
+                console.log(clouds);
+                clouds.setParent(planet);
+
+                planet.scaling.x = .001;
+                planet.scaling.y = .001;
+                planet.scaling.z = .001;
+                // clouds.scaling.x = .001;
+                // clouds.scaling.y = .001;
+                // clouds.scaling.z = .001;
+                planet.position.y += 1;
+            });	
+            
+            
+            planet.actionManager = new BABYLON.ActionManager(scene);
+            planet.actionManager.registerAction(
+                new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, 
+                function (evt) {
+                    const sourceBox = evt.meshUnderPointer;
+
+                    boxMaterial.diffuseColor = BABYLON.Color3.Random();
+                }));
+            
+            clouds.actionManager = new BABYLON.ActionManager(scene);
+            clouds.actionManager.registerAction(
+                new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,
+                function(e){
+                    
+                })
+                );
+
+            env = scene.createDefaultEnvironment();
+                
+            const xrPromise = scene.createDefaultXRExperienceAsync({
+                floorMeshes: [ground]
+            });
+            return xrPromise.then((xrExperience) => {
+                console.log("Done, WebXR is enabled.");
+                return scene;
+            });
+
+
+        };
+
+        createScene().then(sceneToRender => {
+            engine.runRenderLoop(() => sceneToRender.render());
+        });
+    </script>
+</body>
+</html> 
