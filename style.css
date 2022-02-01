@@ -14,7 +14,7 @@ html ::-webkit-scrollbar {
     padding: 1em !important;
 }
 .borderExpanse {
-    border: 0px solid white !important;
+    border: 0px solid black !important;
 }
 .pageInitFinish {
     white-space: normal !important;
