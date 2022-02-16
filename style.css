@@ -1,6 +1,6 @@
 
 html {
-    background-color: #833;
+    background-color: #97d;
     font-family: Arial, Helvetica, sans-serif;
 }
 html ::-webkit-scrollbar {
@@ -57,32 +57,6 @@ header * {
     padding: 0px;
 }
 
-.liButton {
-    display: inline;
-    margin: .2em 1em .2em 1em;
-    padding: 1em 3em 1em 3em;
-    text-align: center;
-    border: .1em solid black;
-    transition-duration: .5s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transition-property: all;
-    transition-timing-function: ease-in-out;
-}
-.liButton:hover{
-    background-color: #f002;
-    border: .2em solid black;
-    box-shadow: 4pt 4pt 2pt -2pt black;
-}
-
-.liButton:active{
-    transition-duration: .1s;
-    border: .1em solid black !important;
-    box-shadow: 3pt 3pt 1.5pt -2pt black !important;
-}
-
 footer {
     height: 6em;
     position: relative;
@@ -121,6 +95,7 @@ body {
     top: 0px;
     margin: 0px;
     padding: 0px;
+    min-height: 100vh;
 }
 
 .pageContainer {
@@ -128,22 +103,26 @@ body {
     overflow-x: hidden !important;
     margin: auto;
     padding: 1em 0px 6em 0px;
-    border: 2em solid white;
+    border: 0em solid #0009;
     width: 0px;
     max-width: 1000px !important;
-    background-color: #fff;
+    background-color: #0009;
     white-space: nowrap;
     transition-delay: 0s;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;
     position: relative;
     min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 hr {
     min-width: 200%;
     right: 25%;
-    border: 4pt solid #833;
-    background-color: #833;
+    border: 4pt solid #97d;
+    background-color: #97d;
     position: relative;
 }
