@@ -1,0 +1,144 @@
+html{
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* */
+h1 {
+    text-align: center;
+    font-size: 4em;
+}
+
+#image{
+    text-align: center;
+}
+#image img{
+    width: 50%;
+}
+
+#nav {
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+      
+}
+
+#nav a {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.2em;
+}
+
+a:link {
+    text-decoration: none;
+    color: #f55;
+}
+a:visited{
+    color: #f99;
+}
+
+
+a:hover{
+    box-shadow: 0px 0px 2px #00f8;
+    background: #ddd;
+    background: #0001;
+}
+
+.centerCanvas {
+    text-align: center;
+}
+
+p {
+    line-height: 1.5;
+}
+
+#smashBrosP {
+    background: "mePicture.jpg";
+}
+
+
+
+footer{
+    width: 100%;
+}
+
+#foot {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+#foot li{
+    width: 100%;
+    display: inline;
+    flex: 0 1 auto;
+    background: #ddd0;
+}
+
+.newSiteLink {
+    margin: 1vw auto;
+    font-size: 10vw;
+}
+.newSiteLinkText {
+    margin: 0px auto;
+    max-width: 80%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4vw 0em;
+    transition: all 4s;
+    text-shadow: blue .2vw .1vw .1vw,
+    red -.2vw -.1vw .1vw;
+}
+.newSiteLinkTextl:hover {
+    box-shadow: 0px 0px 30px 0px #f00b,
+    -5px 0px 2vw 0px #00f;
+}
+.newSiteLinkTextl {
+    box-shadow: 0px 0px 10px 0px #f00b,
+    -5px 0px .5vw 0px #00f;
+}
+.newSiteLinkTextt:hover {
+    box-shadow: 0px 0px 30px 0px #f00b,
+    0px -5px 2vw 0px #00f;
+}
+.newSiteLinkTextt {
+    box-shadow: 0px 0px 10px 0px #f00b,
+    0px -5px .5vw 0px #00f;
+}
+.newSiteLinkTextr:hover {
+    box-shadow: 0px 0px 30px 0px #f00b,
+    5px 0px 2vw 0px #00f;
+}
+.newSiteLinkTextr {
+    box-shadow: 0px 0px 10px 0px #f00b,
+    5px 0px .5vw 0px #00f;
+}
+.newSiteLinkTextb:hover {
+    box-shadow: 0px 0px 30px 0px #f00b,
+    0px 5px 2vw 0px #00f;
+}
+.newSiteLinkTextb {
+    box-shadow: 0px 0px 10px 0px #f00b,
+    0px 5px .5vw 0px #00f;
+}
+
+.blackExpanse {
+    position: absolute;
+    background-color: black;
+    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 0vh;
+    width: 0vw;
+    top: 50%;
+    left: 50%;
+}
+.expand {
+    top: 0%;
+    left: 0%;
+    height: 100vh;
+    width: 100vw;
+}

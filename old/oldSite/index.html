@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title>ZW Portfolio</title>
+    <meta name="author" content="Zody Woolsey">
+    <meta name="description" content="A very old portfolio site that needs to be and will be updated soon.">
+    <meta name="keywords" content="work, school, homework, class, practice, portfolio, mobile, cross, platform, resume">
+    <meta name="google-site-verification" content="8N2J-sdSFwXkb9C5V18cJbRdr3nXlXmk8Q03IB4HtOU" />
+    <link href="style.css" rel="stylesheet">
+    <!-- <script src="resize.js"></script> -->
+</head>
+<body>
+    <h1>Home Page</h1>
+    <nav>
+        <ul id="nav">
+            <a href="index.html">Home</a>
+            <a href="ball.html">Balls</a>
+            <a href="game.html">Pattern Game</a>
+            <a href="gameoflife.html">A Game Of Life</a>
+            <a href="oopTesting.html">Some trippy stuff</a>
+            <a href="aframeTestRoom.html">A-Frame Testing</a>
+            <a href="aframear.html">A-Frame AR</a>
+        </ul>
+    </nav>
+    <div id="paras">
+        <p>
+            Hi, I'm Zody Woolsey. I'm a young software developer/engineer / programmer.<br />
+            This site kinda sucks. That's why it has been deprecated.
+        </p>
+        <p>
+            Please use the link below to go to the new version of the site.<br />Enjoy :)
+        </p>
+        <div class="newSiteLink">
+            <div class="newSiteLinkText newSiteLinkTextl">NEW SITE
+                <div class="blackExpanse "></div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let newSiteLinkText = document.querySelector('.newSiteLinkText');
+        setInterval(()=>{
+
+            
+            if(newSiteLinkText.classList.contains('newSiteLinkTextl')){
+                newSiteLinkText.classList.remove('newSiteLinkTextl');
+                newSiteLinkText.classList.add('newSiteLinkTextt');
+            }
+            else if(newSiteLinkText.classList.contains('newSiteLinkTextt')){
+                newSiteLinkText.classList.remove('newSiteLinkTextt');
+                newSiteLinkText.classList.add('newSiteLinkTextr');
+            }
+            else if(newSiteLinkText.classList.contains('newSiteLinkTextr')){
+                newSiteLinkText.classList.remove('newSiteLinkTextr');
+                newSiteLinkText.classList.add('newSiteLinkTextb');
+            }
+            else if(newSiteLinkText.classList.contains('newSiteLinkTextb')){
+                newSiteLinkText.classList.remove('newSiteLinkTextb');
+                newSiteLinkText.classList.add('newSiteLinkTextl');
+            }
+            
+        },1000*4)
+
+        let expanse = document.querySelector('.blackExpanse');
+        newSiteLinkText.addEventListener('click', ()=>{
+            expanse.classList.add('expand');
+            setTimeout( ()=>{location.assign('./../index.html') },1000*2);
+        });
+
+    </script>
+</body>

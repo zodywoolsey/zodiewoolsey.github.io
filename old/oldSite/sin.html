@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="Style.css">
+<head><div class="pageHeader">
+    
+    <div>Sine.js</div>
+    
+    </div></head>
+<body><canvas id="fpCanvas"></canvas>
+    <script>
+        var c = document.getElementById("fpCanvas");
+        var ctx = c.getContext("2d");
+        
+        c.width = 1920;
+        c.height = 1080;
+        
+        var ary = [];
+        
+        
+        function mksin(alt){
+        obj= {};
+        obj.x = 0;
+        obj.y = c.heigth/2;
+        obj.size = 1;
+        obj.life = 0;
+        
+        obj.draw = function(){
+            ctx.fillRect(obj.x,obj.y,obj.size,obj.size);
+            obj.life++;
+        };
+        obj.move = function(){
+            obj.y = (c.height/2)-(Math.sin(obj.x*alt)*(400));
+            obj.x += alt;
+        };
+        obj.alive = function(){
+            if (obj.x > 0 && obj.x < c.width && obj.y > 0 && obj.y < c.height && obj.life < 200){
+                return true;
+            }else{
+                return false;
+            }
+        };
+            return obj;
+        }
+        
+        h = 100;
+        
+        for (i = 0; i < h; i++){
+            var a = new mksin(i/Math.pow(h,2));
+            ary.push(a);
+        };
+        
+        setInterval(function(){
+            for (q = 0; q < ary.length; q++){
+                ary[q].draw();
+                ary[q].move();
+                if (!ary[q].alive()){
+                    ary.slice(q,1)
+                }
+            }
+        },1000/60)
+        
+    </script>
+    </body>
+</html>

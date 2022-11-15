@@ -1,0 +1,215 @@
+<html>
+<head>
+    <!-- <script src="https://cdn.babylonjs.com/babylon.js"></script> -->
+    <!-- <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script> -->
+        <!-- Babylon.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://cdn.babylonjs.com/ammo.js"></script>
+        <script src="https://cdn.babylonjs.com/cannon.js"></script>
+        <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+        <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+        <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script>
+        var planet = BABYLON.AbstractMesh;
+        var clouds = BABYLON.AbstractMesh;
+        var marker = BABYLON.AbstractMesh;
+        var xrHelper;
+        var leftcontroller;
+        var rightcontroller;
+
+        var canvas = document.getElementById("renderCanvas");
+
+        function setupCameraForCollisions(camera) {
+            camera.checkCollisions = true;
+            camera.applyGravity = true;
+            camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
+        }
+
+        var engine = null;
+        var scene = null;
+        var sceneToRender = null;
+        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
+        var createScene = async function () {
+
+var scene = new BABYLON.Scene(engine);
+// https://doc.babylonjs.com/divingDeeper/cameras/camera_collisions
+scene.gravity = new BABYLON.Vector3(0, -0.5, 0);
+scene.collisionsEnabled = true;
+
+var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 2.5, -6), scene);
+camera.setTarget(BABYLON.Vector3.Zero());
+camera.attachControl(canvas, true);
+setupCameraForCollisions(camera);
+
+var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+light.intensity = 0.7;
+var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 1, scene);
+sphere.position.y = 1.25;
+
+const ground1 = new BABYLON.Mesh.CreateGround('ground1', 20, 14, 16, scene);
+ground1.position.y = 0;  
+ground1.checkCollisions = true;
+
+//Simple crate
+var box = BABYLON.Mesh.CreateBox("crate", 2, scene);
+box.material = new BABYLON.StandardMaterial("Mat", scene);
+box.material.diffuseTexture = new BABYLON.Texture("textures/crate.png", scene);
+box.material.diffuseTexture.hasAlpha = true;
+box.position = new BABYLON.Vector3(5, 1, 5);
+box.checkCollisions = true;
+
+const xr = await scene.createDefaultXRExperienceAsync({
+    floorMeshes: [ground1],
+    disableTeleportation: true
+});
+
+const orangeMaterial = new BABYLON.StandardMaterial('orangeMat', scene);
+orangeMaterial.specularColor = BABYLON.Color3.Black();
+orangeMaterial.emissiveColor = BABYLON.Color3.FromHexString('#FFAF00');
+
+const greenMaterial = new BABYLON.StandardMaterial('greenMat', scene);
+greenMaterial.specularColor = BABYLON.Color3.Black();
+greenMaterial.emissiveColor = BABYLON.Color3.Green();
+
+const redMaterial = new BABYLON.StandardMaterial('redMat', scene);
+redMaterial.specularColor = BABYLON.Color3.Black();
+redMaterial.emissiveColor = BABYLON.Color3.Red();
+
+const ground2 = new BABYLON.Mesh.CreateGround('ground2', 4, 4, 16, scene);
+ground2.position.y = 0.25;
+ground2.material = greenMaterial;
+
+const ground3 = new BABYLON.Mesh.CreateGround('ground3', 3, 3, 16, scene);
+ground3.position.y = 0.5;
+ground3.material = orangeMaterial;
+
+const ground4 = new BABYLON.Mesh.CreateGround('ground4', 2, 2, 16, scene);
+ground4.position.y = 0.75;
+ground4.material = redMaterial;
+
+const triangle = BABYLON.Mesh.CreateCylinder('triangle', 1, 1, 1, 3, 4, scene);
+const triangleMaterial = new BABYLON.StandardMaterial('triangle-mat', scene);
+triangleMaterial.emissiveColor = BABYLON.Color3.Red();
+triangleMaterial.specularColor = BABYLON.Color3.Black();
+triangle.material = triangleMaterial;
+triangle.isVisible = false;
+
+const featureManager = xr.baseExperience.featuresManager;
+// featureManager.disableFeature(BABYLON.WebXRFeatureName.TELEPORTATION);
+
+setupCameraForCollisions(xr.input.xrCamera);
+
+const movementFeature = featureManager.enableFeature(BABYLON.WebXRFeatureName.MOVEMENT, 'latest', {
+    xrInput: xr.input,
+    // add options here
+    movementOrientationFollowsViewerPose: true, // default true
+});
+
+xr.baseExperience.onStateChangedObservable.add((webXRState) => {
+    switch(webXRState) {
+        case BABYLON.WebXRState.ENTERING_XR:
+        case BABYLON.WebXRState.IN_XR:
+            triangle.isVisible = true;
+            break;
+        default:
+            triangle.isVisible = false;
+            break;
+    }
+});
+
+xr.baseExperience.sessionManager.onXRFrameObservable.add(() => {
+    if (xr.baseExperience.state === BABYLON.WebXRState.IN_XR) {
+        triangle.rotation.y = (0.5 + movementFeature.movementDirection.toEulerAngles().y);
+        triangle.position.set(xr.input.xrCamera.position.x, 0.5, xr.input.xrCamera.position.z);
+    }
+});
+
+return scene;
+};
+                window.initFunction = async function() {
+                    
+                    
+                    var asyncEngineCreation = async function() {
+                        try {
+                        return createDefaultEngine();
+                        } catch(e) {
+                        console.log("the available createEngine function failed. Creating the default engine instead");
+                        return createDefaultEngine();
+                        }
+                    }
+
+                    window.engine = await asyncEngineCreation();
+        if (!engine) throw 'engine should not be null.';
+        window.scene = createScene();};
+        initFunction().then(() => {scene.then(returnedScene => { sceneToRender = returnedScene; });
+                
+            engine.runRenderLoop(function () {
+                if (sceneToRender && sceneToRender.activeCamera) {
+                    sceneToRender.render();
+                }
+            });
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+        
+        setTimeout(()=>{
+        BABYLON.SceneLoader.ImportMesh("", "/planet/", "planet.obj", engine.scenes[0], function (newMeshes) {
+            planet = newMeshes[0];
+            clouds = newMeshes[1];
+
+            // console.log(planet);
+            // console.log(clouds);
+            clouds.setParent(planet);
+
+            planet.scaling.x = .001;
+            planet.scaling.y = .001;
+            planet.scaling.z = .001;
+            // clouds.scaling.x = .001;
+            // clouds.scaling.y = .001;
+            // clouds.scaling.z = .001;
+            planet.position.y += 1;
+        });	
+        
+        
+        planet.actionManager = new BABYLON.ActionManager(engine.scenes[0]);
+        planet.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, 
+            function (evt) {
+                const sourceBox = evt.meshUnderPointer;
+
+                boxMaterial.diffuseColor = BABYLON.Color3.Random();
+            }));
+
+        },1)
+    </script>
+</body>
+</html> 

@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene>
+      <a-sky color="#333"></a-sky>
+      <a-entity hand-controls="hand: left" raycaster="near: .02; far: 10; direction: 0,0,-1; objects: .planet; showLine: true;" id="leftcontroller"></a-entity>
+      <a-entity hand-controls="hand: right" raycaster="near: .02; far: 10; direction: 0,0,-1; objects: .planet; showLine: true;" id="rightcontroller"></a-entity>
+      <!-- <a-entity hand-controls="hand: right; handModelStyle: highPoly" magicleap-controls="hand: right; model: false" vive-controls="hand: right; model: false" oculus-touch-controls="hand: right; model: false" windows-motion-controls="model: false" visible="false"></a-entity>
+      <a-entity hand-controls="handModelStyle: highPoly" magicleap-controls="hand: left; model: false" vive-controls="model: false" oculus-touch-controls="model: false" windows-motion-controls="hand: left; model: false" visible="false"></a-entity> -->
+      <a-gltf-model src='/planet/planet.gltf' position="0 1 -1" class="planet"></a-gltf-model>
+      <a-entity geometry="primitive: cone; height: 0.05; segmentsHeight: 1; segmentsRadial: 6; radiusBottom: 0.01; radiusTop: 0" position="" class='marker'></a-entity>
+      <div style="position: absolute; z-index: 99999; background-color: #333; border: solid black 2px; border-radius: .5em; padding: .5em; width: 80vw;" aframe-injected>
+        <div><button id='importbtn' onclick="importstring()">import</button> <input id="input"></div>
+        <div style="color:#fff; width: 60vw;">
+          <div style="display: inline;">export string:</div>
+          <textarea id='export' style="max-width: 60vw;"></textarea>
+        </div>
+      </div>
+    </a-scene>
+    <script>
+
+    markerstoupdate = []
+    planet = document.querySelector('.planet');
+    planetscaled = false;
+    scene = document.querySelector('a-scene');
+
+    exportstr = document.querySelector('#export');
+    importstr = document.querySelector('#input');
+
+    document.querySelector('#importbtn').addEventListener('onclick', ()=>{
+      console.log('test')
+    });
+
+    planetrotstart = new THREE.Euler();
+    handrotstart = new THREE.Euler();
+    handrotend = new THREE.Euler();
+    gripped = false;
+    startgrip = false;
+
+    updateinterval = setInterval(()=>{
+      if(planetscaled == false){
+        try{
+          planet.object3D.children[0].scale.x = .005;
+          planet.object3D.children[0].scale.y = .005;
+          planet.object3D.children[0].scale.z = .005;
+          planetscaled = true;
+        }catch(e){
+
+        }
+        
+      }
+      if(!gripped){
+        startgrip = false;
+      }else{
+        if(!startgrip){
+          startgrip = true;
+          rightcontroller.object3D.getWorldQuaternion(handrotstart);
+          planetrotstart = planet.object3D.rotation;
+        }
+        rightcontroller.object3D.getWorldQuaternion(handrotend);
+        outy = handrotstart.y-handrotend.y;
+        planet.object3D.rotation.y = outy/20+planetrotstart.y;
+      }
+      markerstoupdate.forEach( (e,i)=>{
+        e[0].object3D.parent = planet.object3D
+        console.log(e[0].object3D.parent)
+        e[0].setAttribute('geometry', 'primitive: cone; height: 0.05; segmentsHeight: 1; segmentsRadial: 6; radiusBottom: 0.01; radiusTop: 0');
+        
+        if(!e[3]){
+          e[0].setAttribute('position', `${e[1].x-planet.object3D.position.x} ${e[1].y-planet.object3D.position.y} ${e[1].z-planet.object3D.position.z}`);
+        }else{
+          e[0].setAttribute('position', `${e[1].x} ${e[1].y} ${e[1].z}`);
+        }
+
+        e[0].setAttribute('look-at', ".planet")
+        e[0].object3D.children[0].rotation.x += Math.PI/2;
+        
+        rotvec = new THREE.Euler();
+        planet.object3D.getWorldQuaternion(rotvec);
+        rotvec = planet.object3D.rotation;
+        fliprot = new THREE.Euler(-rotvec.x,-rotvec.y,-rotvec.z,'XYZ');
+        
+        e[0].object3D.position.applyEuler(fliprot);
+        
+        // exportstr.value += `${e[0].object3D.getWorldPosition().x},${e[0].object3D.getWorldPosition().y},${e[0].object3D.getWorldPosition().z} `;
+        exportstr.value += `${e[0].object3D.position.x},${e[0].object3D.position.y},${e[0].object3D.position.z} `;
+        
+        if(e[2]){
+          e[0].object3D.children[0].material.color.r = e[2].r;
+          e[0].object3D.children[0].material.color.g = e[2].g;
+          e[0].object3D.children[0].material.color.b = e[2].b;
+        }
+        exportstr.value += `${e[0].object3D.children[0].material.color.r},${e[0].object3D.children[0].material.color.g},${e[0].object3D.children[0].material.color.b}`;
+        exportstr.value += ';';
+
+        markerstoupdate[i] = null
+        newmarker.classList.add('marker');
+      } )
+      markerstoupdate = markerstoupdate.filter(n=>n);
+      
+    },10)
+
+      placeMarker = (position, color, imported)=>{
+        //init aframe entity for marker
+        newmarker = document.createElement('a-entity');
+        document.querySelector('a-scene').appendChild(newmarker);
+        markerstoupdate.push([newmarker,position,color,imported]);
+        console.log(position);
+      }
+
+      // Controller handlers
+      leftcontroller = document.querySelector('#leftcontroller');
+      leftray = leftcontroller.components.raycaster;
+      rightcontroller = document.querySelector('#rightcontroller');
+      rightray = rightcontroller.components.raycaster;
+      leftcontroller.addEventListener('gripdown',(e)=>{
+      })
+      rightcontroller.addEventListener('gripdown',(e)=>{
+        //set gripped flag if controller grip is pressed
+        gripped = true;
+      })
+      rightcontroller.addEventListener('gripup',(e)=>{
+        //set gripped flag if controller grip is released
+        gripped = false;
+      })
+      leftcontroller.addEventListener('triggerdown',(e)=>{
+        placeMarker(leftray.intersections[0].point);
+      })
+      rightcontroller.addEventListener('triggerdown',(e)=>{
+        placeMarker(rightray.intersections[0].point);
+      })
+
+
+      function importstring(){
+        markers = importstr.value.split(';');
+        console.log(markers)
+        markers.forEach( (m)=>{
+          if(m !== ''){
+            m = m.split(' ');
+            console.log(m);
+            p = m[0].split(',');
+            c = m[1].split(',');
+            placeMarker({x: p[0],y: p[1],z: p[2]}, {r: c[0], g: c[1], b: c[2]},true);
+          }
+        } )
+      }
+    </script>
+  </body>
+</html>
