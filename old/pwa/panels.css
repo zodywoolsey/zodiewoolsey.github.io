@@ -1,0 +1,58 @@
+/* All Panels */
+
+.panel {
+    width: 95vw;
+    background-color: #333;
+    margin: 1vh auto;
+    border-radius: 10px;
+    color: white;
+}
+.panel-title{
+    padding: 2vh 0 0 0;
+    text-align: center;
+}
+.panel-content{
+    width: 95%;
+    margin: auto;
+    padding: 0 0 2vh 0;
+}
+
+/* Calendar Panel */
+
+.panel.calendar{
+
+}
+
+.panel-calendar *{
+    border: 0px solid transparent;
+}
+
+.panel-calendar {
+    width: 100%;
+    height: 30vh;
+    background-color: #544;
+    border-collapse: collapse;
+    /* border: .2em solid black; */
+}
+.panel-calendar th{
+    text-align: center;
+    min-width: 12%;
+    max-width: 12%; 
+    background-color: #333;
+    border-left: .1em solid #544;
+    border-right: .1em solid #544;
+}
+.panel-calendar td{
+    text-align: center;
+}
+
+.cal-header{
+    background-color: #333;
+}
+
+/* .panel-calendar, .panel-calendar td{
+    border-left: .2em solid black;
+    border-right: .2em solid black;
+} */
+
+/* Next Panel */
