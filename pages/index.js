@@ -25,43 +25,46 @@ export default function Home() {
       <div className='flex justify-evenly'>
         
         <div className="card card-side w-full lg:w-2/3 bg-base-100 h-[32rem] shadow-xl m-2">
-          <figure><img src="/squares.jpg" alt="Squares" className='h-full'/></figure>
           <div className="card-body">
-            <h2 className="card-title">Squares - html</h2>
+            <h2 className="card-title text-4xl">Squares - html</h2>
             <p>A simple puzzle game built entirely in vanilla js. Try to make all the tiles blue!</p>
             <div className="card-actions justify-end">
-              <Link href={"/squares"} className="btn btn-primary">Play</Link>
+              <Link href={"/squares"} className="btn bg-neutral hover:bg-neutral-focus absolute bottom-0 right-0 m-8">Play Now</Link>
+            </div>
+          </div>
+          <figure><img src="/squares.jpg" alt="Squares" className='h-full'/></figure>
+        </div>
+        
+      </div>
+      <div className='flex justify-evenly'>
+        
+        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+          <div className="card-body">
+            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8' src={"/itchio-logo-textless.svg"}/>
+            <h2 className="card-title text-4xl">Itch.io</h2>
+            <p>I will be posting my game projects on itch.io from now on</p>
+            <div className="card-actions justify-end ">
+              <Link href={"https://zodiepupper.itch.io/"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">Check it out</Link>
             </div>
           </div>
         </div>
         
       </div>
-    </div>
-    <div className='flex flex-col justify-evenly w-full lg:w-2/3 m-auto'>
-      <div className='flex flex-col lg:flex-row justify-evenly m-auto'>
-        <div className=''>
-          <div className="card w-96 bg-primary text-primary-content m-2">
+      <div className='flex justify-evenly'>
+        
+          <div className="card w-full lg:w-2/3 h-80 bg-[#141518] text-primary-content m-2">
             <div className="card-body">
-              <h2 className="card-title">Itch.io</h2>
-              <p>I will be posting my game projects on itch.io from now on</p>
-              <div className="card-actions justify-end ">
-                <Link href={"https://zodiepupper.itch.io/"} className="btn text-white bg-[#f05a59] hover:bg-[#d44]">Check it out</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=''>
-          <div className="card w-96 bg-primary text-primary-content m-2">
-            <div className="card-body">
-              <h2 className="card-title">Patreon</h2>
+              <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8' src={"/Digital-Patreon-Logo_Black.svg"}/>
+              <h2 className="card-title text-4xl">Patreon</h2>
               <p>You can find my patreon page here! Please consider supporting.</p>
               <div className="card-actions justify-end">
-                <Link href={"https://www.patreon.com/pupperdev"} className="btn">Check it out</Link>
+                <Link href={"https://www.patreon.com/pupperdev"} className="btn text-white bg-[#FF424D] hover:bg-[#ff626d]">Check it out</Link>
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
+    </div>
       {/* <div className='flex justify-evenly'>
         
         <div>
@@ -87,8 +90,6 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-      
-    </div>
     </>
   )
 }
