@@ -12,7 +12,13 @@ function MyApp({ Component, pageProps }) {
       <div className="navbar-end">
       </div>
     </div>
-  <Component {...pageProps} />
+    <Component {...pageProps} />
+  
+    <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+      <div>
+        <p>This site built by zodiepupper using Next.js, React.js, Tailwindcss, and Daisyui</p>
+      </div>
+    </footer>
   </div>
   )
 }
