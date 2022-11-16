@@ -15,7 +15,7 @@ export default function Home() {
             <p className='text-lg text-white m-4' >I've been writing code since 2011.</p>
             <p className='text-lg text-white m-4' >I taught myself python in 7th grade so I could automate my math homework and have been in love ever since.</p>
             <p className='text-lg text-white m-4' >My favorite things to create are games and physics simulations, but I've done all kinds of things.</p>
-            <p className='text-lg text-white m-4' >My experience includes building websites, basic ocr, XR, gameplay, shaders, design, marketing, vieo/photo editing, etc. If you need something and it can be done on a computer, I can probably figure it out.</p>
+            <p className='text-lg text-white m-4' >My experience includes building websites, basic ocr, XR, gameplay, shaders, design, marketing, video/photo editing, etc. If you need something and it can be done on a computer, I can probably figure it out.</p>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@ export default function Home() {
           <figure><img src="/squares.jpg" alt="Squares" className='h-full'/></figure>
           <div className="card-body">
             <h2 className="card-title">Squares - html</h2>
-            <p>A simple puzzle game. Try to make all the tiles blue!</p>
+            <p>A simple puzzle game built entirely in vanilla js. Try to make all the tiles blue!</p>
             <div className="card-actions justify-end">
               <Link href={"/squares"} className="btn btn-primary">Play</Link>
             </div>
