@@ -2,19 +2,19 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className='bg-neutral'>
-    <div className="navbar bg-primary">
+    <div className='from-primary to-base-300 bg-gradient-to-b'>
+    <div className="navbar bg-transparent">
       <div className="navbar-start">
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">zodie@pupper.dev</a>
+        <div className="m-2 normal-case text-xl font-semibold">zodie@pupper.dev</div>
       </div>
       <div className="navbar-end">
       </div>
     </div>
     <Component {...pageProps} />
   
-    <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+    <footer className="footer footer-center p-4 bg-transparent text-base-content">
       <div>
         <p>This site built by zodiepupper using Next.js, React.js, Tailwindcss, and Daisyui</p>
       </div>
