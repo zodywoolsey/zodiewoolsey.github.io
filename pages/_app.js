@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
       <div className="navbar-start">
       </div>
       <div className="navbar-center">
-        <div className="m-2 normal-case text-xl font-semibold">zodie@pupper.dev</div>
+        <div className="m-2 normal-case text-xl font-semibold"> <img src='pupper.svg'></img> zodie@pupper.dev</div>
       </div>
       <div className="navbar-end">
       </div>
