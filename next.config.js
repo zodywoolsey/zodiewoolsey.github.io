@@ -5,6 +5,14 @@ const nextConfig = {
   images:{
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/squares',
+        destination: '/html/squares.html'
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig
