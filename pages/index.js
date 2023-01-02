@@ -21,21 +21,6 @@ export default function Home() {
       </div>
       
     </div>
-      
-      <div className='flex justify-evenly'>
-        {/* SQUARES */}
-        <div className="card md:card-side w-full lg:w-2/3 bg-base-100 h-[32rem] shadow-xl m-2">
-          <div className="card-body">
-            <h2 className="card-title text-4xl text-primary-content">Squares - html</h2>
-            <p className='text-primary-content'>A simple puzzle game built entirely in vanilla js. Try to make all the tiles blue!</p>
-            <div className="card-actions justify-end">
-              <Link href={"/squares"} className="btn bg-neutral hover:bg-neutral-focus absolute bottom-0 left-0 m-8">Play Now</Link>
-            </div>
-          </div>
-          <figure><img src="/squares.jpg" alt="Squares" className='w-full md:w-auto md:h-full md:hidden'/><iframe src="https://portfolio.pupper.dev/squares" alt="Squares" className='w-[50vw] md:h-full hidden md:block'/></figure>
-        </div>
-        
-      </div>
       <div className='flex justify-evenly'>
         {/* ITCH.IO */}
         <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
