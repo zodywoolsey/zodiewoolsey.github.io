@@ -1,0 +1,71 @@
+
+    .box{
+        background-color: #66f;
+        margin: 1pt;
+        padding: 0px;
+        /* border: 1pt solid black; */
+        transition: all .2s;
+        border-radius: 5%;
+    }
+    .box.cursor{
+        background-color: #aaf;
+        /* filter: brightness(2); */
+    }
+    .b {
+        background-color: #d66;
+    }
+    .box.b.cursor{
+        /* background-color: #f88; */
+        background-color: #eaa;
+    }
+    #gameContainer{
+        display: flex;
+        margin-top: 25%;
+    }
+    body{
+        overflow: hidden;
+        background-color: #000;
+    }
+    html{
+        user-select: none;
+        color: #fff;
+        font-family: sans-serif;
+    }
+    .button{
+        padding: 2vh;
+        background-color: #856;
+        border-radius: 5px;
+        width: 80vw;
+        text-align: center;
+    }
+    .button:active{
+        background-color: #a79;
+    }
+    .buttons{
+        position: absolute;
+        background-color: #000;
+        width: 100vw;
+        overflow: hidden;
+        height: 100vh;
+        padding: 25% 0px 0px 0px;
+        margin: 0px auto;
+        transition: left .5s;
+        left: -100%;
+    }
+    .buttons.expanded{
+        /* width: 100vw; */
+        left: 0px;
+    }
+    #sideMenuButton{
+        width: fit-content;
+    }
+    .menuBar{
+        margin: .2em 0px;
+        padding: .15em 0px;
+        border-radius: 5px;
+        width: 2em;
+        background-color: #fff;
+    }
+    .buttonDivider{
+        border: 0px solid transparent;
+    }
