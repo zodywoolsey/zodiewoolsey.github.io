@@ -25,7 +25,6 @@ export default function Home() {
         {/* SUPPORT */}
         <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
           <div className="card-body">
-            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8 hidden md:block' src={"/doge-color-new.svg"}/>
             <h2 className="card-title text-4xl">Please consider supporting us</h2>
             <p>The following links are for support vectors to support the team
               <br/>
