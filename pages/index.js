@@ -15,7 +15,7 @@ export default function Home() {
             <p className='text-primary-content text-lg m-4' >I'm working on a better future for social XR applications</p>
             <p className='text-primary-content text-lg m-4' >My current project is called "bark" and our goal is to create an open source social XR ecosystem to provide a better ground layer for future platforms</p>
             <p className='text-primary-content text-lg m-4' >We are currently developing our client and will be working to publish a spec soon</p>
-            <p className='text-primary-content text-lg m-4 hidden xs:block' >We plan to federate with every other platform we can and offer an open set of tools and ideas to push for a better future</p>
+            <p className='text-primary-content text-lg m-4 hidden xs:block' >We plan to federate with every other platform we can and offer an open set of tools and documentation</p>
           </div>
         </div>
       </div>
@@ -23,12 +23,14 @@ export default function Home() {
     </div>
       <div className='flex justify-evenly'>
         {/* SUPPORT */}
-        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+        <div className="card card-side w-full lg:w-2/3  h-[28rem] bg-base-100 text-primary-content m-2">
           <div className="card-body">
             <h2 className="card-title text-4xl">Please consider supporting us</h2>
-            <p>The following links are for support vectors to support the team
+            <p className=''>The following links are for support vectors to support the team
               <br/>
               and socials for contact or joining the community
+              <br/>
+              all support is appreciated and goes directly to bark
             </p>
             <div className="card-actions justify-end ">
               <Link href={"https://www.patreon.com/pupperdev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">patreon</Link>
@@ -90,31 +92,6 @@ export default function Home() {
         
       </div>
     </div>
-      {/* <div className='flex justify-evenly'>
-        
-        <div>
-          <div className="card w-96 bg-primary text-primary-content m-2">
-            <div className="card-body">
-              <h2 className="card-title">Card title!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="card w-96 bg-primary text-primary-content m-2">
-            <div className="card-body">
-              <h2 className="card-title">Card title!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   )
 }
