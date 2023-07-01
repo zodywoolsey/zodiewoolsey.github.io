@@ -10,7 +10,11 @@ const nextConfig = {
       {
         source: '/squares',
         destination: '/html/squares.html'
-      }
+      },
+      {
+        source: '/line3d',
+        destination: '/html/godot_line_3d/tests.html'
+      },
     ]
   }
 }
