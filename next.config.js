@@ -15,6 +15,10 @@ const nextConfig = {
         source: '/line3d',
         destination: '/html/godot_line_3d/tests.html'
       },
+      {
+        source: '/click',
+        destination: '/html/click.html'
+      },
     ]
   }
 }
