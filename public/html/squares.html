@@ -259,14 +259,14 @@
                         document.querySelector('.cursor').classList.toggle('cursor');
                     }
                     tmp.target.classList.toggle('cursor');
-                    boxAcivate(tmp);
                     prevTouchElem = tmp.target;
+                    boxAcivate(tmp);
                 }
             }else{
                 tmp.target = e.target;
                 if(tmp.target != prevTouchElem && isClick == true){
-                    boxAcivate(tmp);
                     prevTouchElem = tmp.target;
+                    boxAcivate(tmp);
                 }
             }
         }
@@ -277,6 +277,7 @@
         }
 
         function startLevel(){
+            prevTouchElem = '';
             level++;
             document.querySelector('#level').innerText = 'Level: '+level;
             for(i = 0; i < level; i++){
