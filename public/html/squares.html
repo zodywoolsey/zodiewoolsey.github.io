@@ -191,10 +191,12 @@
             if(e.synthetic === true){
                 isClick = true;
             }
-            if(isClick && (initialPos[0] > 0 && initialPos[0] < dimension[0]-1) && ( initialPos[1] > 0 && initialPos[1] < dimension[1]-1 ) ){
+            if(isClick ){
                 let posCheck = cursorParser(initialPos);
                     posCheck.forEach( (pos)=>{
-                        document.querySelector(`[pos='${pos}']`).classList.toggle('b');
+                        try{
+                            document.querySelector(`[pos='${pos}']`).classList.toggle('b');
+                        }catch(e){}
                     } );
                 if(document.querySelectorAll('.b').length == 0 && patternEditMode == false){
                     startLevel();
@@ -284,12 +286,12 @@
                 let tmp = {};
                 let flipx = Math.round( Math.random()*dimension[0] )-1;
                 let flipy = Math.round( Math.random()*dimension[1] )-1;
-                if(flipx <= 0 || flipx >= dimension[0]-1 || flipy <= 0 || flipy >= dimension[1]-1){
-                    i--;
-                }else{
+                try{
                     tmp.target = document.querySelector(`[pos='${flipx},${flipy}']`);
                     tmp.splitPos = tmp.target.getAttribute('pos').split(',');
                     synthBoxActivate(tmp)
+                }catch(e){
+                    i--;
                 }
             }
         }
