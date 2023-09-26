@@ -38,8 +38,7 @@ export default function Home() {
             </div>
             <div className="card-actions justify-end ">
               <Link href={"https://matrix.to/#/#pupperdev:matrix.pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">matrix</Link>
-              <Link href={"https://discord.gg/krwgRUyxDf"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
-              <Link href={"https://meow.social/@zodiepupper"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">mastodon</Link>
+              <Link href={"https://discord.com/invite/wyM8wjRq4v"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
             </div>
           </div>
         </div>
