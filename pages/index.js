@@ -71,7 +71,7 @@ export default function Home() {
               BLAHAJ!!
             </p>
             <div className="card-actions justify-end ">
-              <Link href={"https://github.com/zodywoolsey/html/"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">blahaj</Link>
+              <Link href={"/html"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">blahaj</Link>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
               A one nighter project of mine from college. It's based on a an existing game but I can never remember the name.
             </p>
             <div className="card-actions justify-end ">
-              <Link href={"https://github.com/zodywoolsey/html/squares"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">play!</Link>
+              <Link href={"/html/squares"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">play!</Link>
             </div>
           </div>
         </div>
