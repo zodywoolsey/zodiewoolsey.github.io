@@ -63,6 +63,38 @@ export default function Home() {
         
       </div>
       <div className='flex justify-evenly'>
+        {/* BLAHAJ */}
+        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+          <div className="card-body">
+            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8 hidden md:block' src={"/doge-color-new.svg"}/>
+            <h2 className="card-title text-4xl">BLAHAJ!!</h2>
+            <p>
+              BLAHAJ!!
+            </p>
+            <div className="card-actions justify-end ">
+              <Link href={"https://github.com/zodywoolsey/html/"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">blahaj</Link>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div className='flex justify-evenly'>
+        {/* SQUARES */}
+        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+          <div className="card-body">
+            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8 hidden md:block' src={"/doge-color-new.svg"}/>
+            <h2 className="card-title text-4xl">squares</h2>
+            <p>
+              A one nighter project of mine from college. It's based on a an existing game but I can never remember the name.
+            </p>
+            <div className="card-actions justify-end ">
+              <Link href={"https://github.com/zodywoolsey/html/squares"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">play!</Link>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div className='flex justify-evenly'>
         {/* ITCH.IO */}
         <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
           <div className="card-body">
