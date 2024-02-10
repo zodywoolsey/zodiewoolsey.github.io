@@ -64,9 +64,8 @@ export default function Home() {
       </div>
       <div className='flex justify-evenly'>
         {/* BLAHAJ */}
-        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+        <div className="card card-side w-full lg:w-2/3 h-[16rem] bg-base-100 text-primary-content m-2">
           <div className="card-body">
-            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8 hidden md:block' src={"/doge-color-new.svg"}/>
             <h2 className="card-title text-4xl">BLAHAJ!!</h2>
             <p>
               BLAHAJ!!
@@ -80,9 +79,8 @@ export default function Home() {
       </div>
       <div className='flex justify-evenly'>
         {/* SQUARES */}
-        <div className="card w-full lg:w-2/3 h-80 bg-base-100 text-primary-content m-2">
+        <div className="card card-side w-full lg:w-2/3 h-[16rem] bg-base-100 text-primary-content m-2">
           <div className="card-body">
-            <img className='max-w-[4rem] max-h-16 absolute top-0 right-0 m-8 hidden md:block' src={"/doge-color-new.svg"}/>
             <h2 className="card-title text-4xl">squares</h2>
             <p>
               A one nighter project of mine from college. It's based on a an existing game but I can never remember the name.
