@@ -22,23 +22,35 @@ export default function Home() {
       
     </div>
       <div className='flex justify-evenly'>
+        {/* CONTACT */}
+        <div className="card card-side w-full lg:w-2/3  h-[28rem] bg-base-100 text-primary-content m-2">
+          <div className="card-body">
+            <h2 className="card-title text-4xl">Want to contract or contact us?</h2>
+            <p className=''>
+              Need a website, app, or software of some other kind? Hit us up and we'll figure out how to get you what you or your business needs!</br>
+              Our engineers have over 10 years of experience creating and designing software.
+            </p>
+            <div className="card-actions justify-end ">
+              <Link href={"https://matrix.to/#/#pupperdev:matrix.pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">matrix</Link>
+              <Link href={"https://discord.gg/GnA5NBr3hS"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
+              <Link href={"mailto:contact@pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">email</Link>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+      <div className='flex justify-evenly'>
         {/* SUPPORT */}
         <div className="card card-side w-full lg:w-2/3  h-[28rem] bg-base-100 text-primary-content m-2">
           <div className="card-body">
             <h2 className="card-title text-4xl">Please consider supporting us</h2>
             <p className=''>The following links are for support vectors to support the team
               <br/>
-              and socials for contact or joining the community
-              <br/>
-              all support is appreciated and goes directly to bark
+              all support is appreciated and goes directly to supporting our open source work
             </p>
             <div className="card-actions justify-end ">
               <Link href={"https://www.patreon.com/pupperdev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">patreon</Link>
               <Link href={"https://ko-fi.com/zodiepupper"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">ko-fi</Link>
-            </div>
-            <div className="card-actions justify-end ">
-              <Link href={"https://matrix.to/#/#pupperdev:matrix.pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">matrix</Link>
-              <Link href={"https://discord.gg/GnA5NBr3hS"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
             </div>
           </div>
         </div>
