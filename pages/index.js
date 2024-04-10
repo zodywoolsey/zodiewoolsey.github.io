@@ -32,7 +32,7 @@ export default function Home() {
             </p>
             <div className="card-actions justify-end ">
               <Link href={"https://matrix.to/#/#pupperdev:matrix.pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">matrix</Link>
-              <Link href={"https://discord.gg/GnA5NBr3hS"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
+              <Link href={"https://discord.gg/VW9qhmjuXM"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">discord</Link>
               <Link href={"mailto:contact@pupper.dev"} className="btn text-white bg-[#fa5c5c] hover:bg-[#d44]">email</Link>
             </div>
           </div>
