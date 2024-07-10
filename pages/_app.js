@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
     <footer className="footer footer-center p-4 bg-transparent text-base-content">
       <div>
         <p>This site built by zodiepupper using Next.js, React.js, Tailwindcss, and Daisyui</p>
+        <a rel="me" href="https://meow.social/@zodiepupper">Mastodon</a>
       </div>
     </footer>
   </div>
