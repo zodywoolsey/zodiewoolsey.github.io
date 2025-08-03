@@ -136,6 +136,26 @@
                             document.documentElement.style.setProperty("--a", tmp+"px");
                         }
                     });
+                    button.addEventListener("keypress", function() {
+                        // if shift key is held, decrement
+                        if (event.shiftKey) {
+                            number--;
+                            numberElement.innerHTML = number;
+                            //write number to local storage
+                            localStorage.setItem("number", number);
+                            //increment css variable a
+                            let tmp = (number*numberscale);
+                            document.documentElement.style.setProperty("--a", tmp+"px");
+                        }else{
+                            number++;
+                            numberElement.innerHTML = number;
+                            //write number to local storage
+                            localStorage.setItem("number", number);
+                            //increment css variable a
+                            let tmp = (number*numberscale);
+                            document.documentElement.style.setProperty("--a", tmp+"px");
+                        }
+                    });
                 </script>
                 
             </div>
